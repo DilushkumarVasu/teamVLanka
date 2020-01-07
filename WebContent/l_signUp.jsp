@@ -63,14 +63,14 @@
                         <div class="form-row">
                             <div class="name">Gender</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="gender" required="">
+                                <input class="input--style-6" type="text" name="gender" placeholder="Male/Female/Other" required="">
                             </div>
                         </div>
                         
                         <div class="form-row">
                             <div class="name">Land Status</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="status" required="">
+                                <input class="input--style-6" type="text" name="status" placeholder="Available/Not Available" required="">
                             </div>
                         </div>
                         
