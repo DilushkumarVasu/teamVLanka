@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-row">
+                        <!--<div class="form-row">
                             <div class="name">Upload CV</div>
                             <div class="value">
                                 <div class="input-group js-input-file">
@@ -84,17 +84,20 @@
                                 </div>
                                 <div class="label--desc">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</div>
                             </div>
-                        </div>
+                        </div>-->
                         <script>$('.file-upload').file_upload();</script>
                         
-                        
-                       <!-- <div class="file-upload-wrapper">
-				    		<label class="label col-md-2 control-label">Land Document</label>
-				    		<div class="col-md-10">
-  								<input type="file" id="input-file-max-fs" class="file-upload" data-max-file-size="100M" />
-  							</div>
+                        <div class="form-row">
+                        	<div class="name">Land Document</div>
+                        	<div class="file-upload-wrapper">
+				    			<div class="col-md-10">
+  									<input type="file" id="input-file-max-fs" class="file-upload" data-max-file-size="50M" />
+  									
+  								</div>
+  								<div class="label--desc">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</div>
+							</div>
 						</div>
-				-->
+				
                     </form>
                 </div>
                 <div class="card-footer">
