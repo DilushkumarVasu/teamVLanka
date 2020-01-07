@@ -193,7 +193,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<label>Username</label>
 				<div class="pom-agile">
 					<span class="fa fa-user-o" aria-hidden="true"></span>
-					<input placeholder="Username" name="Name" class="user" type="text" required="">
+					<input placeholder="Username" name="name" class="user" type="text" required="">
 				</div>
 				<label>Password</label>
 				<div class="pom-agile">

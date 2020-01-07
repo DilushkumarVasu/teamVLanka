@@ -30,24 +30,24 @@
                     <h2 class="title">Land Owner Registration</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form action="#" method="POST">
                         <div class="form-row">
                             <div class="name">Full name</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="name">
+                                <input class="input--style-6" type="text" name="name" required="">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">NIC number</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="nic">
+                                <input class="input--style-6" type="text" name="nic" required="">
                             </div>
                         </div>
                         
                         <div class="form-row">
                             <div class="name">Address</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="address">
+                                <input class="input--style-6" type="text" name="address" required="">
                             </div>
                         </div>
                         
@@ -55,7 +55,7 @@
                             <div class="name">Email address</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="example@email.com">
+                                    <input class="input--style-6" type="email" name="email" placeholder="example@email.com" required="">
                                 </div>
                             </div>
                         </div>
@@ -63,14 +63,14 @@
                         <div class="form-row">
                             <div class="name">Gender</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="gender">
+                                <input class="input--style-6" type="text" name="gender" required="">
                             </div>
                         </div>
                         
                         <div class="form-row">
                             <div class="name">Land Status</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="status">
+                                <input class="input--style-6" type="text" name="status" required="">
                             </div>
                         </div>
                         
@@ -91,21 +91,62 @@
                         	<div class="name">Land Document</div>
                         	<div class="file-upload-wrapper">
 				    			<div class="col-md-10">
-  									<input type="file" id="input-file-max-fs" class="file-upload" data-max-file-size="50M" />
+  									<input type="file" id="input-file-max-fs" class="file-upload" data-max-file-size="50M" required="" />
   									
   								</div>
   								<div class="label--desc">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</div>
 							</div>
 						</div>
+						
+						<div class="form-row">
+                            <div class="name">User Name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="uname" required="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="name">Password</div>
+                            <div class="value">
+                                <input class="input--style-6" type="password" name="pass" id="password" required="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="name">Confirm Password</div>
+                            <div class="value">
+                                <input class="input--style-6" type="password" name="conpass" id="confirm_password" required="">
+                            </div>
+                        </div>
+						
+						
+						<div class="card-footer">
+                    		<button class="btn btn--radius-2 btn--blue-2" type="submit">Submit</button>
+                		</div>
 				
                     </form>
                 </div>
-                <div class="card-footer">
-                    <button class="btn btn--radius-2 btn--blue-2" type="submit">Submit</button>
-                </div>
+                
             </div>
         </div>
     </div>
+    
+    
+    <script>
+				var password = document.getElementById("password")
+				  , confirm_password = document.getElementById("confirm_password");
+
+				function validatePassword(){
+				  if(password.value != confirm_password.value) {
+				    confirm_password.setCustomValidity("Passwords Don't Match");
+				  } else {
+				    confirm_password.setCustomValidity('');
+				  }
+				}
+
+				password.onchange = validatePassword;
+				confirm_password.onkeyup = validatePassword;
+	</script>
 
     <!-- Jquery JS-->
     <script src="vendor/jquery/jquery.min.js"></script>
