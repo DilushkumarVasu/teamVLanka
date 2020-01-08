@@ -25,6 +25,16 @@
 
 </head>
 <body>
+
+<% 
+if(session.getAttribute("username")==null){
+	response.sendRedirect("f_login.jsp");
+}
+
+
+
+%>
+
 	<div class="services">
 		<div class="container">
 			<h3 class="w3l_header w3_agileits_header1">Question <span>Form</span></h3>
@@ -34,7 +44,7 @@
 						<form action="ques" method="post">
 							<span>
 								<i>Username</i>
-								<input type="text" name="uname" class="form-control" style="width:450px" value="" required="">
+								<input type="text" name="uname" class="form-control" style="width:450px" value="${username}" required="">
 							</span>
 							<span>
 								<i>NIC</i>
