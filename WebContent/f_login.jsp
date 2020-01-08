@@ -14,7 +14,7 @@
 			<input type="password" name="pass" placeholder="Password" required="">
 			<input type="submit" name="submit" value="Login">
 			<a href="f_signUp.jsp">Create an account</a><br><br>
-			<a href="">Forget Password?</a>
+			<a href="#">Forget Password?</a>
 		</form>
 	</body>
 </html>

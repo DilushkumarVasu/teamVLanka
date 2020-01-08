@@ -140,7 +140,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
+                        <!--<li>
                            <a href="">
                                <p>Account</p>
                             </a>
@@ -162,11 +162,14 @@
                                 <li class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                               </ul>
-                        </li>
+                        </li>-->
                         <li>
-                            <a href="#">
+                            <a href="Logout">
                                 <p>Log out</p>
                             </a>
+                            <!--<form action="Logout">
+                            	<input type="submit" value="Logout">
+                            </form>-->
                         </li>
 						<li class="separator hidden-lg"></li>
                     </ul>
