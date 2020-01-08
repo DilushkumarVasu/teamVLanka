@@ -26,6 +26,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
 			//response.sendRedirect("welcome.jsp");
+			
 			response.sendRedirect("farmer.jsp");
 		}
 		else {

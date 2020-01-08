@@ -460,5 +460,9 @@
 
     	});
 	</script> -->
+	
+	<script>
+		alert("You are succesfully logged in to VLanka! Press OK to continue");  // display string message
+    </script>
 
 </html>
