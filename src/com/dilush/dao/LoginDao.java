@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 public class LoginDao {
 	
 	String sql="select * from farmer where username=? and password=?";
-	String url="jdbc:mysql://localhost/vlanka2.0";
+	String url="jdbc:mysql://localhost/vlanka";
 	String username="root";
 	String password="";
 	public boolean check(String uname,String pass) {

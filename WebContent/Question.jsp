@@ -26,16 +26,7 @@
 </head>
 <body>
 
-<% 
-if(session.getAttribute("username")==null){
-	response.sendRedirect("f_login.jsp");
-}
-
-
-
-%>
-
-	<div class="services">
+<div class="services">
 		<div class="container">
 			<h3 class="w3l_header w3_agileits_header1">Question <span>Form</span></h3>
 			<div class="w3layouts_mail_grid">
@@ -82,7 +73,7 @@ if(session.getAttribute("username")==null){
 		</div>
 	</div>
 </body>
-</html>
+
 
 <%
 /*
