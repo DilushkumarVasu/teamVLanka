@@ -19,7 +19,12 @@ public class SignupDao {
 			PreparedStatement st=con.prepareStatement(sql);
 			st.setString(1, nic);
 			st.setString(2, name);
-			st.setString(2, email);
+//			st.setString(3, address);
+//			st.setString(4, gender);
+//			st.setString(5, telephone);
+			st.setString(3, email);
+			//st.setString(7, uname);
+			//st.setString(8, name);
 			ResultSet rs=st.executeQuery();
 			if(rs.next()) {
 				return true;
