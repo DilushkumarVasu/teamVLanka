@@ -20,6 +20,7 @@ public class Farmer {
 		String conString="jdbc:mysql://localhost/vlanka";
 		Properties prp = new Properties();
 		prp.put("user", "root");
+		prp.put("password","");
 		/*String username="root";
 		String password="";*/
 		
@@ -44,9 +45,28 @@ public class Farmer {
 			String hash = digest.digest(password.getBytes(StandardCharsets.UTF_8)).toString();
 				
 			Connection con = connect(); 
-			PreparedStatement pst = con.prepareStatement("INSERT INTO farmer(`nic`, `name`, `address`, `gender`, `telephone`, `email`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement stat=null;
+			if(nic!=null && name!=null && address!=null && gender!=null && tp!=null && email!=null && username!=null && hash!=null)
+			{
 				
-			pst.setString(1, nic); 
+				String data="insert into farmer values(?,?,?,?,?,?,?,?) ";
+				stat=con.prepareStatement(data);
+				stat.setString(1,nic);
+				stat.setString(2,name);
+				stat.setString(3,address);
+				stat.setString(4,gender);
+				stat.setString(5,tp);
+				stat.setString(6,email);
+				stat.setString(7,username);
+				stat.setString(8,hash);
+				stat.executeUpdate();
+				
+			}
+			}catch(Exception e) {
+				
+			}
+				
+			/*pst.setString(1, nic); 
 			pst.setString(2, name);
 			pst.setString(3, address);
 			pst.setString(4, gender);
@@ -62,7 +82,7 @@ public class Farmer {
 			
 		}
 		catch (Exception e) {
-		}
+		}*/
 		
 	}
 	

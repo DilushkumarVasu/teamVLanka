@@ -35,15 +35,15 @@
 						<form action="ques" method="post">
 							<span>
 								<i>Username</i>
-								<input type="text" name="uname" class="form-control" style="width:450px" value="${username}" required="">
+								<input type="text" name="uname" class="form-control" style="width:450px" value="${username}" required="" readonly>
 							</span>
 							<span>
 								<i>NIC</i>
-								<input type="text" name="nic" class="form-control" style="width:450px" value="" required="">
+								<input type="text" name="nic" class="form-control" style="width:450px" value="${nic}" required="">
 							</span>
 							<span>
 								<i>Email</i>
-								<input type="email" name="email" class="form-control" style="width:450px"  value=" " required="">
+								<input type="email" name="email" class="form-control" style="width:450px"  value="${email} " required="">
 							</span>
 							<span>
 								<i>Date</i>

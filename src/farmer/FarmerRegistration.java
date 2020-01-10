@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.dilush.dao.LoginDao;
+import com.dilush.dao.SignupDao;
 
 import userTypes.Farmer;
 
@@ -38,6 +42,7 @@ public class FarmerRegistration extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stu
+		//doGet(request, response);
 		
 		String name = request.getParameter("name");
 		String nic = request.getParameter("nic");
@@ -48,18 +53,30 @@ public class FarmerRegistration extends HttpServlet {
 		String username = request.getParameter("uname");
 		String password = request.getParameter("pass");
 		
-		/*Farmer f = new Farmer();
+		Farmer f = new Farmer();
 		f.Register(name, nic, address, gender, tp, email, username, password);
 		response.sendRedirect("f_login.jsp");
 //		f.foo();
-//		Farmer.foo();*/
-		if(nic!=null && name!=null && address!=null && gender!=null && tp!=null && email!=null && username!=null && password!=null)
-		{
-			Farmer f = new Farmer();
+//		Farmer.foo();
+//		if(nic!=null && name!=null && address!=null && gender!=null && tp!=null && email!=null && username!=null && password!=null)
+//		{
+			/*Farmer f = new Farmer();
 			f.Register(name, nic, address, gender, tp, email, username, password);
-			response.sendRedirect("f_login.jsp");
-		}
+			response.sendRedirect("f_login.jsp");*/
+//		}
 
+		/*SignupDao dao=new SignupDao();
+		
+        if(dao.check(nic,name,email)) {
+			
+			HttpSession session=request.getSession();
+			session.setAttribute("nic", nic);
+			session.setAttribute("name", name);
+			session.setAttribute("email", email);
+			
+		}*/
+		System.out.println("test");
+		
 		
 	}
 
