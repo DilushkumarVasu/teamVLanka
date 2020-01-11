@@ -56,7 +56,7 @@ if(session.getAttribute("username")==null){
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="userPro.jsp">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
