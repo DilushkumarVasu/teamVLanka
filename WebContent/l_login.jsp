@@ -189,16 +189,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="main-content-agile">
 		<div class="sub-main-w3">
 			<h2>Log In Now</h2>
-			<form action="l_signUp.jsp" method="post">
+			<form action="lLogin" method="post">
 				<label>Username</label>
 				<div class="pom-agile">
 					<span class="fa fa-user-o" aria-hidden="true"></span>
-					<input placeholder="Username" name="name" class="user" type="text" required="">
+					<input placeholder="Username" name="uname" class="user" type="text" required="">
 				</div>
 				<label>Password</label>
 				<div class="pom-agile">
 					<span class="fa fa-key" aria-hidden="true"></span>
-					<input placeholder="Password" name="Password" class="pass" type="password" required="">
+					<input placeholder="Password" name="pass" class="pass" type="password" required="">
 				</div>
 				<div class="sub-w3l">
 					<div class="sub-agile">
