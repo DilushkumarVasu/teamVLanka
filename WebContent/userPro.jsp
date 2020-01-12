@@ -14,7 +14,7 @@
 <body>
  
     <div class="container emp-profile">
-            <form method="post" action="farmer.jsp">
+            <form method="post" action="editProfile.jsp">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
