@@ -22,7 +22,7 @@
                 <div class="signup-img">
                     <img src="assets/img/form-img.jpg" alt="">
                     <div class="signup-img-content">
-                        <h2>Register as a <br> Resource Collector</br> </h2>
+                        <h2>Register as a <br>Resource Collector</br> </h2>
                     </div>
                 </div>
                 <div class="signup-form">
