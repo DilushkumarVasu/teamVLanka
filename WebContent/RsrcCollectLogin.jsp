@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<form class="box" action="Login" method="post">
-			<h1>Resource Collector Login</h1>
+			<h1>Resource Collector</h1>
 			<input type="text" name="uname" placeholder="Username">
 			<input type="password" name="pass" placeholder="Password">
 			<input type="submit" name="submit" value="Login">
