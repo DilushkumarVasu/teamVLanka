@@ -22,7 +22,7 @@
                 <div class="signup-img">
                     <img src="assets/img/form-img.jpg" alt="">
                     <div class="signup-img-content">
-                        <h2>Register Resource Collector </h2>
+                        <h2>Register as a <br> Resource Collector</br> </h2>
                     </div>
                 </div>
                 <div class="signup-form">
@@ -37,10 +37,6 @@
                                 <input type="text" name="nic" id="nic" />
                             </div>
                             <div class="form-input">
-                                <label for="speciality" class="required">Speciality</label>
-                                <input type="text" name="speciality" id="speciality" />
-                            </div>
-                            <div class="form-input">
                                 <label for="address" class="required">Address</label>
                                 <input type="text" name="address" id="address" />
                             </div>
@@ -53,7 +49,7 @@
                                 <input type="text" name="phone_number" id="phone_number" />
                             </div>
                             <div class="form-input">
-                                <label for="regions" class="required">Assigned region</label>
+                                <label for="regions" class="required">Assigned Area</label>
                                 <input type="text" name="region" id="regions" />
                             </div>
                         </div>
