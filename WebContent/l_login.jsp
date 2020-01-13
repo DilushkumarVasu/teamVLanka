@@ -212,6 +212,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="right-w3l">
 					<input type="submit" value="Login">
 				</div>
+				<div class="sub-w3l">
+				<div class="sub-agile">
+				<a href="l_signUp.jsp">Create an account</a><br><br>
+				</div>
 			</form>
 		</div>
 	</div>

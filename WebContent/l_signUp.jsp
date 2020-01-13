@@ -30,7 +30,7 @@
                     <h2 class="title">Land Owner Registration</h2>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST">
+                    <form action="lSignup" method="POST">
                         <div class="form-row">
                             <div class="name">Full name</div>
                             <div class="value">
@@ -74,6 +74,13 @@
                             </div>
                         </div>
                         
+                        <div class="form-row">
+                            <div class="name">Telephone number</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="telenum" placeholder="077711122" required="">
+                            </div>
+                        </div>
+                        
                         <!--<div class="form-row">
                             <div class="name">Upload CV</div>
                             <div class="value">
@@ -85,10 +92,10 @@
                                 <div class="label--desc">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</div>
                             </div>
                         </div>-->
-                        <script>$('.file-upload').file_upload();</script>
+                    <script>$('.file-upload').file_upload();</script>
                         
                         <div class="form-row">
-                        	<div class="name">Land Document</div>
+ <!-- 					<div class="name">Land Document</div>
                         	<div class="file-upload-wrapper">
 				    			<div class="col-md-10">
   									<input type="file" id="input-file-max-fs" class="file-upload" data-max-file-size="50M" required="" />
@@ -96,7 +103,7 @@
   								</div>
   								<div class="label--desc">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</div>
 							</div>
-						</div>
+						</div>  -->                     
 						
 						<div class="form-row">
                             <div class="name">User Name</div>
@@ -122,6 +129,7 @@
 						
 						<div class="card-footer">
                     		<button class="btn btn--radius-2 btn--blue-2" type="submit">Submit</button>
+                    		<a href="l_signUp.jsp"><div class="btn btn-warning">Cancel</div></a>
                 		</div>
 				
                     </form>
@@ -157,3 +165,4 @@
 
 </body>
 </html>
+
