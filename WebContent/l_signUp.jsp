@@ -1,146 +1,129 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.sql.*" %>
+<%@page import="javax.sql.*" %>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.PreparedStatement"%>
+<%@ page import="java.sql.Connection"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
-
-    <!-- Title Page-->
-    <title>Land OwnerRegistration</title>
-
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-
-    <!-- Main CSS-->
-    <link href="css/l.css" rel="stylesheet" media="all">
-</head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.js"/>
+<link rel="stylesheet" type="text/css" href="css/landowner.css"/>
+<title>Landowner's Registration</title>
+</head>
 <body>
-    <div class="page-wrapper bg-dark p-t-100 p-b-50">
-        <div class="wrapper wrapper--w900">
-            <div class="card card-6">
-                <div class="card-heading">
-                    <h2 class="title">Land Owner Registration</h2>
-                </div>
-                <div class="card-body">
-                    <form action="lSignup" method="POST">
-                        <div class="form-row">
-                            <div class="name">Full name</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="name" required="">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">NIC number</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="nic" required="">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="name">Address</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="address" required="">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="name">Email address</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="example@email.com" required="">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="name">Gender</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="gender" placeholder="Male/Female/Other" required="">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="name">Land Status</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="status" placeholder="Available/Not Available" required="">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="name">Telephone number</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="telenum" placeholder="077711122" required="">
-                            </div>
-                        </div>
-                        
-                        <!--<div class="form-row">
-                            <div class="name">Upload CV</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7">
+				<h1 class="text-left">Landowner's Registration Form</h1>
+				<p class="text-left">A photographer without a magazine behind him is like a farmer without fields.
+				I always wanted to be a farmer. There is a tradition of that in my family.Strong communities are built around local, real food. Food we trust to nourish our bodies, the farmer and planet.
+				</p>
+			</div>
+			<div class="col-md-5">
+				<div class="row">
+					<div class="col-md-6">
+						<h3 class="text-left">Registration Form</h3>
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</div>
+				</div>
+				<hr>
+			<form action="lSignup" onsubmit="return validateForm()" method="post">
+				<div class="row">
+					<label class="label col-md-2 control-label">Name</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="name" placeholder="Enter Your Name" required>
+					</div>
+				</div>
+				
+				<div class="row">
+					<label class="label col-md-2 control-label">NIC</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="nic" placeholder="NIC Number" required>
+					</div>
+				</div>
+				
+				<div class="row">
+					<label class="label col-md-2 control-label">Address</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="address" placeholder="Enter Your Address" required>
+					</div>
+				</div>
+				
+				<div class="row">
+					<label class="label col-md-2 control-label">Gender</label>
+					<div class="col-md-10">
+						<!--<input type="text" class="form-control" name="gender" placeholder="Male/Female/Other" required>-->
+						<input type="radio" name="gender" value="male" required><small>Male</small>
+						<input type="radio" name="gender" value="female" required><small>Female</small>
+						<input type="radio" name="gender" value="other" required><small>Other</small>
+					</div>
+				</div>
+				
+				<div class="row">
+                            <div class="name"><font color="white">Upload PDF</font></div>
                             <div class="value">
                                 <div class="input-group js-input-file">
-                                    <input class="input-file" type="file" name="file_cv"  class="file-upload" id="file" >
+                                    <input class="input-file" type="file" name="pdf"  class="file-upload" id="file" >
                                     <label class="label--file" for="file">Choose file</label>
-                                    <span class="input-file__info">No file chosen</span>
+                                    <span class="input-file__info"><font color = "white">No file chosen</font></span>
                                 </div>
-                                <div class="label--desc">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</div>
-                            </div>
-                        </div>-->
-                    <script>$('.file-upload').file_upload();</script>
-                        
-                        <div class="form-row">
- <!-- 					<div class="name">Land Document</div>
-                        	<div class="file-upload-wrapper">
-				    			<div class="col-md-10">
-  									<input type="file" id="input-file-max-fs" class="file-upload" data-max-file-size="50M" required="" />
-  									
-  								</div>
-  								<div class="label--desc">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</div>
-							</div>
-						</div>  -->                     
-						
-						<div class="form-row">
-                            <div class="name">User Name</div>
-                            <div class="value">
-                                <input class="input--style-6" type="text" name="uname" required="">
+                                <div class="label--desc"><font color ="white">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</font></div>
                             </div>
                         </div>
-                        
-                        <div class="form-row">
-                            <div class="name">Password</div>
-                            <div class="value">
-                                <input class="input--style-6" type="password" name="pass" id="password" required="">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="name">Confirm Password</div>
-                            <div class="value">
-                                <input class="input--style-6" type="password" name="conpass" id="confirm_password" required="">
-                            </div>
-                        </div>
-						
-						
-						<div class="card-footer">
-                    		<button class="btn btn--radius-2 btn--blue-2" type="submit">Submit</button>
-                    		<a href="l_signUp.jsp"><div class="btn btn-warning">Cancel</div></a>
-                		</div>
 				
-                    </form>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    
-    
-    <script>
+				<div class="row">
+					<label class="label col-md-2 control-label">Land Status</label>
+					<div class="col-md-10">
+						<input type="tel" class="form-control" name="status" placeholder="Available or Not available" required>
+					</div>
+				</div>
+				
+				<div class="row">
+					<label class="label col-md-2 control-label">Telephone number</label>
+					<div class="col-md-10">
+						<input type="tel" class="form-control" name="telenum" placeholder="Phone Number" required>
+					</div>
+				</div>
+				
+				<div class="row">
+					<label class="label col-md-2 control-label">Email</label>
+					<div class="col-md-10">
+						<input type="email" class="form-control" name="email" placeholder="Email Address" required>
+					</div>
+				</div>
+				
+				<div class="row">
+					<label class="label col-md-2 control-label">User Name</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="uname" placeholder="Enter a User Name" required>
+					</div>
+				</div>
+				
+				<div class="row">
+					<label class="label col-md-2 control-label">Password</label>
+					<div class="col-md-10">
+						<input type="Password" class="form-control" name="pass" placeholder="Password" id="password" required>
+						<!--<input type="checkbox"><small>I agree the terms & policy</small>-->
+					</div>
+				</div>
+				
+				<div class="row">
+					<label class="label col-md-2 control-label">RePassword</label>
+					<div class="col-md-10">
+						<input type="Password" class="form-control" name="conpass" placeholder="RePassword" id="confirm_password" required>
+						<!--<input type="checkbox"><small>I agree the terms & policy</small>-->
+					</div>
+				</div>
+				
+				<script>
 				var password = document.getElementById("password")
 				  , confirm_password = document.getElementById("confirm_password");
 
@@ -154,15 +137,49 @@
 
 				password.onchange = validatePassword;
 				confirm_password.onkeyup = validatePassword;
-	</script>
-
-    <!-- Jquery JS-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-
-
-    <!-- Main JS-->
-    <script src="js/global.js"></script>
+				</script>
+				
+				
+				<button type="submit" class="btn btn-info" value="submit">Submit</button>
+				<a href="l_signUp.jsp"><div class="btn btn-warning">Cancel</div></a>
+			</form>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
+
+<%
+/*String nic=request.getParameter("nic");
+String name=request.getParameter("name");
+String address=request.getParameter("add");
+String gender=request.getParameter("gender");
+String telephone=request.getParameter("tel");
+String email=request.getParameter("email");
+String uname=request.getParameter("uname");
+String pass=request.getParameter("pass");
+String host="jdbc:mysql://localhost/vlanka";
+Connection conn=null;
+PreparedStatement stat=null;
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+if(nic!=null && name!=null && address!=null && gender!=null && telephone!=null && email!=null && uname!=null && pass!=null)
+{
+	conn=DriverManager.getConnection(host,"root","");
+	String data="insert into farmer values(?,?,?,?,?,?,?,?) ";
+	stat=conn.prepareStatement(data);
+	stat.setString(1,nic);
+	stat.setString(2,name);
+	stat.setString(3,address);
+	stat.setString(4,gender);
+	stat.setString(5,telephone);
+	stat.setString(6,email);
+	stat.setString(7,uname);
+	stat.setString(8,pass);
+	stat.executeUpdate();
+	response.sendRedirect("index.html");
+}
+*/
+
+%>
 
