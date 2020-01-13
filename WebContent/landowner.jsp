@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="user.jsp">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
@@ -95,12 +95,7 @@
                         <p>Notifications</p>
                     </a>
                 </li>
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
+
             </ul>
     	</div>
     </div>
@@ -178,6 +173,7 @@
                             <a href="#">
                                 <p>Log out</p>
                             </a>
+                            
                         </li>
 						<li class="separator hidden-lg"></li>
                     </ul>
@@ -452,21 +448,5 @@
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-	<script type="text/javascript">
-    	$(document).ready(function(){
-
-        	demo.initChartist();
-
-        	$.notify({
-            	icon: 'pe-7s-gift',
-            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-
-            },{
-                type: 'info',
-                timer: 4000
-            });
-
-    	});
-	</script>
 
 </html>
