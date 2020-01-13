@@ -186,7 +186,7 @@
                                 <h4 class="title">Edit Profile</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form class = "box" action= "Update" method="post">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -197,7 +197,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                                <input type="text" class="form-control" placeholder="Username" value="${username}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -211,13 +211,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>First Name</label>
+                                                <label>Gender</label>
                                                 <input type="text" class="form-control" placeholder="Company" value="Mike">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Last Name</label>
+                                                <label>Telephone number</label>
                                                 <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
                                             </div>
                                         </div>
@@ -232,7 +232,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                               <!--  <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>City</label>
@@ -251,7 +251,7 @@
                                                 <input type="number" class="form-control" placeholder="ZIP Code">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                     <div class="row">
                                         <div class="col-md-12">
@@ -329,7 +329,7 @@
                         </li>
                     </ul>
                 </nav>
-
+	
             </div>
         </footer>
 
