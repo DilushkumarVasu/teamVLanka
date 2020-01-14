@@ -40,7 +40,7 @@
 	<link href="//fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 	<!-- //web-fonts -->
-<title>Farmer Registration</title>
+<title>Land owner Login</title>
 </head>
 <body>
 	<!--<div class="container">
@@ -181,8 +181,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<!--header-->
 	<div class="header-w3l">
-		<h1>
-			<span>Land Owner Login</span>
+		<h1 style="color:white;">
+			Land Owner Login
 		</h1>
 	</div>
 	<!--//header-->
@@ -210,7 +210,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="clear"></div>
 				</div>
 				<div class="right-w3l">
-					<input type="submit" value="Login">
+					<input type="submit" value="Login" color="red">
 				</div>
 				<div class="sub-w3l">
 				<div class="sub-agile">

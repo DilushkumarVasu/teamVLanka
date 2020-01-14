@@ -48,7 +48,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                    <img alt="" src="images/logo.png" style="width:250px;height:70px;">
                 </a>
             </div>
 
