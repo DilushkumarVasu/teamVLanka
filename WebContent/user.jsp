@@ -43,7 +43,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                   
                 </a>
             </div>
 
@@ -186,7 +186,7 @@
                                 <h4 class="title">Edit Profile</h4>
                             </div>
                             <div class="content">
-                                <form class = "box" action= "Update" method="post">
+                                <form class = "box" action= "update" method="post">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -197,13 +197,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="${username}" readonly>
+                                                <input type="text" name="uname" class="form-control" placeholder="Username" value="${username}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email" value ="${email}" required>
+                                                <input type="email" name="email" class="form-control" placeholder="Email" value ="${email}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -220,7 +220,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Telephone number</label>
-                                                <input type="text" class="form-control" placeholder="Telephone number" value="${tele}" required="required">
+                                                <input type="text" name="tele" class="form-control" placeholder="Telephone number" value="${tele}" required="required">
                                             </div>
                                         </div>
                                     </div>
@@ -229,7 +229,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="${address}" required="required">
+                                                <input type="text" name="address" class="form-control" placeholder="Home Address" value="${address}" required="required">
                                             </div>
                                         </div>
                                     </div>
@@ -259,7 +259,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Land details</label>
-                                                <input type="text" class="form-control" placeholder="Land details" value="${status}" required="required">
+                                                <input type="text" name = "status" class="form-control" placeholder="Land details" value="${status}" required="required">
                                             </div>
                                         </div>
                                     </div>
