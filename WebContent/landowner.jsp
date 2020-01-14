@@ -66,9 +66,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="postAdd.jsp">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>Post Add</p>
                     </a>
                 </li>
                 <li>
@@ -80,7 +80,7 @@
                 <li>
                     <a href="icons.html">
                         <i class="pe-7s-science"></i>
-                        <p>Icons</p>
+                        <p>Actions</p>
                     </a>
                 </li>
                 <li>

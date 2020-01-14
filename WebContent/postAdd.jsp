@@ -49,18 +49,18 @@
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="landowner.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="user.jsp">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="postAdd.jsp">
                         <i class="pe-7s-note2"></i>
                         <p>Post Add</p>
@@ -183,10 +183,10 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Edit Profile</h4>
+                                <h4 class="title">Post New Add</h4>
                             </div>
                             <div class="content">
-                                <form class = "box" action= "update" method="post">
+                                <form class = "box" action= "postadd" method="post">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -203,7 +203,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" name="email" class="form-control" placeholder="Email" value ="${email}" required>
+                                                <input type="email" name="email" class="form-control" placeholder="Email" value ="${email}" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -211,10 +211,12 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Gender</label>
-                                                <input type="radio" name="gender" value="male" required><small>Male</small>
-												<input type="radio" name="gender" value="female" required><small>Female</small>
-												<input type="radio" name="gender" value="other" required><small>Other</small>
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" name="address" class="form-control" placeholder="Home Address" value="${address}" readonly>
+                                            </div>
+                                            
+                                    
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -227,10 +229,11 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" name="address" class="form-control" placeholder="Home Address" value="${address}" required="required">
+                                        <div class="form-group">
+                                                <label>Price</label>
+                                                <input type="text" name="price" class="form-control" placeholder="Rs." value="" required="required">
                                             </div>
+                                            
                                         </div>
                                     </div>
 
@@ -264,7 +267,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Post Add</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
