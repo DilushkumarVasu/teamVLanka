@@ -49,7 +49,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
-			response.sendRedirect("l_login.jsp");
+			response.sendRedirect("landownerhome.jsp");
 			
 			//response.sendRedirect("index.html");
 		}

@@ -32,7 +32,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			session.setAttribute("address",dao.getadd(uname, pass));
 			session.setAttribute("status",dao.getstatus(uname, pass));
 			
-			response.sendRedirect("landowner.jsp");
+			response.sendRedirect("landownerhome.jsp");
 			
 			//response.sendRedirect("index.html");
 		}

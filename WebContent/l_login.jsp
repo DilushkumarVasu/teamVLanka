@@ -210,7 +210,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="clear"></div>
 				</div>
 				<div class="right-w3l">
-					<input type="submit" value="Login" color="red">
+					<input type="submit" value="Login">
 				</div>
 				<div class="sub-w3l">
 				<div class="sub-agile">
