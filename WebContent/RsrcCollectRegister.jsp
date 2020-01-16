@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="signup-form">
-                    <form action="ResourceCollectorRegistration" method="POST" class="register-form" id="register-form">
+                    <form action="Rregistration" method="POST" class="register-form" id="register-form">
                         <div class="form-group">
                             <div class="form-input">
                                 <label for="name" class="required">Full name</label>
