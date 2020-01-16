@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
+    <title>Sign Up As a Resource Collector</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="assets/fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -45,12 +45,20 @@
                                 <input type="text" name="email" id="email" />
                             </div>
                             <div class="form-input">
-                                <label for="phone_number" class="required">Phone number</label>
-                                <input type="text" name="phone_number" id="phone_number" />
+                                <label for="phone_number" class="required">Contact Number</label>
+                                <input type="text" name="telephone" id="telephone" />
                             </div>
                             <div class="form-input">
-                                <label for="regions" class="required">Assigned Area</label>
-                                <input type="text" name="region" id="regions" />
+                                <label for="area" class="required">Assigned Area</label>
+                                <input type="text" name="area" id="area" />
+                            </div>
+                            <div class="form-input">
+                                <label for="username" class="required">User Name</label>
+                                <input type="text" name="username" id="username" />
+                            </div>
+                            <div class="form-input">
+                                <label for="password" class="required">Password</label>
+                                <input type="text" name="password" id="password" />
                             </div>
                         </div>
                         
