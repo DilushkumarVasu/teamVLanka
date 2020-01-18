@@ -27,7 +27,12 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
-			response.sendRedirect("welcome.jsp");
+			session.setAttribute("email",dao.getemail(uname, pass));
+			session.setAttribute("tele",dao.gettele(uname, pass));
+			session.setAttribute("address",dao.getadd(uname, pass));
+			session.setAttribute("status",dao.getstatus(uname, pass));
+			
+			response.sendRedirect("landownerhome.jsp");
 			
 			//response.sendRedirect("index.html");
 		}
