@@ -20,40 +20,40 @@
 <p><br></p>
 <div class="row">
 	<div class="col-md-4">
-		<h3>User Question Details</h3>
+		<h3>Edit Your Details</h3>
 	</div>
 </div>
 
-<form action="#" method="post">
+<form action="edit" method="post">
 	
 	<input type="hidden" name="id" value="">
 	<div class="form-group">
 		<label>Name</label>
-		<input type="text" class="form-control" name="name" value=""/>
+		<input type="text" class="form-control" name="name" value="${name}"/>
 	</div>
 	<div class="form-group">
 		<label>NIC</label>
-		<input type="text" class="form-control" name="nic" value=""/>
+		<input type="text" class="form-control" name="nic" value="${nic}"/>
 	</div>
 	<div class="form-group">
 		<label>Address</label>
-		<input type="text" class="form-control" name="add" value=""/>
+		<input type="text" class="form-control" name="add" value="${address}"/>
 	</div>
 	<div class="form-group">
 		<label>Gender</label>
-		<input type="text" class="form-control" name="gender" value=""/>
+		<input type="text" class="form-control" name="gender" value="${gender}"/>
 	</div>
 	<div class="form-group">
 		<label>Phone Number</label>
-		<input type="tel" class="form-control" name="tp" value=""/>
+		<input type="tel" class="form-control" name="tele" value="${telephone}"/>
 	</div>
 	<div class="form-group">
 		<label>Email</label>
-		<input type="email" class="form-control" name="email" value=""/>
+		<input type="email" class="form-control" name="email" value="${email}"/>
 	</div>
 	<div class="form-group">
 		<label>User Name</label>
-		<input type="text" class="form-control" name="uname" value=""/>
+		<input type="text" class="form-control" name="uname" value="${username}"/>
 	</div>
 	
 	<button type="submit" class="btn btn-warning">Update</button>

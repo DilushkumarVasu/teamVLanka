@@ -104,6 +104,13 @@
 					</div>
 				</div>
 				
+				<!--<div class="row">
+					<label class="label col-md-2 control-label">User Image</label>
+					<div class="col-md-10 pt-5">
+						<input type="file" class="form-control" name="pic" accept="image/*" required>
+					</div>
+				</div>
+				-->
 				<script>
 				var password = document.getElementById("password")
 				  , confirm_password = document.getElementById("confirm_password");
