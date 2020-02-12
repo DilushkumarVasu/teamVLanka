@@ -34,6 +34,13 @@
 </head>
 <body>
 
+<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+if(session.getAttribute("username")==null){
+	response.sendRedirect("f_login.jsp");
+}
+
+%>
+
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
@@ -138,10 +145,17 @@
                                                 <input type="text" name="name" class="form-control" value="${name}" readonly>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                        
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
                                                 <input type="text" name="uname" class="form-control"  value="${username}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Gender</label>
+                                                <input type="text" name="gender" class="form-control"  value="${gender}" readonly>
                                             </div>
                                         </div>
                                       </div>
@@ -165,7 +179,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Telephone number</label>
-                                                <input type="text" name="tel" class="form-control" placeholder="Telephone number" value="${telephone}" readonly>
+                                                <input type="text" name="tel" class="form-control" value="${telephone}" readonly>
                                             </div>
                                         </div>
 
