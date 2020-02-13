@@ -34,7 +34,7 @@ input[type="submit"],input[type="reset"],a,.agileinfo_services_grid1_pos,.agilei
 }
 /*-- banner --*/
 .banner{
-	background:url(../images/cambodian.jpg) no-repeat 0px 0px;
+	background:url(../images/new5.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -43,13 +43,13 @@ input[type="submit"],input[type="reset"],a,.agileinfo_services_grid1_pos,.agilei
 	min-height:750px;
 }
 .banner1{
-	background:url(../images/cambodian.jpg) no-repeat 0px -115px;
+	background:url(../images/new1.jpg) no-repeat 0px -115px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	-ms-background-size:cover;
-	min-height:350px;
+	min-height:500px;
 }
 .w3_agile_banner_top{
 	border-bottom:1px solid #fff;
@@ -435,13 +435,13 @@ input[type="submit"],input[type="reset"],a,.agileinfo_services_grid1_pos,.agilei
 .w3layouts_work_grid_left_pos img {
     border: 5px solid #7f56b8;
 }
-.w3layouts_work_grid_right h4{
+.w3layouts_work_grid_right h3{
 	font-size: .9em;
     color: #00ba66;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-.w3layouts_work_grid_right h5{
+.w3layouts_work_grid_right h4{
 	font-size:2em;
 	color:#212121;
 	line-height:1.4em;

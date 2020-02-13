@@ -18,64 +18,40 @@ import userTypes.Farmer;
  */
 @WebServlet("/FarmerRegistration")
 public class FarmerRegistration extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FarmerRegistration() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	
+	
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//add riderect code here
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stu
-		//doGet(request, response);
+		
 		
 		String name = request.getParameter("name");
 		String nic = request.getParameter("nic");
-		String address = request.getParameter("address");
+		String address = request.getParameter("add");
 		String gender = request.getParameter("gender");
 		String tp = request.getParameter("tp");
 		String email = request.getParameter("email");
-		String username = request.getParameter("uname");
-		String password = request.getParameter("pass");
+		String uname = request.getParameter("uname");
+		String pass = request.getParameter("pass");
+		String pic=request.getParameter("pic");
 		
-		Farmer f = new Farmer();
-		f.Register(name, nic, address, gender, tp, email, username, password);
-		response.sendRedirect("f_login.jsp");
-//		f.foo();
-//		Farmer.foo();
-//		if(nic!=null && name!=null && address!=null && gender!=null && tp!=null && email!=null && username!=null && password!=null)
-//		{
-			/*Farmer f = new Farmer();
-			f.Register(name, nic, address, gender, tp, email, username, password);
-			response.sendRedirect("f_login.jsp");*/
-//		}
-
-		/*SignupDao dao=new SignupDao();
 		
-        if(dao.check(nic,name,email)) {
+		
+		Farmer dao=new Farmer();
+		if(dao.insert(name, nic, address, gender, tp, email, uname, pass)) { 
 			
 			HttpSession session=request.getSession();
-			session.setAttribute("nic", nic);
-			session.setAttribute("name", name);
-			session.setAttribute("email", email);
+			session.setAttribute("username", uname);
+			response.sendRedirect("f_login.jsp");
 			
-		}*/
-		System.out.println("test");
+			//response.sendRedirect("index.html");
+		}
+		else {
+			
+			response.sendRedirect("f_signUp.jsp");
+		}
+
+		
+		//System.out.println("test");
 		
 		
 	}

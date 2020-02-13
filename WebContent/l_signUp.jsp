@@ -67,27 +67,16 @@
 					</div>
 				</div>
 				
-				<div class="row">
-                            <div class="name"><font color="white">Upload PDF</font></div>
-                            <div class="value">
-                                <div class="input-group js-input-file">
-                                    <input class="input-file" type="file" name="pdf"  class="file-upload" id="file" >
-                                    <label class="label--file" for="file">Choose file</label>
-                                    <span class="input-file__info"><font color = "white">No file chosen</font></span>
-                                </div>
-                                <div class="label--desc"><font color ="white">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</font></div>
-                            </div>
-                        </div>
 				
 				<div class="row">
 					<label class="label col-md-2 control-label">Land Status</label>
 					<div class="col-md-10">
-						<input type="tel" class="form-control" name="status" placeholder="Available or Not available" required>
+						<input type="text" class="form-control" name="status" placeholder="Available or Not available" required>
 					</div>
 				</div>
 				
 				<div class="row">
-					<label class="label col-md-2 control-label">Telephone number</label>
+					<label class="label col-md-2 control-label">Phone</label>
 					<div class="col-md-10">
 						<input type="tel" class="form-control" name="telenum" placeholder="Phone Number" required>
 					</div>
@@ -122,6 +111,22 @@
 						<!--<input type="checkbox"><small>I agree the terms & policy</small>-->
 					</div>
 				</div>
+				
+				
+				<div class="row">
+					<label class="label col-md-2 control-label" for="file">Choose file</label>
+                            
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                	<div class="col-md-12 pt-5">
+                                		<div class="form-control">
+                                    		<input class="input-file" type="file" name="pdf"  class="file-upload" id="file" required="">
+                                    	</div>
+                                    </div>
+                                </div>
+                                <div class="label--desc"><font color ="white">Upload your scanned land document in a pdf form or any other relevant file. Max file size 50 MB</font></div>
+                            </div>
+                  </div>
 				
 				<script>
 				var password = document.getElementById("password")

@@ -1,156 +1,267 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>User Card</title>
-    <link rel="stylesheet" type="text/css" href="css/profile.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-   
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>User Profile</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body>
- 
-    <div class="container emp-profile">
-            <form method="post" action="farmer.jsp">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                                    <h5>
-                                        Kshiti Ghelani
-                                    </h5>
-                                    
-                                    
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                                
-                            </ul>
-                        </div>
-                    </div>
-                   
-                    	<div class="col-md-2">
-                        	<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                    	</div>
+
+<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+if(session.getAttribute("username")==null){
+	response.sendRedirect("f_login.jsp");
+}
+
+%>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+
+    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                   <img alt="" src="images/logo.png" style="width:250px;height:70px;">
+                </a>
+            </div>
+
+             <ul class="nav">
+                <li>
+                    <a href="farmer.jsp">
+                        <i class="pe-7s-home"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="userPro.jsp">
+                        <i class="pe-7s-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
                 
+              
+				
+                 <li class="dropdown menu__item">
+					<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown">
+					<i class="pe-7s-note2"></i>
+					<b class="caret"></b>
+					<p>Activities</p></a>
+					<ul class="dropdown-menu agile_short_dropdown">
+						<li><a href="f_ques.jsp">Question</a></li>
+						<li><a href="f_resource.jsp">Resource</a></li>
+					</ul>
+								
+				</li>
+				
+				
+				<li>
+                    <a href="maps.html">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="notifications.html">
+                        <i class="pe-7s-bell"></i>
+                        <p>Notifications</p>
+                    </a>
+                </li>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="userPro.jsp">User</a>
                 </div>
+                <div class="collapse navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="Logout">
+                                <p>Log out</p>
+                            </a>
+                            <!--<form action="Logout">
+                            	<input type="submit" value="Logout">
+                            </form>-->
+                        </li>
+						<li class="separator hidden-lg"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-work">
-                            
-                        </div>
-                    </div>
                     <div class="col-md-8">
-                        <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Id</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Kshiti123</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>123 456 7890</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Profession</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Farmer</p>
-                                            </div>
-                                        </div>
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">User Profile</h4>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Experience</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Hourly Rate</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>10$/hr</p>
+                            <div class="content">
+                                <form class = "box" action= "editProfile.jsp" method="post">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Full Name</label>
+                                                <input type="text" name="name" class="form-control" value="${name}" readonly>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Total Projects</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>230</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
+                                        
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Username</label>
+                                                <input type="text" name="uname" class="form-control"  value="${username}" readonly>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>6 months</p>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Gender</label>
+                                                <input type="text" name="gender" class="form-control"  value="${gender}" readonly>
                                             </div>
                                         </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>NIC Number</label>
+                                                <input type="text" name="nic" class="form-control"  value="${nic}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" name="email" class="form-control"  value ="${email}" readonly>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+
+                                    <div class="row">
+                                        
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Telephone number</label>
+                                                <input type="text" name="tel" class="form-control" value="${telephone}" readonly>
+                                            </div>
+                                        </div>
+
+                             
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" name="address" class="form-control"  value="${address}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                               
+
+                                    
+
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Edit Profile</button>
+                                    <div class="clearfix"></div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="card card-user">
+                            <div class="image">
+                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                            </div>
+                            <div class="content">
+                                <div class="author">
+                                     <a href="#">
+                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+
+                                      <h4 class="title">Mike Andrew<br />
+                                         <small>michael24</small>
+                                      </h4>
+                                    </a>
+                                </div>
+                                <p class="description text-center"> "Lamborghini Mercy <br>
+                                                    Your chick she so thirsty <br>
+                                                    I'm in that two seat Lambo"
+                                </p>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </form>           
+            </div>
         </div>
 
+
+        
+
+    </div>
+</div>
+
+
 </body>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Charts Plugin -->
+	<script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="assets/js/demo.js"></script>
+
 </html>
-
-
