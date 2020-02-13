@@ -9,38 +9,41 @@ import java.awt.print.Printable;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class AgrSpecialist {
 	
-	public Connection connect() {
-		String conString = "jdbc:mysql://localhost:3306/vlanka";
-		Properties prp = new Properties();
-		prp.put("user", "root");
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection(conString, prp);
+	private String dbName = "Df9EeGHg2O";
+	private String username = "Df9EeGHg2O";
+	private String password = "quVr1IL8uH";
+	private String conString = "jdbc:mysql://remotemysql.com:3306/" + dbName;
+	private Connection con;
+	
+	public static Connection connect() throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection(conString, username, password);
 			
-			return conn;
-		}
-		
-		catch(Exception e){
-			return null;
-		}
+		return conn;
 	}
 	
+	public static void disconnect() throws SQLException {
+		if(!con.isClosed())
+			con.close();
+	}
+
+	
+	
+	
+	
 	//function to register a new agricultural specialist in the system
-	public void Register(String name, String nic, String speciality, String address, String email, String tp, String region) {
-//		final String query = "INSERT INTO agricultural_specialist(`nic`, `name`, `speciality`, `address`, `email`, `region`, `telephone`) VALUES ('" + nic + "', '" + name +  "', '" + speciality + "', '" + address + "', '" + email + "', '" + region + "', '" + tp + "'";
-		
+	public void Register(String name, String nic, String specialty, String address, String email, String tp, String region) {
 		try {
 			Connection con = connect();
 			
-			PreparedStatement pst = con.prepareStatement("INSERT INTO agricultural_specialist(`nic`, `name`, `speciality`, `address`, `email`, `region`, `telephone`) VALUES (?, ?, ?, ?, ?, ?, ?)");
-			
+			PreparedStatement pst = con.prepareStatement("INSERT INTO `AgriculturalSpecialist` (`nic`, `name`, `specialty`, `address`, `email`, `region`, `telephone`) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			pst.setString(1, nic); 
 			pst.setString(2, name);
-			pst.setString(3, speciality);
+			pst.setString(3, specialty);
 			pst.setString(4, address);
 			pst.setString(5, email);
 			pst.setString(6, region);
@@ -80,27 +83,9 @@ public class AgrSpecialist {
 		}
 	}
 
-	
-	
-//	public static String fun() {
-//		ResultSet rs = null;
-//		String retString = null;
-//		
-//		try {
-//			
-//		
-//			Statement stmt = conn.createStatement();
-//			rs = stmt.executeQuery("SELECT * FROM test");
-//			
-//			rs.next();
-//			retString = rs.getString(2);
-//		}
-//		catch(Exception e) {
-//			retString = e.toString();
-//		}
-//		
-//		return retString;
-//	}
+	public void postNotice(String title, String body) {
+		String author = 
+	}
 	
 	
 	
