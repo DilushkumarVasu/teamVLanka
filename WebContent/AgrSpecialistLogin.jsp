@@ -13,8 +13,6 @@
 			<input type="text" name="uname" placeholder="Username">
 			<input type="password" name="pass" placeholder="Password">
 			<input type="submit" name="submit" value="Login">
-			<a href="#">Create an account</a><br><br>
-			<a href="#">Forget Password?</a>
 		</form>
 	</body>
 </html>

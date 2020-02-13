@@ -58,6 +58,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="Notices.jsp">
+                        <i class="pe-7s-note2"></i>
+                        <p>Notices</p>
+                    </a>
+                </li>
+                <li>
                     <a href="user.html">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
@@ -91,12 +97,6 @@
                     <a href="notifications.html">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>
-                    </a>
-                </li>
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
                     </a>
                 </li>
             </ul>

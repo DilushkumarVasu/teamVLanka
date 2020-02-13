@@ -1,6 +1,9 @@
 package userTypes;
 
 import java.util.Properties;
+
+import databaseConnectivity.dbConnection;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.DriverManager;
@@ -8,39 +11,25 @@ import java.sql.PreparedStatement;
 import java.awt.print.Printable;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class AgrSpecialist {
-	
-	public Connection connect() {
-		String conString = "jdbc:mysql://localhost:3306/vlanka";
-		Properties prp = new Properties();
-		prp.put("user", "root");
 
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection(conString, prp);
-			
-			return conn;
-		}
-		
-		catch(Exception e){
-			return null;
-		}
-	}
+	
+	
+	
 	
 	//function to register a new agricultural specialist in the system
-	public void Register(String name, String nic, String speciality, String address, String email, String tp, String region) {
-//		final String query = "INSERT INTO agricultural_specialist(`nic`, `name`, `speciality`, `address`, `email`, `region`, `telephone`) VALUES ('" + nic + "', '" + name +  "', '" + speciality + "', '" + address + "', '" + email + "', '" + region + "', '" + tp + "'";
-		
+	public void Register(String name, String nic, String specialty, String address, String email, String tp, String region) {
 		try {
 			Connection con = connect();
 			
-			PreparedStatement pst = con.prepareStatement("INSERT INTO agricultural_specialist(`nic`, `name`, `speciality`, `address`, `email`, `region`, `telephone`) VALUES (?, ?, ?, ?, ?, ?, ?)");
-			
+			PreparedStatement pst = con.prepareStatement("INSERT INTO `AgriculturalSpecialist` (`nic`, `name`, `specialty`, `address`, `email`, `region`, `telephone`) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			pst.setString(1, nic); 
 			pst.setString(2, name);
-			pst.setString(3, speciality);
+			pst.setString(3, specialty);
 			pst.setString(4, address);
 			pst.setString(5, email);
 			pst.setString(6, region);
@@ -80,27 +69,30 @@ public class AgrSpecialist {
 		}
 	}
 
-	
-	
-//	public static String fun() {
-//		ResultSet rs = null;
-//		String retString = null;
-//		
-//		try {
-//			
-//		
-//			Statement stmt = conn.createStatement();
-//			rs = stmt.executeQuery("SELECT * FROM test");
-//			
-//			rs.next();
-//			retString = rs.getString(2);
-//		}
-//		catch(Exception e) {
-//			retString = e.toString();
-//		}
-//		
-//		return retString;
-//	}
+	public void postNotice(String title, String body) {
+		String author = null; //find a way to add author id here
+		String timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm").toString();
+		
+		String sql = "INSERT INTO `Notices` (`author`, `title`, `body`, `time`) VALUES (?, ?, ?, ?);";
+		
+		try {
+			dbConnection dbc = new dbConnection();
+			Connection con = dbc.connect();
+			
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, author);
+			stmt.setString(2, title);
+			stmt.setString(3, body);
+			stmt.setString(2, timestamp);
+			
+			stmt.execute();
+			
+			dbc.disconnect();
+		}
+		catch(Exception e) {
+			
+		}
+	}
 	
 	
 	
