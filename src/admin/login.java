@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.dilush.dao.LoginDao;
 
 import admin.dao.ALoginDao;
+import demo.Encryption;
 
 
 @WebServlet("/login")
@@ -23,23 +24,22 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		
 		try{
 		String a_id=request.getParameter("a_id");
-		String password=request.getParameter("password");
+		String pass=request.getParameter("password");
 		
-		/*MessageDigest digest = MessageDigest.getInstance("SHA-256");
-		String hash = digest.digest(pass.getBytes(StandardCharsets.UTF_8)).toString();*/
-		
+		Encryption enc=new Encryption();
+		String hash=enc.MD5(pass);
 		ALoginDao dao=new ALoginDao();
 		
-		if(dao.check(a_id, password)) {
+		if(dao.check(a_id, hash)) {
 			
 
 			HttpSession session=request.getSession();
 			session.setAttribute("a_id", a_id);
-			session.setAttribute("name",dao.getName(a_id, password));
-			session.setAttribute("gender",dao.getGender(a_id, password));
-			session.setAttribute("address",dao.getAdd(a_id, password));
-			session.setAttribute("phone",dao.getTele(a_id, password));
-			session.setAttribute("email",dao.getEmail(a_id, password));
+			session.setAttribute("name",dao.getName(a_id, hash));
+			session.setAttribute("gender",dao.getGender(a_id, hash));
+			session.setAttribute("address",dao.getAdd(a_id, hash));
+			session.setAttribute("phone",dao.getTele(a_id, hash));
+			session.setAttribute("email",dao.getEmail(a_id, hash));
 			
 			
 			response.sendRedirect("Admin.jsp");

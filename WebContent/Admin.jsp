@@ -41,7 +41,7 @@ if(session.getAttribute("a_id")==null){
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="#" class="simple-text">
                     <img alt="" src="images/logo.png" style="width:250px;height:70px;">
                 </a>
             </div>
@@ -56,11 +56,25 @@ if(session.getAttribute("a_id")==null){
                 <li>
                     <a href="#">
                         <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+                        <p>Admin Profile</p>
                     </a>
                 </li>
                 
-                <li class="dropdown menu__item">
+                <li>
+                    <a href="userReg.jsp">
+                        <i class="pe-7s-note2"></i>
+                        <p>Users' Registration</p>
+                    </a>
+                </li>
+                
+                 <li>
+                    <a href="#">
+                        <i class="pe-7s-user"></i>
+                        <p>Users' Details</p>
+                    </a>
+                </li>
+                
+               <!--<li class="dropdown menu__item">
 					<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown">
 					<i class="pe-7s-note2"></i>
 					<b class="caret"></b>
@@ -71,7 +85,7 @@ if(session.getAttribute("a_id")==null){
 						<li><a href="RsrcCollectRegister.jsp">Add a Resource Collector</a></li>
 					</ul>
 								
-				</li>
+				</li>-->
 				
 				
                 <li>
