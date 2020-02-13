@@ -1,6 +1,7 @@
 package landOwner.dao;
 
 import java.sql.Connection;
+import demo.*;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,6 +1,8 @@
 package landOwner;
 
 import java.io.IOException;
+import demo.*;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dilush.dao.LoginDao;
 
 import landOwner.dao.lLoginDao;
 
@@ -22,15 +23,18 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		String pass=request.getParameter("pass");
 		
 		lLoginDao dao=new lLoginDao();
+		Encryption enc = new Encryption();
 		
-		if(dao.check(uname, pass)) { 
+		String encPass = enc.MD5(pass);
+		
+		if(dao.check(uname, encPass)) { 
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
-			session.setAttribute("email",dao.getemail(uname, pass));
-			session.setAttribute("tele",dao.gettele(uname, pass));
-			session.setAttribute("address",dao.getadd(uname, pass));
-			session.setAttribute("status",dao.getstatus(uname, pass));
+			session.setAttribute("email",dao.getemail(uname, encPass));
+			session.setAttribute("tele",dao.gettele(uname, encPass));
+			session.setAttribute("address",dao.getadd(uname, encPass));
+			session.setAttribute("status",dao.getstatus(uname, encPass));
 			
 			response.sendRedirect("landownerhome.jsp");
 			

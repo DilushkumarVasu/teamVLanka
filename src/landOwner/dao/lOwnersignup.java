@@ -1,6 +1,7 @@
 package landOwner.dao;
 
 import java.io.InputStream;
+import demo.*;
 
 
 import java.sql.Connection;
@@ -10,14 +11,18 @@ import java.sql.ResultSet;
 
 	public class lOwnersignup {
 
-		String sql="insert into landowner values(?,?,?,?,?,?,?,?,?,?)";
+		String sql="insert into landowner(l_id,name,address,gender,pdf,land_status,telephone,email,username,password) values(?,?,?,?,?,?,?,?,?,?)";
 		String updatesql="update landowner set email = ?,land_status= ?,telephone=?,address = ?,gender=? where username = ?";
 		String url="jdbc:mysql://localhost/vlanka";
 		String username="root";
 		String password="";
-		public boolean insert(String nic,String name,String address,String gender,InputStream pdf,String landstatus,String telenum,String email,String uname,String pass ) {
+		public boolean insert(String nic,String name,String address,String gender,InputStream pdf,String landstatus,String telenum,String email,String uname,String pass) {
 			
 			try {
+				
+				Encryption enc = new Encryption();
+				String encpass=enc.MD5(pass);
+				
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection con=DriverManager.getConnection(url,username,password);
 				PreparedStatement st=con.prepareStatement(sql);
@@ -30,7 +35,8 @@ import java.sql.ResultSet;
 				st.setString(7, telenum);
 				st.setString(8, email);
 				st.setString(9, uname);
-				st.setString(10, pass);
+				st.setString(10, encpass);
+				
 				
 				int i = st.executeUpdate();
 				
