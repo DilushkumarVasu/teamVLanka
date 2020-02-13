@@ -5,22 +5,22 @@
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.Connection"%>
 
-<%
-String id = request.getParameter("userid");
-String driver = "com.mysql.jdbc.Driver";
-String connectionUrl = "jdbc:mysql://localhost:3306/";
-String database = "vlanka";
-String userid = "root";
-String password = "";
-try {
-Class.forName(driver);
-} catch (ClassNotFoundException e) {
-e.printStackTrace();
-}
-Connection connection = null;
-Statement statement = null;
-ResultSet resultSet = null;
-%>
+		<%
+		String id = request.getParameter("userid");
+		String driver = "com.mysql.jdbc.Driver";
+		String connectionUrl = "jdbc:mysql://localhost:3306/";
+		String database = "vlanka";
+		String userid = "root";
+		String password = "";
+		try {
+		Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+		}
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -69,7 +69,7 @@ ResultSet resultSet = null;
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                   
+                  	<img alt="" src="images/logo.png" style="width:250px;height:70px;"> 
                 </a>
             </div>
 
@@ -87,9 +87,9 @@ ResultSet resultSet = null;
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="postAdd.jsp">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>Post New Add</p>
                     </a>
                 </li>
                 <li>
@@ -114,12 +114,6 @@ ResultSet resultSet = null;
                     <a href="notifications.html">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>
-                    </a>
-                </li>
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
                     </a>
                 </li>
             </ul>
@@ -214,8 +208,8 @@ ResultSet resultSet = null;
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
+                                <h4 class="title">Previously posted adds</h4>
+                                <p class="category">Posted by landowners</p>
                             </div>
                             <div class="content">
    <table class="table table-bordered table-striped table-hover">
@@ -229,27 +223,31 @@ ResultSet resultSet = null;
 		</tr>
 	</thead>
 	<tbody>
-	<%
-try{
-connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-statement=connection.createStatement();
-String sql ="select * from postadd";
-resultSet = statement.executeQuery(sql);
-while(resultSet.next()){
-%>
-<tr>
-<td><%=resultSet.getString("addid") %></td>
-<td><%=resultSet.getString("price") %></td>
-<td><%=resultSet.getString("details") %></td>
-<td><%=resultSet.getString("username") %></td>
-</tr>
-<%
-}
-connection.close();
-} catch (Exception e) {
-e.printStackTrace();
-}
-%>
+				<%
+			try{
+			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+			statement=connection.createStatement();
+			String sql ="select * from postadd";
+			resultSet = statement.executeQuery(sql);
+			while(resultSet.next()){
+			%>
+			<tr>
+			<td><%=resultSet.getString("username") %></td>
+			<td><%=resultSet.getString("price") %></td>
+			<td><%=resultSet.getString("details") %></td>
+			<td><%=resultSet.getString("tele_number") %></td>
+			<td class="text-center">
+				<a href class="btn btn-warning">View Add</a>
+				
+			</td>
+			</tr>
+			<%
+			}
+			connection.close();
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+			%>
 
 	</tbody>
 </table>
@@ -463,9 +461,7 @@ e.printStackTrace();
                         </li>
                     </ul>
                 </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
+
             </div>
         </footer>
 

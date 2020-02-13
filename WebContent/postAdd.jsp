@@ -49,7 +49,7 @@
 
             <ul class="nav">
                 <li>
-                    <a href="landowner.jsp">
+                    <a href="landownerhome.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>

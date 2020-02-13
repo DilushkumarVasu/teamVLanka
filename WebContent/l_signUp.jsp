@@ -141,7 +141,7 @@
 				
 				
 				<button type="submit" class="btn btn-info" value="submit">Submit</button>
-				<a href="l_signUp.jsp"><div class="btn btn-warning">Cancel</div></a>
+				<a href="index.html"><div class="btn btn-warning">Cancel</div></a>
 			</form>
 			</div>
 		</div>
