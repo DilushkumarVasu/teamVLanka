@@ -1,3 +1,7 @@
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +40,24 @@
 if(session.getAttribute("a_id")==null){
 	response.sendRedirect("Admin_login.jsp");
 }%>
+
+<%
+		//String id = request.getParameter("userid");
+		String driver = "com.mysql.jdbc.Driver";
+		String connectionUrl = "jdbc:mysql://localhost:3306/";
+		String database = "vlanka";
+		String userid = "root";
+		String password = "";
+		try {
+		Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+		}
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+%>
+
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
@@ -169,13 +191,70 @@ if(session.getAttribute("a_id")==null){
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
+							<div class="content">
+                                <div class="row">
+								<div class="col-md-4">
+									<h3>Admin Details</h3>
+								</div>
+								<div class="col-md-4">
+									<form action="" method="get">
+										<input type="text" class="form-control" name="q" placeholder="search here..."/>	
+									</form>
+								</div>
+								<div class="col-md-4 text-right">
+									<a href=Admin_signUp.jsp class="btn btn-primary">Add new Admin</a>
+								</div>
+								</div>
+                                	<table class="table table-bordered table-striped table-hover">
+										<thead>
+											<tr>
+											<th>Admin Id</th>
+											<th>Name</th>
+											<th>Gender</th>
+											<th>Address</th>
+											<th>Phone</th>
+											<th>Email</th>
+											<th class="text-center">Action</th>
+											</tr>
+										</thead>
+									<tbody>
+				<%
+			try{
+			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+			statement=connection.createStatement();
+			String query=request.getParameter("q");
+			String sql;
+			if(query!=null){
+				sql="select * from admin where a_id like '%"+query+"%' or name like '%"+query+"%' or gender like '%"+query+"%' or address like '%"+query+"%' or phone like '%"+query+"%' or email like '%"+query+"%'";
+			}else{
+				sql="select * from admin";
+			};
+			resultSet = statement.executeQuery(sql);
+			while(resultSet.next()){
+			%>
+			<tr>
+			<td><%=resultSet.getString("a_id") %></td>
+			<td><%=resultSet.getString("name") %></td>
+			<td><%=resultSet.getString("gender") %></td>
+			<td><%=resultSet.getString("address") %></td>
+			<td><%=resultSet.getString("phone") %></td>
+			<td><%=resultSet.getString("email") %></td>
+			<td class="text-center">
+				<a href='AdminDelete.jsp?d=<%=resultSet.getString("a_id")%>' class="btn btn-danger">Delete</a>
+			</td>
+			</tr>
+			<%
+			}
+			connection.close();
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+			%>
 
-                            <div class="header">
-                                <h4 class="title">Admin Details</h4>
-                            </div>
-                            <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
+									</tbody>
+								</table>
+                               </div>
+								
                                 
                             </div>
                         </div>
@@ -188,7 +267,7 @@ if(session.getAttribute("a_id")==null){
         </div>
 
     </div>
-</div>
+
 
 
 </body>
