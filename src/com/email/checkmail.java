@@ -42,7 +42,7 @@ public class checkmail {
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse(email));
 			message.setSubject("Java Mailer");
-			message.setText("Hello you are successfully registered");
+			message.setText("Hello you are successfully registered. http://localhost:8080/VLanka/Admin_login.jsp");
 
 			Transport.send(message);
 			

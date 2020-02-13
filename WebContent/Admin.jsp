@@ -32,7 +32,10 @@
 
 </head>
 <body>
-
+<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+if(session.getAttribute("a_id")==null){
+	response.sendRedirect("Admin_login.jsp");
+}%>
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
@@ -135,7 +138,7 @@
                     <ul class="nav navbar-nav navbar-right">
                        
                         <li>
-                            <a href="Logout">
+                            <a href="AdminLogout">
                                 <p>Log out</p>
                             </a>
                         </li>
