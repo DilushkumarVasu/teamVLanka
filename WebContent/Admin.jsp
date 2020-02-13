@@ -68,6 +68,7 @@ if(session.getAttribute("a_id")==null){
 					<ul class="dropdown-menu agile_short_dropdown">
 						<li><a href="#">User Registration</a></li>
 						<li><a href="#">User Details</a></li>
+						<li><a href="RsrcCollectRegister.jsp">Add a Resource Collector</a></li>
 					</ul>
 								
 				</li>

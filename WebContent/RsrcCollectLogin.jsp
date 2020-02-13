@@ -14,7 +14,7 @@
 			<input type="password" name="password" placeholder="Password" required>
 			<input type="submit" name="submit" value="Login">
 			<a href="RsrcCollectRegister.jsp">Create an account</a><br><br>
-			<a href="#">Forget Password?</a>
+			<a href="ForgetPass.jsp">Forget Password?</a>
 		</form>
 	</body>
 </html>
