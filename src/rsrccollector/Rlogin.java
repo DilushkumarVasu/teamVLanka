@@ -1,5 +1,6 @@
 package rsrccollector;
 
+import demo.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,8 +22,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		String pass=request.getParameter("pass");
 		
 		Rlogindao dao=new Rlogindao();
+		Encryption enc=new Encryption();
 		
-		if(dao.check(uname, pass)) { 
+		String encPass=enc.MD5(pass)		
+		if(dao.check(uname, encPass)) { 
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
