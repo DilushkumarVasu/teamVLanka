@@ -1,6 +1,9 @@
 package userTypes;
 
 import java.util.Properties;
+
+import databaseConnectivity.dbConnection;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.DriverManager;
@@ -8,28 +11,11 @@ import java.sql.PreparedStatement;
 import java.awt.print.Printable;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AgrSpecialist {
-	
-	private String dbName = "Df9EeGHg2O";
-	private String username = "Df9EeGHg2O";
-	private String password = "quVr1IL8uH";
-	private String conString = "jdbc:mysql://remotemysql.com:3306/" + dbName;
-	private Connection con;
-	
-	public static Connection connect() throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(conString, username, password);
-			
-		return conn;
-	}
-	
-	public static void disconnect() throws SQLException {
-		if(!con.isClosed())
-			con.close();
-	}
 
 	
 	
@@ -84,7 +70,28 @@ public class AgrSpecialist {
 	}
 
 	public void postNotice(String title, String body) {
-		String author = 
+		String author = null; //find a way to add author id here
+		String timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm").toString();
+		
+		String sql = "INSERT INTO `Notices` (`author`, `title`, `body`, `time`) VALUES (?, ?, ?, ?);";
+		
+		try {
+			dbConnection dbc = new dbConnection();
+			Connection con = dbc.connect();
+			
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, author);
+			stmt.setString(2, title);
+			stmt.setString(3, body);
+			stmt.setString(2, timestamp);
+			
+			stmt.execute();
+			
+			dbc.disconnect();
+		}
+		catch(Exception e) {
+			
+		}
 	}
 	
 	
