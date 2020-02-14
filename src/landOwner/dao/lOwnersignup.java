@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 		String url="jdbc:mysql://localhost/vlanka";
 		String username="root";
 		String password="";
-		public boolean insert(String nic,String name,String address,String gender,InputStream pdf,String landstatus,String telenum,String email,String uname,String pass) {
+		public boolean insert(String nic,String name,String address,String gender,InputStream inputStream,String landstatus,String telenum,String email,String uname,String pass) {
 			
 			try {
 				
@@ -30,7 +30,10 @@ import java.sql.ResultSet;
 				st.setString(2, name);
 				st.setString(3, address);
 				st.setString(4, gender);
-				st.setBlob(5,pdf);
+		         if (inputStream != null) {
+		                // fetches input stream of the upload file for the blob column
+		                st.setBlob(5, inputStream);
+		            }
 				st.setString(6, landstatus);
 				st.setString(7, telenum);
 				st.setString(8, email);

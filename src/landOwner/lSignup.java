@@ -1,5 +1,6 @@
 package landOwner;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.DriverManager;
@@ -29,7 +30,19 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		String email=request.getParameter("email");
 		String telenum = request.getParameter("telenum");
 		String gender=request.getParameter("gender");
-		InputStream pdf = request.getInputStream();
+        InputStream inputStream = null; // input stream of the upload file
+        
+        // obtains the upload file part in this multipart request
+        Part filePart = request.getPart("pdf");
+        if (filePart != null) {
+            // prints out some information for debugging
+            System.out.println(filePart.getName());
+            System.out.println(filePart.getSize());
+            System.out.println(filePart.getContentType());
+             
+            // obtains input stream of the upload file
+            inputStream = filePart.getInputStream();
+        }
 		String status=request.getParameter("status");
 		String uname=request.getParameter("uname");
 		String pass=request.getParameter("pass");
@@ -37,7 +50,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 //		 Part filePart = request.getPart("pdf");
 //	        if (filePart != null) {
 //	            // prints out some information for debugging
-//	            System.out.println(filePart.getName());
+//	            Sy stem.out.println(filePart.getName());
 //	            System.out.println(filePart.getSize());
 //	            System.out.println(filePart.getContentType());
 //	             
@@ -47,7 +60,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		
 		lOwnersignup dao=new lOwnersignup();
 		
-		if(dao.insert(nic,name,address,gender,pdf,status,telenum,email,uname,pass)) { 
+		if(dao.insert(nic,name,address,gender,inputStream,status,telenum,email,uname,pass)) { 
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
