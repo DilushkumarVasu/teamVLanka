@@ -58,7 +58,7 @@
                             </div>
                             <div class="form-input">
                                 <label for="password" class="required">Password</label>
-                                <input type="text" name="password" id="password" />
+                                <input type="Password" name="password" id="password" />
                             </div>
                         </div>
                         
