@@ -14,7 +14,7 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-	
+
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -41,6 +41,21 @@ if(session.getAttribute("a_id")==null){
 	response.sendRedirect("Admin_login.jsp");
 }%>
 
+<%
+		String driver = "com.mysql.jdbc.Driver";
+		String connectionUrl = "jdbc:mysql://localhost:3306/";
+		String database = "vlanka";
+		String userid = "root";
+		String password = "";
+		try {
+		Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+		}
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+%>
 
 
 <div class="wrapper">
@@ -60,23 +75,23 @@ if(session.getAttribute("a_id")==null){
                         <p>Home</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="AdminPro.jsp">
                         <i class="pe-7s-user"></i>
                         <p>Admin Profile</p>
                     </a>
                 </li>
                 
-                <li>
+                <li class="active">
                     <a href="userReg.jsp">
-                        <i class="pe-7s-note2"></i>
+                        <i class="pe-7s-id"></i>
                         <p>Users' Registration</p>
                     </a>
                 </li>
                 
                  <li>
                     <a href="ViewUser.jsp">
-                        <i class="pe-7s-user"></i>
+                        <i class="pe-7s-search"></i>
                         <p>Users' Details</p>
                     </a>
                 </li>
@@ -122,10 +137,10 @@ if(session.getAttribute("a_id")==null){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="AdminPro.jsp">Admin</a>
+                    <a class="navbar-brand" href="Admin.jsp">Admin</a>
                 </div>
                 <div class="collapse navbar-collapse">
-
+                   
                     <ul class="nav navbar-nav navbar-right">
                        
                         <li>
@@ -145,63 +160,76 @@ if(session.getAttribute("a_id")==null){
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-							<div class="header">
-                                <h3 class="title">Admin Profile</h3>
-                            </div>
-                            <div class="content">
-                                <form class = "box"action= "AdminEditProfile.jsp" method="post">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>Admin Id</label>
-                                                <input type="text" name="a_id" style="color:black;" class="form-control" value="${a_id}" readonly>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Admin Name</label>
-                                                <input type="text" name="name" style="color:black;" class="form-control"  value="${name}" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Gender</label>
-                                                <input type="text" name="gender" style="color:black;" class="form-control"  value="${gender}" readonly>
-                                            </div>
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" name="address" style="color:black;" class="form-control"  value="${address}" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Contact number</label>
-                                                <input type="text" name="phone" style="color:black;" class="form-control" value="${phone}" readonly>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" name="email" style="color:black;" class="form-control"  value ="${email}" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Edit Profile</button>
-                                    <div class="clearfix"></div>
-                                </form>
-                            </div>
-                            
+							<div class="content">
+                                <div class="row">
+								<div class="col-md-4">
+									<h3>Users' Registration Page</h3>
+								</div>
 								
-								
+								</div>
+                                	<table style="font-size:20px" class="table table-bordered table-striped table-hover">
+										<thead>
+											<tr>
+											<th class="text-center" style="font-size:20px">User Type</th>
+											<th class="text-center" style="font-size:20px">Count Of Users</th>
+											<th class="text-center" style="font-size:20px">Action</th>
+											</tr>
+										</thead>
+										
+										<tbody>
+										<%
+										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+										statement=connection.createStatement();
+										String sql;
+										sql="select count(nic) from farmer"; 
+										resultSet = statement.executeQuery(sql);
+										%>
+										<tr class="text-center">
+											<td>Farmer</td>
+											<td></td>
+											<td class="text-center">
+												<a href="f_signUp.jsp" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+										<tbody>
+										<tr class="text-center">
+											<td>Landowner</td>
+											<td></td>
+											<td class="text-center">
+												<a href="l_signUp.jsp" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+										<tbody>
+										<tr class="text-center">
+											<td>Data Collecting Agent</td>
+											<td></td>
+											<td class="text-center">
+												<a href="#" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+										<tbody>
+										<tr class="text-center">
+											<td>Agricultural Specialist</td>
+											<td></td>
+											<td class="text-center">
+												<a href="AgrSpecialistRegister.jsp" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+										<tbody>
+										<tr class="text-center">
+											<td>Resource Collector</td>
+											<td></td>
+											<td class="text-center">
+												<a href="RsrcCollectRegister.jsp" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+							</table>
+                               </div>
 								
                                 
                             </div>
@@ -219,8 +247,6 @@ if(session.getAttribute("a_id")==null){
 
 
 </body>
-
-	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>

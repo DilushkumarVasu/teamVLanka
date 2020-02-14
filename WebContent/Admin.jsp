@@ -84,14 +84,14 @@ if(session.getAttribute("a_id")==null){
                 
                 <li>
                     <a href="userReg.jsp">
-                        <i class="pe-7s-note2"></i>
+                        <i class="pe-7s-id"></i>
                         <p>Users' Registration</p>
                     </a>
                 </li>
                 
                  <li>
                     <a href="ViewUser.jsp">
-                        <i class="pe-7s-user"></i>
+                        <i class="pe-7s-search"></i>
                         <p>Users' Details</p>
                     </a>
                 </li>
@@ -175,8 +175,8 @@ if(session.getAttribute("a_id")==null){
                     <ul class="nav navbar-nav navbar-right">
                        
                         <li>
-                            <a href="AdminLogout">
-                                <p>Log out</p>
+                            <a href="AdminLogout" class="btn btn-info btn-lg">
+                                <span class="glyphicon glyphicon-off"></span>Log out
                             </a>
                         </li>
 						<li class="separator hidden-lg"></li>
@@ -202,7 +202,7 @@ if(session.getAttribute("a_id")==null){
 									</form>
 								</div>
 								<div class="col-md-4 text-right">
-									<a href=Admin_signUp.jsp class="btn btn-primary">Add new Admin</a>
+									<a href=Admin_signUp.jsp class="btn btn-primary"><i class="pe-7s-add-user"></i> Add new Admin</a>
 								</div>
 								</div>
                                 	<table class="table table-bordered table-striped table-hover">
@@ -240,7 +240,7 @@ if(session.getAttribute("a_id")==null){
 			<td><%=resultSet.getString("phone") %></td>
 			<td><%=resultSet.getString("email") %></td>
 			<td class="text-center">
-				<a href='AdminDelete.jsp?d=<%=resultSet.getString("a_id")%>' class="btn btn-danger">Delete</a>
+				<a href='AdminDelete.jsp?d=<%=resultSet.getString("a_id")%>' class="btn btn-danger">Delete</a><span class="glyphicon glyphicon-trash"></span>
 			</td>
 			</tr>
 			<%
@@ -271,7 +271,7 @@ if(session.getAttribute("a_id")==null){
 
 
 </body>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
