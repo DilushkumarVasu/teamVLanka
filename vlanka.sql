@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2020 at 05:33 AM
+-- Generation Time: Feb 14, 2020 at 12:30 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -31,8 +31,25 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `a_id` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `gender` varchar(100) NOT NULL
+  `gender` varchar(100) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`a_id`, `name`, `gender`, `address`, `phone`, `email`, `password`) VALUES
+('1234564567', 'den', 'male', 'def', '90909090', 'dilushvasu1996@gmail.com', '4ed9407630eb1000c0f6b63842defa7d'),
+('17000085', 'Sabthar', 'Male', 'Welampitiya', '0753464396', 'sabtharugc0@gmail.com', '[B@7925e538'),
+('17000200', 'Naveen', 'Male', 'welampitiya', '1198822900', 'dilushvasu1996@gmail.com', '[B@6fa6ed3f'),
+('17000496', 'Ishan', 'Male', 'Maharagama', '02345678', 'dilushvasu1996@gmail.com', '[B@33ddd364'),
+('178911', 'suganthan', 'Male', 'welampitiya', '0112345', 'dilushvasu1996@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b'),
+('23456', 'sharan', 'male', 'welampitiya', '075-3464396', 'sharan1994@gmail.com', '[B@53b453ea'),
+('9329890', 'Vasudevan', 'Male', 'Wattala', '076-1234567', 'vasudevan@gmail.com', '[B@34698d8c');
 
 -- --------------------------------------------------------
 
@@ -60,35 +77,6 @@ INSERT INTO `agricultural_specialist` (`nic`, `name`, `speciality`, `address`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `communication`
---
-
-CREATE TABLE `communication` (
-  `com_id` varchar(100) NOT NULL,
-  `farmer_id` varchar(50) NOT NULL,
-  `landowner_id` varchar(50) NOT NULL,
-  `date` date NOT NULL,
-  `message` varchar(500) NOT NULL,
-  `status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `data_agent`
---
-
-CREATE TABLE `data_agent` (
-  `d_id` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `area` varchar(100) NOT NULL,
-  `gender` varchar(100) NOT NULL,
-  `telephone` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `farmer`
 --
 
@@ -109,7 +97,9 @@ CREATE TABLE `farmer` (
 
 INSERT INTO `farmer` (`nic`, `name`, `address`, `gender`, `telephone`, `email`, `username`, `password`) VALUES
 ('125487985v', 'Tester', '123 abc colombo', 'male', '11111111', 'abc@abc.com', 'uu', '[B@53f783a4'),
-('940456123v', 'Sharanraj', 'Wattala', 'Male', '075-5054567', 'sharan1994@gmail.com', 'sharan', 'sharan'),
+('12865`9`598e9', 'sai', 'sai', 'male', '613941689', 'sai@gmail.com', 'sai', '[B@1331c4ca'),
+('1326596', 'yuqgewuy', 'fgy', 'female', '45541385', 'lol@gmail.com', 'admin', '[B@6cb17f21'),
+('940456123v', 'sharanraj', 'Wattala', 'Male', '075-5054567', 'thorsharan1994@gmail.com', 'sharan', 'sharan'),
 ('960900245v', 'hacker', 'wellawatta', 'male', '075-5054565', 'Khosalan@gmail.com', 'hacker', '123'),
 ('960900277v', 'codehunt9', 'wellawatta', 'male', '077-0588466', 'abc@gmail.com', 'abc', 'abc'),
 ('960900278v', 'Vasudevan Dilushkumar', 'Wattala', 'male', '077-058847', 'dilushvasu1996@gmail.com', 'DilushVasu', '1234'),
@@ -173,7 +163,12 @@ INSERT INTO `f_ques` (`q_id`, `f_id`, `date`, `question`) VALUES
 (5, '940456123v', '2020-01-02', 'hai dude\r\n'),
 (6, '960900278v', '2020-01-03', 'axas'),
 (7, '960900278v', '2020-01-14', 'ngns'),
-(8, '960900278v', '2020-01-02', 'hai dude ? nice to meet you');
+(8, '960900278v', '2020-01-02', 'hai dude ? nice to meet you'),
+(9, '5671234`8v', '2020-01-01', 'scasdvzx '),
+(10, '960900278v', '2020-01-09', 'hcb,dhckjilcjwdckw;lch bdkjjldjcowclclew'),
+(11, '234156789v', '2020-01-15', 'dchvhhdhiuhwjljhvuifhev'),
+(12, '234156789v', '2020-01-15', 'dchvhhdhiuhwjljhvuifhev'),
+(13, '960900245v', '2020-01-01', 'jyjk');
 
 -- --------------------------------------------------------
 
@@ -186,12 +181,54 @@ CREATE TABLE `landowner` (
   `name` varchar(200) NOT NULL,
   `address` varchar(100) NOT NULL,
   `gender` varchar(20) NOT NULL,
+  `pdf` blob,
   `land_status` varchar(200) NOT NULL,
   `telephone` varchar(20) NOT NULL,
   `email` varchar(150) NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `landowner`
+--
+
+INSERT INTO `landowner` (`l_id`, `name`, `address`, `gender`, `pdf`, `land_status`, `telephone`, `email`, `username`, `password`) VALUES
+('1232456', 'sharan', 'kalaniya', 'male', NULL, 'available', '0763830832', 'dilush@gmail.com', 'sharan', 'sharan'),
+('7938759v', 'gaminda', 'piliyandala', 'male', '', 'available', '98759824', 'asdfokko@gmail.com', 'gaminda', 'gaminda'),
+('926901160v', 'dinuka', 'colombo7', 'female', '', 'not available', '0000000000', 'dinukaf@gmail.com', 'dinuka', 'dinuka'),
+('962901050v', 'naveen', 'welmilla', 'male', NULL, 'not available', '0763830832', 'nvnpersonal@gmail.com', 'naveen', 'naveen'),
+('9730809432v', 'ishan', 'kalutara', 'male', NULL, 'available', '0992480989', 'ishan@gmail.com', 'ishan', 'ishan'),
+('u8234801053', 'naveen', 'fsdgfds', 'male', '', 'available', '01234567', 'hakjhf@gmail.com', 'naviya', 'naviya');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `postadd`
+--
+
+CREATE TABLE `postadd` (
+  `addId` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `details` varchar(100) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `tele_number` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `postadd`
+--
+
+INSERT INTO `postadd` (`addId`, `price`, `details`, `username`, `tele_number`) VALUES
+(1, 79897789, 'hiuhoijoijh', 'naveen', ''),
+(2, 79897789, 'iinijnj', 'naveen', ''),
+(3, 6789, NULL, 'naveen', '0763830832'),
+(4, 884503, NULL, 'naveen', '0763830832'),
+(5, 7890, 'not available', 'naveen', '0763830832'),
+(6, 2528082, 'very good', 'sharan', '0763830832'),
+(7, 789, 'not available', 'naveen', '0763830832'),
+(8, 82035, 'not available', 'naveen', '0763830832'),
+(9, 1200000, '1acre, free', 'naveen', '0763830832');
 
 -- --------------------------------------------------------
 
@@ -219,15 +256,12 @@ INSERT INTO `reports` (`msg_id`, `parent`, `nic`, `date`, `message`, `status`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `resource_collector`
+-- Table structure for table `resourcead`
 --
 
-CREATE TABLE `resource_collector` (
-  `r_id` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `area` varchar(100) NOT NULL,
-  `gender` varchar(50) NOT NULL,
-  `telephone` int(20) NOT NULL
+CREATE TABLE `resourcead` (
+  `ad_id` varchar(200) NOT NULL,
+  `approved` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -246,16 +280,39 @@ CREATE TABLE `rice` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `r_f_l_communication`
+-- Table structure for table `rsrccollector`
 --
 
-CREATE TABLE `r_f_l_communication` (
-  `communicate_id` varchar(100) NOT NULL,
-  `date` date NOT NULL,
+CREATE TABLE `rsrccollector` (
+  `name` varchar(100) NOT NULL,
+  `nic` varchar(12) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `telephone` int(12) NOT NULL,
+  `area` varchar(20) NOT NULL,
+  `username` varchar(10) NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rsrccollector`
+--
+
+INSERT INTO `rsrccollector` (`name`, `nic`, `address`, `email`, `telephone`, `area`, `username`, `password`) VALUES
+('Ishan', '973642219v', '3rd lane, uggalboda, kalutara', 'ishansasika@gmail.com', 772199181, 'western', 'ishan', 'ishan1997');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userad`
+--
+
+CREATE TABLE `userad` (
+  `adver_id` varchar(200) NOT NULL,
+  `date` date DEFAULT NULL,
+  `user_id` varchar(200) DEFAULT NULL,
   `user_type` varchar(100) NOT NULL,
-  `user_id` varchar(50) NOT NULL,
-  `message` varchar(200) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `content` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -275,24 +332,11 @@ ALTER TABLE `agricultural_specialist`
   ADD PRIMARY KEY (`nic`);
 
 --
--- Indexes for table `communication`
---
-ALTER TABLE `communication`
-  ADD PRIMARY KEY (`com_id`),
-  ADD KEY `farmer_id` (`farmer_id`),
-  ADD KEY `landowner_id` (`landowner_id`);
-
---
--- Indexes for table `data_agent`
---
-ALTER TABLE `data_agent`
-  ADD PRIMARY KEY (`d_id`);
-
---
 -- Indexes for table `farmer`
 --
 ALTER TABLE `farmer`
-  ADD PRIMARY KEY (`nic`);
+  ADD PRIMARY KEY (`nic`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `field`
@@ -323,6 +367,13 @@ ALTER TABLE `landowner`
   ADD PRIMARY KEY (`l_id`);
 
 --
+-- Indexes for table `postadd`
+--
+ALTER TABLE `postadd`
+  ADD PRIMARY KEY (`addId`),
+  ADD KEY `username` (`username`);
+
+--
 -- Indexes for table `reports`
 --
 ALTER TABLE `reports`
@@ -330,10 +381,10 @@ ALTER TABLE `reports`
   ADD KEY `f_id` (`nic`);
 
 --
--- Indexes for table `resource_collector`
+-- Indexes for table `resourcead`
 --
-ALTER TABLE `resource_collector`
-  ADD PRIMARY KEY (`r_id`);
+ALTER TABLE `resourcead`
+  ADD PRIMARY KEY (`ad_id`);
 
 --
 -- Indexes for table `rice`
@@ -342,10 +393,10 @@ ALTER TABLE `rice`
   ADD PRIMARY KEY (`rice_id`);
 
 --
--- Indexes for table `r_f_l_communication`
+-- Indexes for table `userad`
 --
-ALTER TABLE `r_f_l_communication`
-  ADD PRIMARY KEY (`communicate_id`),
+ALTER TABLE `userad`
+  ADD PRIMARY KEY (`adver_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
@@ -356,24 +407,17 @@ ALTER TABLE `r_f_l_communication`
 -- AUTO_INCREMENT for table `f_ques`
 --
 ALTER TABLE `f_ques`
-  MODIFY `q_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `q_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `postadd`
+--
+ALTER TABLE `postadd`
+  MODIFY `addId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `communication`
---
-ALTER TABLE `communication`
-  ADD CONSTRAINT `communication_ibfk_1` FOREIGN KEY (`farmer_id`) REFERENCES `farmer` (`nic`),
-  ADD CONSTRAINT `communication_ibfk_2` FOREIGN KEY (`landowner_id`) REFERENCES `landowner` (`l_id`);
-
---
--- Constraints for table `field`
---
-ALTER TABLE `field`
-  ADD CONSTRAINT `field_ibfk_1` FOREIGN KEY (`owner_nic`) REFERENCES `landowner` (`l_id`);
 
 --
 -- Constraints for table `field_rice`
@@ -383,11 +427,17 @@ ALTER TABLE `field_rice`
   ADD CONSTRAINT `field_rice_ibfk_2` FOREIGN KEY (`rice_id`) REFERENCES `rice` (`rice_id`);
 
 --
--- Constraints for table `r_f_l_communication`
+-- Constraints for table `resourcead`
 --
-ALTER TABLE `r_f_l_communication`
-  ADD CONSTRAINT `r_f_l_communication_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `farmer` (`nic`),
-  ADD CONSTRAINT `r_f_l_communication_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `landowner` (`l_id`);
+ALTER TABLE `resourcead`
+  ADD CONSTRAINT `resourcead_ibfk_1` FOREIGN KEY (`ad_id`) REFERENCES `userad` (`adver_id`);
+
+--
+-- Constraints for table `userad`
+--
+ALTER TABLE `userad`
+  ADD CONSTRAINT `userad_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `farmer` (`nic`),
+  ADD CONSTRAINT `userad_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `landowner` (`l_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
