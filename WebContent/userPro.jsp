@@ -34,11 +34,13 @@
 </head>
 <body>
 
-<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
-if(session.getAttribute("username")==null){
-	response.sendRedirect("f_login.jsp");
-}
-
+<%
+	
+	response.setHeader("Cache-control","no-cache, no-store,must-revalidate");
+	response.setHeader("pragma", "no-cache");
+	response.setHeader("Expires", "0");
+	if(session.getAttribute("username")==null)
+		response.sendRedirect("l_login.jsp");
 %>
 
 <div class="wrapper">
