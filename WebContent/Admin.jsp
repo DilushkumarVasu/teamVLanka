@@ -70,13 +70,13 @@ if(session.getAttribute("a_id")==null){
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="Admin.jsp">
                         <i class="pe-7s-home"></i>
                         <p>Home</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="AdminPro.jsp">
                         <i class="pe-7s-user"></i>
                         <p>Admin Profile</p>
                     </a>
@@ -90,7 +90,7 @@ if(session.getAttribute("a_id")==null){
                 </li>
                 
                  <li>
-                    <a href="#">
+                    <a href="ViewUser.jsp">
                         <i class="pe-7s-user"></i>
                         <p>Users' Details</p>
                     </a>
