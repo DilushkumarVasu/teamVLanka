@@ -22,6 +22,7 @@ public class  Rregistration extends HttpServlet {
 
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String r_id=request.getParameter("r_id");
 		String name=request.getParameter("name");
 		String nic=request.getParameter("nic");
 		String address=request.getParameter("address");
@@ -34,7 +35,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		
 		Rregisterdao dao=new Rregisterdao();
 		
-		if(dao.insert(name,nic,address,email,telephone,area,uname,pass)) { 
+		if(dao.insert(r_id,name,nic,address,email,telephone,area,uname,pass)) { 
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);

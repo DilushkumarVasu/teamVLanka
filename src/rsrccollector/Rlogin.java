@@ -24,7 +24,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		Rlogindao dao=new Rlogindao();
 		Encryption enc=new Encryption();
 		
-		String encPass=enc.MD5(pass)		
+		String encPass= enc.MD5(pass);	
 		if(dao.check(uname, encPass)) { 
 			
 			HttpSession session=request.getSession();
@@ -38,7 +38,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			
 			// response.sendRedirect("landownerhome.jsp");
 			
-			response.sendRedirect("index.html");
+			response.sendRedirect("RsrcHome.jsp");
 		}
 		else {
 			

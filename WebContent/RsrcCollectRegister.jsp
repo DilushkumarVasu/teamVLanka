@@ -28,6 +28,10 @@
                 <div class="signup-form">
                     <form action="Rregistration" method="POST" class="register-form" id="register-form">
                         <div class="form-group">
+                        <div class="form-input">
+                                <label for="r_id" class="required">Resource Collector ID</label>
+                                <input type="text" name="r_id" id="r_id" />
+                            </div>
                             <div class="form-input">
                                 <label for="name" class="required">Full name</label>
                                 <input type="text" name="name" id="name" />

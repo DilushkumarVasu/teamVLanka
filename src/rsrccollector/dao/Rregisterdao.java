@@ -11,12 +11,12 @@ import demo.Encryption;
 
 	public class Rregisterdao {
 
-			String sql="insert into rsrccollector values(?,?,?,?,?,?,?,?)";
+			String sql="insert into rsrccollector values(?,?,?,?,?,?,?,?,?)";
 		// String updatesql="update rsrccollector set email = ?,land_status= ?,telephone=?,address = ?,gender=? where username = ?";
 			String url="jdbc:mysql://localhost/vlanka";
 			String username="root";
 			String password="";
-			public boolean insert(String name,String nic,String address,String email,String telephone,String area,String uname,String pass) {
+			public boolean insert(String r_id, String name,String nic,String address,String email,String telephone,String area,String uname,String pass) {
 				
 				try {
 					
@@ -27,14 +27,15 @@ import demo.Encryption;
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con=DriverManager.getConnection(url,username,password);
 					PreparedStatement st=con.prepareStatement(sql);
-					st.setString(1, name);
-					st.setString(2, nic);
-					st.setString(3, address);
-					st.setString(4, email);
-					st.setString(5, telephone);
-					st.setString(6, area);
-					st.setString(7, uname);
-					st.setString(8, encPass);
+					st.setString(1, r_id);
+					st.setString(2, name);
+					st.setString(3, nic);
+					st.setString(4, address);
+					st.setString(5, email);
+					st.setString(6, telephone);
+					st.setString(7, area);
+					st.setString(8, uname);
+					st.setString(9, encPass);
 					
 					int i = st.executeUpdate();
 					
