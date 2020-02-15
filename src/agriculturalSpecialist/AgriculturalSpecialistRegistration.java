@@ -38,9 +38,8 @@ public class AgriculturalSpecialistRegistration extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
-		
+		/*
 		String name = request.getParameter("name");
 		String nic = request.getParameter("nic");
 		String speciality = request.getParameter("speciality");
@@ -51,6 +50,7 @@ public class AgriculturalSpecialistRegistration extends HttpServlet {
 		
 		AgrSpecialist a = new AgrSpecialist();
 		a.Register(name, nic, speciality, address, email, tp, region);
+		*/
 	}
 
 }

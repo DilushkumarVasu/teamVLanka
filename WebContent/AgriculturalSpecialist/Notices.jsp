@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<%@page import="com.sun.glass.ui.Size"%>
+<%@page import="userTypes.AgrSpecialist"%>
+<%@page import="notice.*"%>
 <%@page import="htmlBlocks.AgriculturalSpecialistHTML"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -191,8 +197,24 @@
         <div class="content">
             <div class="container-fluid">
             
-        <%= AgriculturalSpecialistHTML.displayNotices("Hello World", "long strings works too", "2020") %>
-		<%= AgriculturalSpecialistHTML.displayNotices("Hello mars", "greetings", "2050") %>
+        <% 	Cookie cookies[] = request.getCookies();
+        	String nic = "";
+        	for(Cookie c : cookies){
+        		if(c.getName().equals("login"))
+        			nic = c.getValue();
+        	}
+        	
+        	
+        	System.err.println(nic);
+        	List<notice.Notice> notices = AgrSpecialist.getNotices(nic);
+        	
+        	
+        	for(notice.Notice n : notices)
+        		out.print(AgriculturalSpecialistHTML.displayNotices(n.getTitle(), n.getBody(), n.getDate()));
+        %>
+        
+       
+        
 		
 			</div>
 		</div>

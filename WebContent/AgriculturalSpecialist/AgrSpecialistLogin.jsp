@@ -8,9 +8,9 @@
 		<link rel="stylesheet" type="text/css" href="css/f_style.css">
 	</head>
 	<body>
-		<form class="box" action="Login" method="post">
+		<form class="box" action="../AgriculturalSpecialistLogin" method="post">
 			<h1>Agricultural Specialist Login</h1>
-			<input type="text" name="uname" placeholder="Username">
+			<input type="text" name="nic" placeholder="NIC">
 			<input type="password" name="pass" placeholder="Password">
 			<input type="submit" name="submit" value="Login">
 		</form>
