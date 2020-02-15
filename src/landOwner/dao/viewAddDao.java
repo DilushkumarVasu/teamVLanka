@@ -27,7 +27,7 @@ public class viewAddDao{
 
         try (
             Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM postadd");
+            PreparedStatement statement = connection.prepareStatement("SELECT username,price,details,telephone FROM postadd");
             ResultSet resultSet = statement.executeQuery();
         ) {
             while (resultSet.next()) {

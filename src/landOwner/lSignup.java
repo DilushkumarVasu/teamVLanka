@@ -70,7 +70,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		}
 		else {
 			
-			response.sendRedirect("welcome.jsp");
+			response.sendRedirect("index.html");
 		}
 	}
 

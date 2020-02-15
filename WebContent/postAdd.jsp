@@ -195,7 +195,7 @@
                                 <h4 class="title">Post New Add</h4>
                             </div>
                             <div class="content">
-                                <form class = "box" action= "postadd" method="post">
+                                <form class = "box" action= "postadd" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -275,6 +275,22 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
+				                  <div class="row">
+									<label class="label col-md-0 control-label" for="file">Choose Image</label>
+				                            
+				                            <div class="value">
+				                                <div class="input-group js-input-file">
+				                                	<div class="col-md-1 pt-5">
+				                                		<div class="form-control">
+				                                    		<input class="input-file" type="file" name="pdf"  class="file-upload" id="file" >
+				                            
+				                                    	</div>
+				                                    </div>
+				                                </div>
+				                                <div class="label--desc"><font color ="white">Upload your Image</font></div>
+				                            </div>
+				                  </div>
 
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Post Add</button>
                                     <div class="clearfix"></div>

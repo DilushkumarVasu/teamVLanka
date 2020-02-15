@@ -30,7 +30,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		String gender=request.getParameter("gender");
 		
 		lOwnersignup dao=new lOwnersignup();
-		System.out.print("im here");
+		
 
 		if(dao.update(uname, email,status,tele,address,gender)) { 
 			

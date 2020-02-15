@@ -83,6 +83,8 @@ import java.sql.ResultSet;
 //				st.setString(9, uname);
 //				st.setString(10, pass);
 				
+				
+				
 				int i = st.executeUpdate();
 				
 				if(i>0) {

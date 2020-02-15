@@ -50,7 +50,8 @@
 <title>Land owner Login</title>
 </head>
 <body>
-		
+	
+
 		<div class="agileits_w3layouts_banner_nav">
 			<nav class="navbar navbar-default">
 				<div class="navbar-header navbar-left">

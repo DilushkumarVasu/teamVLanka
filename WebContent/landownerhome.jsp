@@ -76,7 +76,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="" class="simple-text">
                   	<img alt="" src="images/logo.png" style="width:250px;height:70px;"> 
                 </a>
             </div>
@@ -223,6 +223,7 @@
    <table class="table table-bordered table-striped table-hover">
 	<thead>
 		<tr>
+			<th>Add Id</th>
 			<th>username</th>
 			<th>price</th>
 			<th>details</th>
@@ -240,12 +241,18 @@
 			while(resultSet.next()){
 			%>
 			<tr>
+			<td><%=resultSet.getString("addid") %></td>
 			<td><%=resultSet.getString("username") %></td>
 			<td><%=resultSet.getString("price") %></td>
 			<td><%=resultSet.getString("details") %></td>
 			<td><%=resultSet.getString("tele_number") %></td>
-			<td class="text-center">
-				<a href class="btn btn-warning">View Add</a>
+			<td>
+				<form action="viewadd" method="get">
+                <input type="hidden" name="addId" value="${resultset.addid}" />
+                <input type="submit" value="VIew Add"  class="btn btn-warning" name="viewadd">
+            </form>
+			
+		
 				
 			</td>
 			</tr>

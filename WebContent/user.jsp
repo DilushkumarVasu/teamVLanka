@@ -40,7 +40,7 @@
 	response.setHeader("pragma", "no-cache");
 	response.setHeader("Expires", "0");
 	if(session.getAttribute("username")==null)
-		response.sendRedirect("l_login.jsp");
+	response.sendRedirect("l_login.jsp");
 %>
 
 <div class="wrapper">

@@ -2,6 +2,7 @@ package landOwner;
 
 
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.DriverManager;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.servlet.annotation.MultipartConfig;
+
 
 
 
@@ -30,6 +32,14 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		String price=request.getParameter("price");
 		String landdetails=request.getParameter("status");
 		String uname=request.getParameter("uname");
+        InputStream inputStream = null; // input stream of the upload file
+        
+        // obtains the upload file part in this multipart request
+        Part filePart = request.getPart("pdf");
+        if (filePart != null) {
+
+            inputStream = filePart.getInputStream();
+        }
 		
 		
 //		 Part filePart = request.getPart("pdf");
@@ -45,7 +55,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		
 		postAddDao dao=new postAddDao();
 		
-		if(dao.insert(telenum,price,landdetails,uname)) { 
+		if(dao.insert(telenum,price,landdetails,uname,inputStream)) { 
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
@@ -55,7 +65,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		}
 		else {
 			
-			response.sendRedirect("welcome.jsp");
+			response.sendRedirect("index.html");
 		}
 	}
 
