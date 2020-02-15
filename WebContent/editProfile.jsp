@@ -14,6 +14,17 @@
 	<title>Insert title here</title>
 </head>
 <body>
+
+<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+response.setHeader("pragma","no-cache");
+response.setHeader("Expires","0");
+if(session.getAttribute("username")==null){
+	response.sendRedirect("f_login.jsp");
+}
+
+%>
+
+
    <div class="container">
 
 

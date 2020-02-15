@@ -14,6 +14,9 @@
 <body>
    <div class="container">
 <p><br></p>
+<form action="f_ques.jsp">
+	<button type="submit" class="btn btn-success">Back</button>
+</form>
 <div class="row">
 	<div class="col-md-4">
 		<h3>User Question Details</h3>
@@ -23,6 +26,7 @@
 			<input type="text" class="form-control" name="q" placeholder="search here..."/>	
 		</form>
 	</div>
+	
 	<div class="col-md-4 text-right">
 		<a href=Question.jsp class="btn btn-primary">Add New Question</a>
 	</div>
@@ -62,7 +66,7 @@
 			<td><%=res.getString("date")%></td>
 			<td><%=res.getString("question")%></td>
 			<td class="text-center">
-				<a href='edit.jsp?u=<%=res.getString("q_id")%>' class="btn btn-warning">View Q&A</a>
+				<a href='viewQA.jsp' class="btn btn-warning">View Q&A</a>
 				<!--<a href='delete.jsp?d=<%=res.getString("q_id")%>' class="btn btn-danger">Delete</a>-->
 			</td>
 		</tr>

@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import com.dilush.dao.LoginDao;
 
+import admin.dao.ALoginDao;
+import demo.Encryption;
+
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -25,20 +28,23 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		
 		/*MessageDigest digest = MessageDigest.getInstance("SHA-256");
 		String hash = digest.digest(pass.getBytes(StandardCharsets.UTF_8)).toString();*/
+		Encryption enc=new Encryption();
+		String hash=enc.MD5(pass);
+		
 		
 		LoginDao dao=new LoginDao();
 		
-		if(dao.check(uname, pass)) {
+		if(dao.check(uname, hash)) {
 			
 
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
-			session.setAttribute("name",dao.getName(uname, pass));
-			session.setAttribute("email",dao.getEmail(uname, pass));
-			session.setAttribute("telephone",dao.getTele(uname, pass));
-			session.setAttribute("address",dao.getAdd(uname, pass));
-			session.setAttribute("gender",dao.getGender(uname, pass));
-			session.setAttribute("nic",dao.getId(uname, pass));
+			session.setAttribute("name",dao.getName(uname, hash));
+			session.setAttribute("email",dao.getEmail(uname, hash));
+			session.setAttribute("telephone",dao.getTele(uname, hash));
+			session.setAttribute("address",dao.getAdd(uname, hash));
+			session.setAttribute("gender",dao.getGender(uname, hash));
+			session.setAttribute("nic",dao.getId(uname, hash));
 			
 			response.sendRedirect("farmer.jsp");
 		}

@@ -16,7 +16,7 @@ public class AdminLogout extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		session.removeAttribute("username");
+		session.removeAttribute("a_id");
 		session.invalidate();//it will remove all data
 		response.sendRedirect("Admin_login.jsp");
 	}

@@ -34,13 +34,13 @@
 </head>
 <body>
 
-<%
-	
-	response.setHeader("Cache-control","no-cache, no-store,must-revalidate");
-	response.setHeader("pragma", "no-cache");
-	response.setHeader("Expires", "0");
-	if(session.getAttribute("username")==null)
-		response.sendRedirect("index.html");
+<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+response.setHeader("pragma","no-cache");
+response.setHeader("Expires","0");
+if(session.getAttribute("username")==null){
+	response.sendRedirect("f_login.jsp");
+}
+
 %>
 
 <div class="wrapper">
@@ -72,7 +72,7 @@
                 
               
 				
-                 <li class="dropdown menu__item">
+                <!--<li class="dropdown menu__item">
 					<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown">
 					<i class="pe-7s-note2"></i>
 					<b class="caret"></b>
@@ -82,7 +82,19 @@
 						<li><a href="f_resource.jsp">Resource</a></li>
 					</ul>
 								
-				</li>
+				</li>-->
+				<li>
+                    <a href="f_ques.jsp">
+                        <i class="fa fa-question-circle" style="font-size:30px"></i>
+                        <p>Question</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="f_resource.jsp">
+                        <i class="pe-7s-arc" style="font-size:30px"></i>
+                        <p>Resources</p>
+                    </a>
+                </li>
 				
 				
 				<li>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.dilush.dao.LoginDao;
 import com.dilush.dao.SignupDao;
+import com.email.checkmail;
 
 import userTypes.Farmer;
 
@@ -41,7 +42,8 @@ public class FarmerRegistration extends HttpServlet {
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
-			response.sendRedirect("f_login.jsp");
+			checkmail.Farmertransfer(email);
+			response.sendRedirect("success.jsp");
 			
 			//response.sendRedirect("index.html");
 		}

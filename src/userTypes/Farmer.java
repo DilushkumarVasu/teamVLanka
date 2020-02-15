@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.omg.CORBA.portable.InputStream;
 
+import demo.Encryption;
+
 public class Farmer {
 	String sql="insert into farmer values(?,?,?,?,?,?,?,?)";
 	String updatesql="update farmer set nic=?,name=?,address=?,gender=?,telephone=?,email=? where username = ?";
@@ -30,9 +32,11 @@ public class Farmer {
 	//problem is with this function
 	public boolean insert(String name, String nic, String address, String gender, String tp, String email, String uname, String pass) { 
 		try {
-			MessageDigest digest = MessageDigest.getInstance("SHA-256");
-			String hash = digest.digest(pass.getBytes(StandardCharsets.UTF_8)).toString();
+			//MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			//String hash = digest.digest(pass.getBytes(StandardCharsets.UTF_8)).toString();
 			//File image= new File(pic);
+			Encryption enc=new Encryption();
+			String hash=enc.MD5(pass);
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(url,username,password); 

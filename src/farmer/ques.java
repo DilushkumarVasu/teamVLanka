@@ -24,7 +24,9 @@ public class ques extends HttpServlet{
 		String c=request.getParameter("question");
 		Farmer f = new Farmer();
 		f.question(a, b, c);
-		response.sendRedirect("viewQues.jsp");
+		if(a!=null && b!=null && c!=null) {
+			response.sendRedirect("viewQues.jsp");
+		}
 		/*String host="jdbc:mysql://localhost/vlanka";
 		Connection conn=null;
 		PreparedStatement stat=null;

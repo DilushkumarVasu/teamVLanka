@@ -5,6 +5,7 @@
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Connection"%>
 <%@page import="java.sql.*" %>
+<%@page import="java.util.Date"%>
     
 <!DOCTYPE html>
 <html>
@@ -39,15 +40,15 @@
 							</span>
 							<span>
 								<i>NIC</i>
-								<input type="text" name="nic" class="form-control" style="width:450px" value="" required="">
+								<input type="text" name="nic" class="form-control" style="width:450px" value="${nic }" required="">
 							</span>
 							<span>
 								<i>Email</i>
-								<input type="email" name="email" class="form-control" style="width:450px"  value="" required="">
+								<input type="email" name="email" class="form-control" style="width:450px"  value="${email }" required="">
 							</span>
 							<span>
 								<i>Date</i>
-								<input type="date" name="date" class="form-control" style="width:450px"  value=" " required="">
+								<input type="text" name="date" class="form-control" style="width:450px"  value="<%= (new java.util.Date()).toLocaleString()%>" required="">
 							</span>
 							<!--<span>
 								<i>Subject</i>-->

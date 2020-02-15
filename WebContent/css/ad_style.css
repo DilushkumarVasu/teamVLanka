@@ -4,6 +4,7 @@
 body {
 	font-size: 120%;
 	background: #F8F8FF;
+	background-color:rgba(0,255,0,0.3);
 }
 .header {
 	width: 40%;
