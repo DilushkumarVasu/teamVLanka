@@ -67,7 +67,7 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="RsrcHome.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
@@ -85,7 +85,7 @@
                         <p>Approval List</p>
                     </a>
                 </li>           
-                <li>
+                <li class="active">
                     <a href="notifications.jsp">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>

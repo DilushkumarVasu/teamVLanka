@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Resource Collector has Successfully registered</title>
+<link rel="stylesheet" type="text/css" href="css/f_style.css">
 </head>
 <body>
 
@@ -16,13 +17,13 @@
 		
 		response.setHeader("Expires","0");//used in proxies
 	
-		if(session.getAttribute("username")==null){
+	/*	if(session.getAttribute("username")==null){
 			response.sendRedirect("RsrcCollectLogin.jsp");
-		}
+		} */
 	
 	%>
 	
-	Welcome ${username}
+	Welcome ${name}
 	
 	
 	
