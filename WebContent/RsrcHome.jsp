@@ -214,7 +214,7 @@
 			<td><%=resultSet.getString("user_id") %></td>
 			<td><%=resultSet.getString("user_type") %></td>
 			<td><%=resultSet.getString("telephone") %></td>
-	    	<td><%=resultSet.getString("content") %></td>
+	    	<td><%=resultSet.getBoolean("status") %></td>
 			<td class="text-center">
 				<a href class="btn btn-warning">View Add</a>
 				
