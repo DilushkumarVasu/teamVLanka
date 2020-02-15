@@ -57,7 +57,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="red" data-image="assets/img/sidebar-5.jpg">
 
     <!--
 
@@ -69,7 +69,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                  	<img alt="" src="images/logo.png" style="width:250px;height:70px;"> 
+                  	<img alt="" src="images/logo.png" style="width:240px;height:100px;"> 
                 </a>
             </div>
 
@@ -81,35 +81,23 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.jsp">
+                    <a href="RsrcUser.jsp">
                         <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+                        <p>My Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="RsrcAdd.jsp">
+                        <a href="RsrcUser.jsp">
+                        <i class="pe-7s-user"></i>
+                        <p>My Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="RsrcApprove.jsp">
                         <i class="pe-7s-note2"></i>
-                        <p>Add a Resource</p>
+                        <p>Approval List</p>
                     </a>
-                </li>
-                <li>
-                    <a href="RsrcView.jsp">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
+                </li>           
                 <li>
                     <a href="notifications.html">
                         <i class="pe-7s-bell"></i>
