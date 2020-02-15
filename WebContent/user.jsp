@@ -34,6 +34,15 @@
 </head>
 <body>
 
+<%
+	
+	response.setHeader("Cache-control","no-cache, no-store,must-revalidate");
+	response.setHeader("pragma", "no-cache");
+	response.setHeader("Expires", "0");
+	if(session.getAttribute("username")==null)
+		response.sendRedirect("l_login.jsp");
+%>
+
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
@@ -166,7 +175,7 @@
                               </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="lLogout">
                                 <p>Log out</p>
                             </a>
                         </li>

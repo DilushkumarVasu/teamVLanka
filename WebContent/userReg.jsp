@@ -42,7 +42,6 @@ if(session.getAttribute("a_id")==null){
 }%>
 
 <%
-		//String id = request.getParameter("userid");
 		String driver = "com.mysql.jdbc.Driver";
 		String connectionUrl = "jdbc:mysql://localhost:3306/";
 		String database = "vlanka";
@@ -58,6 +57,7 @@ if(session.getAttribute("a_id")==null){
 		ResultSet resultSet = null;
 %>
 
+
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
@@ -69,7 +69,7 @@ if(session.getAttribute("a_id")==null){
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="Admin.jsp">
                         <i class="pe-7s-home"></i>
                         <p>Home</p>
@@ -82,7 +82,7 @@ if(session.getAttribute("a_id")==null){
                     </a>
                 </li>
                 
-                <li>
+                <li class="active">
                     <a href="userReg.jsp">
                         <i class="pe-7s-id"></i>
                         <p>Users' Registration</p>
@@ -140,38 +140,7 @@ if(session.getAttribute("a_id")==null){
                     <a class="navbar-brand" href="Admin.jsp">Admin</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                   <!-- <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>-->
-
+                   
                     <ul class="nav navbar-nav navbar-right">
                        
                         <li>
@@ -194,65 +163,72 @@ if(session.getAttribute("a_id")==null){
 							<div class="content">
                                 <div class="row">
 								<div class="col-md-4">
-									<h3>Admin Details</h3>
+									<h3>Users' Registration Page</h3>
 								</div>
-								<div class="col-md-4">
-									<form action="" method="get">
-										<input type="text" class="form-control" name="q" placeholder="search here..."/>	
-									</form>
+								
 								</div>
-								<div class="col-md-4 text-right">
-									<a href=Admin_signUp.jsp class="btn btn-primary"><i class="pe-7s-add-user"></i> Add new Admin</a>
-								</div>
-								</div>
-                                	<table class="table table-bordered table-striped table-hover">
+                                	<table style="font-size:20px" class="table table-bordered table-striped table-hover">
 										<thead>
 											<tr>
-											<th>Admin Id</th>
-											<th>Name</th>
-											<th>Gender</th>
-											<th>Address</th>
-											<th>Phone</th>
-											<th>Email</th>
-											<th class="text-center">Action</th>
+											<th class="text-center" style="font-size:20px">User Type</th>
+											<th class="text-center" style="font-size:20px">Count Of Users</th>
+											<th class="text-center" style="font-size:20px">Action</th>
 											</tr>
 										</thead>
-									<tbody>
-				<%
-			try{
-			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-			statement=connection.createStatement();
-			String query=request.getParameter("q");
-			String sql;
-			if(query!=null){
-				sql="select * from admin where a_id like '%"+query+"%' or name like '%"+query+"%' or gender like '%"+query+"%' or address like '%"+query+"%' or phone like '%"+query+"%' or email like '%"+query+"%'";
-			}else{
-				sql="select * from admin";
-			};
-			resultSet = statement.executeQuery(sql);
-			while(resultSet.next()){
-			%>
-			<tr>
-			<td><%=resultSet.getString("a_id") %></td>
-			<td><%=resultSet.getString("name") %></td>
-			<td><%=resultSet.getString("gender") %></td>
-			<td><%=resultSet.getString("address") %></td>
-			<td><%=resultSet.getString("phone") %></td>
-			<td><%=resultSet.getString("email") %></td>
-			<td class="text-center">
-				<a href='AdminDelete.jsp?d=<%=resultSet.getString("a_id")%>' class="btn btn-danger">Delete</a><span class="glyphicon glyphicon-trash"></span>
-			</td>
-			</tr>
-			<%
-			}
-			connection.close();
-			} catch (Exception e) {
-			e.printStackTrace();
-			}
-			%>
-
-									</tbody>
-								</table>
+										
+										<tbody>
+										<%
+										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+										statement=connection.createStatement();
+										String sql;
+										sql="select count(nic) from farmer"; 
+										resultSet = statement.executeQuery(sql);
+										%>
+										<tr class="text-center">
+											<td>Farmer</td>
+											<td></td>
+											<td class="text-center">
+												<a href="f_signUp.jsp" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+										<tbody>
+										<tr class="text-center">
+											<td>Landowner</td>
+											<td></td>
+											<td class="text-center">
+												<a href="l_signUp.jsp" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+										<tbody>
+										<tr class="text-center">
+											<td>Data Collecting Agent</td>
+											<td></td>
+											<td class="text-center">
+												<a href="#" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+										<tbody>
+										<tr class="text-center">
+											<td>Agricultural Specialist</td>
+											<td></td>
+											<td class="text-center">
+												<a href="AgrSpecialistRegister.jsp" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+										<tbody>
+										<tr class="text-center">
+											<td>Resource Collector</td>
+											<td></td>
+											<td class="text-center">
+												<a href="RsrcCollectRegister.jsp" class="btn btn-primary">Register</a>
+											</td>
+										</tr>
+										</tbody>
+							</table>
                                </div>
 								
                                 

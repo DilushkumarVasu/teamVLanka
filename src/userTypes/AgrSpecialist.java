@@ -24,7 +24,8 @@ public class AgrSpecialist {
 	//function to register a new agricultural specialist in the system
 	public void Register(String name, String nic, String specialty, String address, String email, String tp, String region) {
 		try {
-			Connection con = connect();
+			dbConnection dbcon=new dbConnection();
+			Connection con =dbcon.connect();
 			
 			PreparedStatement pst = con.prepareStatement("INSERT INTO `AgriculturalSpecialist` (`nic`, `name`, `specialty`, `address`, `email`, `region`, `telephone`) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			pst.setString(1, nic); 
@@ -46,9 +47,9 @@ public class AgrSpecialist {
 		final String query = "SELECT farmer.nic, farmer.name, reports.message, reports.date, farmer.address FROM farmer INNER JOIN reports ON farmer.nic = reports.nic ORDER BY reports.date DESC";
 		
 		
-		Connection con = connect();
-		
 		try {
+			dbConnection db=new dbConnection();
+			Connection con =db.connect();
 			ResultSet rs = con.createStatement().executeQuery(query); 
 			return rs;
 		}
@@ -58,9 +59,11 @@ public class AgrSpecialist {
 	}
 	
 	public ResultSet getNotifications() {
-		Connection con = connect();
+		
 		
 		try {
+			dbConnection dbms=new dbConnection();
+			Connection con =dbms.connect();
 			ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `reports` WHERE status != 'read' ORDER BY date DESC");
 			return rs;
 		}

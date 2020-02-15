@@ -24,7 +24,11 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		Rlogindao dao=new Rlogindao();
 		Encryption enc=new Encryption();
 		
+<<<<<<< HEAD
 		String encPass= enc.MD5(pass);	
+=======
+		String encPass=enc.MD5(pass);		
+>>>>>>> ada0bca8efc955ee650aa12aa4706e99ecd64ffc
 		if(dao.check(uname, encPass)) { 
 			
 			HttpSession session=request.getSession();

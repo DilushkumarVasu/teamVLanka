@@ -35,7 +35,7 @@
 					</div>
 				</div>
 				<hr>
-			<form action="lSignup" onsubmit="return validateForm()" method="post">
+			<form action="lSignup" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
 				<div class="row">
 					<label class="label col-md-2 control-label">Name</label>
 					<div class="col-md-10">
@@ -138,6 +138,7 @@
 				  } else {
 				    confirm_password.setCustomValidity('');
 				  }
+				  
 				}
 
 				password.onchange = validatePassword;

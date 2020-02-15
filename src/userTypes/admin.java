@@ -23,7 +23,7 @@ import demo.Encryption;
 
 public class admin {
 	String sql="insert into admin values(?,?,?,?,?,?,?)";
-	String updatesql="update admin set name=?,address=?,gender=?,phone=?,email=? where a_id = ?";
+	String updatesql="update admin set name=?,gender=?,address=?,phone=?,email=? where a_id = ?";
 	//String data="insert into f_ques(f_id,date,question) values(?,?,?)";
 	String url="jdbc:mysql://localhost/vlanka";
 	String username="root";
@@ -82,6 +82,7 @@ public class admin {
 			st.setString(4, phone);
 			st.setString(5, email);
 			st.setString(6, a_id);
+			
 			
 			int i = st.executeUpdate();
 			
