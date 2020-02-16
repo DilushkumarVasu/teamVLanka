@@ -129,9 +129,15 @@ if(session.getAttribute("username")==null){
                     </a>
                 </li>
 				<li>
-                    <a href="#">
+                    <a href="cancel.jsp">
                         <i class="pe-7s-delete-user"></i>
                         <p>Account Cancel</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="field.jsp">
+                        <i class="pe-7s-check"></i>
+                        <p>field Update</p>
                     </a>
                 </li>
             </ul>

@@ -107,7 +107,7 @@ if(session.getAttribute("username")==null){
                 </li>
                 
                 <li>
-                    <a href="#">
+                    <a href="cancel.jsp">
                         <i class="pe-7s-delete-user"></i>
                         <p>Account Cancel</p>
                     </a>
@@ -170,15 +170,14 @@ if(session.getAttribute("username")==null){
 			<div class="face face1">
 				<div class="content">
 					<img src="images/Q.png">
-					<h3>Add Questions</h3>
+					<h3>Working Fields</h3>
 				</div>
 			</div>
 			<div class="face face2">
 				<div class="content">
-					<p>You can ask any question related on farming.
-					   We can hope to give best solution to your question.
+					<p>State which fields are you assigned to
 					</p>
-					 <a href="Question.jsp">Use Me</a>  
+					 <a href="#">Use Me</a>  
 				</div>
 			</div>
 		</div>
@@ -187,34 +186,19 @@ if(session.getAttribute("username")==null){
 			<div class="face face1">
 				<div class="content">
 					<img src="images/Q.png">
-					<h3>View Questions & Answers</h3>
+					<h3>View the fields</h3>
 				</div>
 			</div>
 			<div class="face face2">
 				<div class="content">
-					<p>You can see your questions with answers.
-					   Sometimes it will get sometimes to answer your question.
+					<p>You can view the fields details.
+					  
 					</p>
-					 <a href="viewQues.jsp">Use Me</a>  
+					 <a href="#">Use Me</a>  
 				</div>
 			</div>
 		</div>
 		
-		<!--<div class="card">
-			<div class="face face1">
-				<div class="content">
-					<img src="images/Q.png">
-					<h3>Related Topics</h3>
-				</div>
-			</div>
-			<div class="face face2">
-				<div class="content">
-					<p>Here you can see related topics to agriculture.
-					</p>
-					 <a href="externalQues.jsp">Use Me</a>  
-				</div>
-			</div>
-		</div>-->
 	</div>
                                 	
                                 	
