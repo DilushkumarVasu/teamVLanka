@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	You are request is accepted.
+	<h1>Your request is accepted.</h1>
 </body>
 </html>

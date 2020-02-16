@@ -33,6 +33,14 @@
 
 </head>
 <body>
+<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+response.setHeader("pragma","no-cache");
+response.setHeader("Expires","0");
+if(session.getAttribute("username")==null){
+	response.sendRedirect("f_login.jsp");
+}
+
+%>
 
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
@@ -141,7 +149,7 @@
 							<div class="content">
                                <!-- <div class="row">-->
 									<!----- form starting point ------>
-									<h3>Fill the Form</h3>
+									<h3>Resignation Form</h3>
 
 
 										<form action="remove" method="post">
@@ -157,11 +165,10 @@
 										    <option value="Landowner">Landowner</option>
 										    <option value="Agricultural Specialist">Agricultural Specialist</option>
 										    <option value="Resource Collector">Resource Collector</option>
-										     <option value="Admin">Admin</option>
 										  </select>
 										
 										  <label for="request">Request</label>
-										  <input type="text" id="request" name="request" value="Cance my user account" readonly>
+										  <input type="text" id="request" name="request" value="Cancel my user account" readonly>
 										
 										  <input type="submit" value="Submit">
 										</form>

@@ -12,7 +12,7 @@ import demo.Encryption;
 	public class Rregisterdao {
 
 			String sql="insert into rsrccollector values(?,?,?,?,?,?,?,?,?)";
-		// String updatesql="update rsrccollector set email = ?,land_status= ?,telephone=?,address = ?,gender=? where username = ?";
+		    String updatesql="update rsrccollector set email = ?, telephone = ?,address = ? where username = ?";
 			String url="jdbc:mysql://localhost/vlanka";
 			String username="root";
 			String password="";
@@ -57,27 +57,18 @@ import demo.Encryption;
 			}
 			
 			
-	/*		public boolean update(String uname,String email,String status,String tele,String address,String gender) {
+		public boolean Rupdate(String uname,String email,String telephone,String address) {
 				
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con=DriverManager.getConnection(url,username,password);
 					PreparedStatement st=con.prepareStatement(updatesql);
-					st.setString(1, email);
-					st.setString(2, status);
-					st.setString(3, tele);
-					st.setString(4, address);
-					st.setString(5, gender);
-					st.setString(6, uname);
 					
-//           		st.setString(3, address);
-//					st.setString(4, gender);
-//					st.setBlob(5,pdf);
-//					st.setString(6, landstatus);
-//					st.setString(7, telenum);
-//					st.setString(8, email);
-//					st.setString(9, uname);
-//					st.setString(10, pass);
+					st.setString(1, email);
+					st.setString(2, telephone);
+					st.setString(3, address);
+					st.setString(4, uname);
+			
 					
 					int i = st.executeUpdate();
 					
@@ -93,9 +84,7 @@ import demo.Encryption;
 				
 				
 				return false;
-			}
 		}
 		
 				
-				*/
 }

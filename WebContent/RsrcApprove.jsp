@@ -56,12 +56,21 @@
 </head>
 <body>
 
+<%
+	
+	response.setHeader("Cache-control","no-cache, no-store,must-revalidate");
+	response.setHeader("pragma", "no-cache");
+	response.setHeader("Expires", "0");
+	if(session.getAttribute("username")==null)
+	response.sendRedirect("RsrcCollectLogin.jsp");
+%>
+
 <div class="wrapper">
     <div class="sidebar" data-color="red" data-image="assets/img/sidebar-5.jpg">
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="index.html" class="simple-text">
                   	<img alt="" src="images/logo.png" style="width:240px;height:100px;"> 
                 </a>
             </div>
@@ -73,24 +82,20 @@
                         <p>DashBoard</p>
                     </a>
                 </li>
+                <li class="active">
+                    <a href="RsrcApprove.jsp">
+                        <i class="pe-7s-note2"></i>
+                        <p>Approval List</p>
+                    </a>
+                </li> 
                 <li>
                     <a href="RsrcUser.jsp">
                         <i class="pe-7s-user"></i>
                         <p>My Profile</p>
                     </a>
                 </li>
-                <li class="active">
-                    <a href="RsrcApprove.jsp">
-                        <i class="pe-7s-note2"></i>
-                        <p>Approval List</p>
-                    </a>
-                </li>           
-                <li>
-                    <a href="notifications.jsp">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
+                          
+         
             </ul>
     	</div>
     </div>
@@ -105,7 +110,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">DashBoard</a>
+                    <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -142,30 +147,13 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="">
+                           <a href="RsrcUser.jsp">
                                <p>Account</p>
                             </a>
                         </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
+  
                         <li>
-                            <a href="#">
+                            <a href="Rlogout">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -195,7 +183,7 @@
 			<th class="text-center">User ID</th>
 			<th class="text-center">User Type</th>
 			<th class="text-center">Contact Number</th>
-			<th class="text-center">View Ad</th>
+			<th class="text-center">Ad Content</th>
 			<th class="text-center">Approve</th>
 		</tr>
 	</thead>
@@ -214,9 +202,12 @@
 			<td><%=resultSet.getString("user_id") %></td>
 			<td><%=resultSet.getString("user_type") %></td>
 			<td><%=resultSet.getString("telephone") %></td>
-	    	<td><%=resultSet.getString("content") %></td>
+	    	<td class="text-center">
+				<a href ='viewfulladd.jsp?d=<%=resultSet.getBlob("content")%>'class="btn btn-warning">View Ad</a>
+
 			<td class="text-center">
-				<a href class="btn btn-warning">View Add</a>
+				<a href ='Rapprove.jsp?d=<%=resultSet.getString("adver_id")%>'class="btn btn-warning">Approve</a>
+				<a href ='Delapprove.jsp?d=<%=resultSet.getString("adver_id")%>' class="btn btn-danger">Delete</a>
 				
 			</td>
 			</tr>

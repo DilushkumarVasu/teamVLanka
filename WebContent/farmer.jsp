@@ -225,11 +225,11 @@ if(session.getAttribute("username")==null){
                                 	<table class="table table-bordered table-striped table-hover">
 										<thead>
 											<tr>
-											<th>Advertisement Id</th>
+											<th>Ad_Id</th>
 											<th>Price</th>
-											<th>Details</th>
+											<th>Advertisement Details</th>
 											<th>User Name</th>
-											<th>Contact Number</th>
+											<th>Contact</th>
 											<!--<th class="text-center">Action</th>-->
 											</tr>
 										</thead>
