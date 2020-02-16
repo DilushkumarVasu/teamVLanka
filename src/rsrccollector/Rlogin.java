@@ -29,11 +29,11 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
-		/*	session.setAttribute("email",dao.getemail(uname, pass));
-			session.setAttribute("tele",dao.gettele(uname, pass));
-			session.setAttribute("address",dao.getadd(uname, pass));
-			session.setAttribute("status",dao.getstatus(uname, pass)); */
-			
+	    	session.setAttribute("email",dao.getemail(uname,encPass));
+	    	session.setAttribute("name",dao.getname(uname,encPass));
+			session.setAttribute("telephone",dao.gettele(uname, encPass));
+			session.setAttribute("address",dao.getadd(uname, encPass));
+			session.setAttribute("area",dao.getarea(uname, encPass)); 
 			
 			response.sendRedirect("RsrcHome.jsp");
 		}

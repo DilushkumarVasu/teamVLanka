@@ -7,7 +7,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>My Profile</title>
+	<title>User Profile</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -40,11 +40,13 @@
 	response.setHeader("pragma", "no-cache");
 	response.setHeader("Expires", "0");
 	if(session.getAttribute("username")==null)
-		//response.sendRedirect("RsrcCollecLogin.jsp");
+	response.sendRedirect("RsrcCollectLogin.jsp");
 %>
 
 <div class="wrapper">
     <div class="sidebar" data-color="red" data-image="assets/img/sidebar-5.jpg">
+
+
 
     	<div class="sidebar-wrapper">
             <div class="logo">
@@ -57,7 +59,13 @@
                 <li>
                     <a href="RsrcHome.jsp">
                         <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
+                        <p>DashBoard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="RsrcApprove.jsp">
+                        <i class="pe-7s-note2"></i>
+                        <p>Approval List</p>
                     </a>
                 </li>
                 <li class="active">
@@ -66,24 +74,14 @@
                         <p>My Profile</p>
                     </a>
                 </li>
-                <li>
-                    <a href="RsrcApprove.jsp">
-                        <i class="pe-7s-note2"></i>
-                        <p>Approval List</p>
-                    </a>
-                </li>           
-                <li>
-                    <a href="notifications.jsp">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
+               
 
             </ul>
     	</div>
     </div>
+
     <div class="main-panel">
-        <nav class="navbar navbar-default navbar-fixed">
+		<nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -92,7 +90,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">DashBoard</a>
+                    <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -100,29 +98,6 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-dashboard"></i>
 								<p class="hidden-lg hidden-md">DashBoard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Notification 5</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
                             </a>
                         </li>
                     </ul>
@@ -133,35 +108,87 @@
                                <p>Account</p>
                             </a>
                         </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
+                        
                         <li>
-                            <a href="#">
+                            <a href="Rlogout">
                                 <p>Log out</p>
                             </a>
                         </li>
-						<li class="separator hidden-lg"></li>
+						<li class="separator hidden-lg hidden-md"></li>
                     </ul>
                 </div>
             </div>
         </nav>
-    
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Edit Profile</h4>
+                            </div>
+                            <div class="content">
+                                <form class = "box" action= "Rupdate" method="post">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" placeholder="Name" value="${name}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>User Name</label>
+                                                <input type="text" name="uname" class="form-control" placeholder="User Name" value="${username}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" name="email" class="form-control" placeholder="Email" value ="${email}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Telephone Number</label>
+                                                <input type="text" name="telephone" class="form-control" placeholder="Telephone Number" value="${telephone}" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Assigned Area</label>
+                                                <input type="text" name = "area" class="form-control" placeholder="Assigned Area" value="${area}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" name="address" class="form-control" placeholder="Home Address" value="${address}" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+    </div>
+</div>
 
 
 </body>
