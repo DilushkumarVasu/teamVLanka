@@ -40,15 +40,15 @@
 							</span>
 							<span>
 								<i>NIC</i>
-								<input type="text" name="nic" class="form-control" style="width:450px" value="${nic }" required="">
+								<input type="text" name="nic" class="form-control" style="width:450px" value="${nic }" required=""  readonly>
 							</span>
 							<span>
 								<i>Email</i>
-								<input type="email" name="email" class="form-control" style="width:450px"  value="${email }" required="">
+								<input type="email" name="email" class="form-control" style="width:450px"  value="${email }" required="" readonly>
 							</span>
 							<span>
 								<i>Date</i>
-								<input type="text" name="date" class="form-control" style="width:450px"  value="<%= (new java.util.Date()).toLocaleString()%>" required="">
+								<input type="text" name="date" class="form-control" style="width:450px"  value="<%= (new java.util.Date()).toLocaleString()%>" required="" readonly>
 							</span>
 							<!--<span>
 								<i>Subject</i>-->

@@ -1,7 +1,4 @@
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.Statement"%>
-<%@ page import="java.sql.Connection"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,12 +25,12 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
 
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
+	<link href="css/f_question.css" rel="stylesheet"/>
 </head>
 <body>
 <% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
@@ -43,23 +40,6 @@ if(session.getAttribute("username")==null){
 	response.sendRedirect("f_login.jsp");
 }
 
-%>
-
-<%
-		//String id = request.getParameter("userid");
-		String driver = "com.mysql.jdbc.Driver";
-		String connectionUrl = "jdbc:mysql://localhost:3306/";
-		String database = "vlanka";
-		String userid = "root";
-		String password = "";
-		try {
-		Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-		}
-		Connection connection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
 %>
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
@@ -106,15 +86,12 @@ if(session.getAttribute("username")==null){
                     </a>
                 </li>
                 
-                
-                
-				<li class="active">
+				<li>
                     <a href="f_resource.jsp">
                         <i class="pe-7s-arc" style="font-size:30px"></i>
                         <p>Resources</p>
                     </a>
                 </li>
-				
 				
 				<li>
                     <a href="maps.html">
@@ -128,12 +105,26 @@ if(session.getAttribute("username")==null){
                         <p>Notifications</p>
                     </a>
                 </li>
-				<li>
+                
+                <li>
                     <a href="#">
                         <i class="pe-7s-delete-user"></i>
                         <p>Account Cancel</p>
                     </a>
                 </li>
+                
+                <li class="active">
+                    <a href="field.jsp">
+                        <i class="pe-7s-check"></i>
+                        <p>field Update</p>
+                    </a>
+                </li>
+				<!--<li class="active-pro">
+                    <a href="upgrade.html">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Upgrade to PRO</p>
+                    </a>
+                </li>-->
             </ul>
     	</div>
     </div>
@@ -148,47 +139,18 @@ if(session.getAttribute("username")==null){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="f_resource.jsp">Resources</a>
+                    <a class="navbar-brand" href="field.jsp">Field Scenario</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                   <!-- <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>-->
 
                     <ul class="nav navbar-nav navbar-right">
-                       
                         <li>
                             <a href="Logout" class="btn btn-info btn-lg">
                                 <span class="glyphicon glyphicon-off"></span>Log out
                             </a>
+                            <!--<form action="Logout">
+                            	<input type="submit" value="Logout">
+                            </form>-->
                         </li>
 						<li class="separator hidden-lg"></li>
                     </ul>
@@ -196,69 +158,67 @@ if(session.getAttribute("username")==null){
             </div>
         </nav>
 
-
-        <div class="content">
+ <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
 							<div class="content">
-                                <div class="row">
-								<div class="col-md-4">
-									<h3>Available Resources</h3>
-								</div>
-								<div class="col-md-4">
-									<form action="" method="get">
-										<input type="text" class="form-control" name="q" placeholder="search here..."/>	
-									</form>
-								</div>
-								<!--<div class="col-md-4 text-right">
-									<a href=Admin_signUp.jsp class="btn btn-primary"><i class="pe-7s-add-user"></i> Add new Admin</a>
-								</div>-->
-								</div>
-                                	<table class="table table-bordered table-striped table-hover">
-										<thead>
-											<tr>
-											<th>Advertisement Id</th>
-											<th>Price</th>
-											<th>Details</th>
-											<th>User Name</th>
-											<th>Contact Number</th>
-											<!--<th class="text-center">Action</th>-->
-											</tr>
-										</thead>
-									<tbody>
-				<%
-			try{
-			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-			statement=connection.createStatement();
-			String query=request.getParameter("q");
-			String sql;
-			if(query!=null){
-				sql="select * from postadd where addid like '%"+query+"%' or price like '%"+query+"%' or details like '%"+query+"%' or username like '%"+query+"%' or tele_number like '%"+query+"%'";
-			}else{
-				sql="select * from postadd";
-			};
-			resultSet = statement.executeQuery(sql);
-			while(resultSet.next()){
-			%>
-			<tr>
-			<td><%=resultSet.getString("addid") %></td>
-			<td><%=resultSet.getString("price") %></td>
-			<td><%=resultSet.getString("details") %></td>
-			<td><%=resultSet.getString("username") %></td>
-			<td><%=resultSet.getString("tele_number") %></td>
-			</tr>
-			<%
-			}
-			connection.close();
-			} catch (Exception e) {
-			e.printStackTrace();
-			}
-			%>
-
-									</tbody>
-								</table>
+                                <!---->
+                       <div class="container">
+		<div class="card">
+			<div class="face face1">
+				<div class="content">
+					<img src="images/Q.png">
+					<h3>Add Questions</h3>
+				</div>
+			</div>
+			<div class="face face2">
+				<div class="content">
+					<p>You can ask any question related on farming.
+					   We can hope to give best solution to your question.
+					</p>
+					 <a href="Question.jsp">Use Me</a>  
+				</div>
+			</div>
+		</div>
+		
+		<div class="card">
+			<div class="face face1">
+				<div class="content">
+					<img src="images/Q.png">
+					<h3>View Questions & Answers</h3>
+				</div>
+			</div>
+			<div class="face face2">
+				<div class="content">
+					<p>You can see your questions with answers.
+					   Sometimes it will get sometimes to answer your question.
+					</p>
+					 <a href="viewQues.jsp">Use Me</a>  
+				</div>
+			</div>
+		</div>
+		
+		<!--<div class="card">
+			<div class="face face1">
+				<div class="content">
+					<img src="images/Q.png">
+					<h3>Related Topics</h3>
+				</div>
+			</div>
+			<div class="face face2">
+				<div class="content">
+					<p>Here you can see related topics to agriculture.
+					</p>
+					 <a href="externalQues.jsp">Use Me</a>  
+				</div>
+			</div>
+		</div>-->
+	</div>
+                                	
+                                	
+                                	
                                </div>
 								
                                 
@@ -273,13 +233,8 @@ if(session.getAttribute("username")==null){
         </div>
 
     </div>
-
-
-
-
 </body>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--   Core JS Files   -->
+
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -323,3 +278,58 @@ if(session.getAttribute("username")==null){
 </html>
 
 
+
+
+
+
+<!--<div class="container">
+		<div class="card">
+			<div class="face face1">
+				<div class="content">
+					<img src="images/Q.png">
+					<h3>Add Questions</h3>
+				</div>
+			</div>
+			<div class="face face2">
+				<div class="content">
+					<p>You can ask any question related on farming.
+					   We can hope to give best solution to your question.
+					</p>
+					 <a href="Question.jsp">Use Me</a>  
+				</div>
+			</div>
+		</div>
+		
+		<div class="card">
+			<div class="face face1">
+				<div class="content">
+					<img src="images/Q.png">
+					<h3>View Questions & Answers</h3>
+				</div>
+			</div>
+			<div class="face face2">
+				<div class="content">
+					<p>You can see your questions with answers.
+					   Sometimes it will get sometimes to answer your question.
+					</p>
+					 <a href="viewQues.jsp">Use Me</a>  
+				</div>
+			</div>
+		</div>-->
+		
+		<!--<div class="card">
+			<div class="face face1">
+				<div class="content">
+					<img src="images/Q.png">
+					<h3>Related Topics</h3>
+				</div>
+			</div>
+			<div class="face face2">
+				<div class="content">
+					<p>Here you can see related topics to agriculture.
+					</p>
+					 <a href="externalQues.jsp">Use Me</a>  
+				</div>
+			</div>
+		</div>-->
+	<!--</div>-->
