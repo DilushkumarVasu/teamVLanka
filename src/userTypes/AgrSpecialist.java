@@ -1,5 +1,6 @@
 package userTypes;
 
+import java.util.Properties;
 import java.util.*;
 
 import databaseConnectivity.dbConnection;
