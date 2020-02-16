@@ -191,8 +191,7 @@
         <div class="content">
             <div class="container-fluid">
             
-        <%= AgriculturalSpecialistHTML.displayNotices("Hello World", "long strings works too", "2020") %>
-		<%= AgriculturalSpecialistHTML.displayNotices("Hello mars", "greetings", "2050") %>
+        
 		
 			</div>
 		</div>
