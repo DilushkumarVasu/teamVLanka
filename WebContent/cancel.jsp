@@ -1,20 +1,17 @@
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.Statement"%>
-<%@ page import="java.sql.Connection"%>
+
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
+	<link href="css/cancel.css" rel="stylesheet" type="text/css" media="all" />
 	<title>farmer user page</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-
+    
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -36,31 +33,7 @@
 
 </head>
 <body>
-<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
-response.setHeader("pragma","no-cache");
-response.setHeader("Expires","0");
-if(session.getAttribute("username")==null){
-	response.sendRedirect("f_login.jsp");
-}
 
-%>
-
-<%
-		//String id = request.getParameter("userid");
-		String driver = "com.mysql.jdbc.Driver";
-		String connectionUrl = "jdbc:mysql://localhost:3306/";
-		String database = "vlanka";
-		String userid = "root";
-		String password = "";
-		try {
-		Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-		}
-		Connection connection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-%>
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
@@ -85,19 +58,6 @@ if(session.getAttribute("username")==null){
                     </a>
                 </li>
                 
-              
-				
-                <!--<li class="dropdown menu__item">
-								<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown">
-								<i class="pe-7s-note2"></i>
-								<b class="caret"></b>
-								<p>Activities</p></a>
-								<ul class="dropdown-menu agile_short_dropdown">
-									<li><a href="f_ques.jsp">Question</a></li>
-									<li><a href="f_resource.jsp">Resource</a></li>
-								</ul>
-								
-				</li>-->
 				
 				<li>
                     <a href="f_ques.jsp">
@@ -108,7 +68,7 @@ if(session.getAttribute("username")==null){
                 
                 
                 
-				<li class="active">
+				<li>
                     <a href="f_resource.jsp">
                         <i class="pe-7s-arc" style="font-size:30px"></i>
                         <p>Resources</p>
@@ -128,10 +88,16 @@ if(session.getAttribute("username")==null){
                         <p>Notifications</p>
                     </a>
                 </li>
-				<li>
-                    <a href="#">
+				<li class="active">
+                    <a href="cancel.jsp">
                         <i class="pe-7s-delete-user"></i>
                         <p>Account Cancel</p>
+                    </a>
+                </li>
+                <li >
+                    <a href="field.jsp">
+                        <i class="pe-7s-check"></i>
+                        <p>field Update</p>
                     </a>
                 </li>
             </ul>
@@ -148,40 +114,10 @@ if(session.getAttribute("username")==null){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="f_resource.jsp">Resources</a>
+                    <a class="navbar-brand" href="cancel.jsp">Account Cancel</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                   <!-- <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>-->
+                   
 
                     <ul class="nav navbar-nav navbar-right">
                        
@@ -203,62 +139,37 @@ if(session.getAttribute("username")==null){
                     <div class="col-md-12">
                         <div class="card">
 							<div class="content">
-                                <div class="row">
-								<div class="col-md-4">
-									<h3>Available Resources</h3>
-								</div>
-								<div class="col-md-4">
-									<form action="" method="get">
-										<input type="text" class="form-control" name="q" placeholder="search here..."/>	
-									</form>
-								</div>
-								<!--<div class="col-md-4 text-right">
-									<a href=Admin_signUp.jsp class="btn btn-primary"><i class="pe-7s-add-user"></i> Add new Admin</a>
-								</div>-->
-								</div>
-                                	<table class="table table-bordered table-striped table-hover">
-										<thead>
-											<tr>
-											<th>Advertisement Id</th>
-											<th>Price</th>
-											<th>Details</th>
-											<th>User Name</th>
-											<th>Contact Number</th>
-											<!--<th class="text-center">Action</th>-->
-											</tr>
-										</thead>
-									<tbody>
-				<%
-			try{
-			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-			statement=connection.createStatement();
-			String query=request.getParameter("q");
-			String sql;
-			if(query!=null){
-				sql="select * from postadd where addid like '%"+query+"%' or price like '%"+query+"%' or details like '%"+query+"%' or username like '%"+query+"%' or tele_number like '%"+query+"%'";
-			}else{
-				sql="select * from postadd";
-			};
-			resultSet = statement.executeQuery(sql);
-			while(resultSet.next()){
-			%>
-			<tr>
-			<td><%=resultSet.getString("addid") %></td>
-			<td><%=resultSet.getString("price") %></td>
-			<td><%=resultSet.getString("details") %></td>
-			<td><%=resultSet.getString("username") %></td>
-			<td><%=resultSet.getString("tele_number") %></td>
-			</tr>
-			<%
-			}
-			connection.close();
-			} catch (Exception e) {
-			e.printStackTrace();
-			}
-			%>
+                               <!-- <div class="row">-->
+									<!----- form starting point ------>
+									<h3>Fill the Form</h3>
 
-									</tbody>
-								</table>
+
+										<form action="remove" method="post">
+										  <label for="user_id">User Id</label>
+										  <input type="text" id="user_id" name="user_id" value="${nic}" readonly>
+										
+										  <label for="date">Date</label>
+										  <input type="text" id="date" name="date" value="<%= (new java.util.Date()).toLocaleString()%>" readonly >
+										
+										  <label for="type">User Type</label>
+										  <select id="type" name="user_type">
+										    <option value="Farmer">Farmer</option>
+										    <option value="Landowner">Landowner</option>
+										    <option value="Agricultural Specialist">Agricultural Specialist</option>
+										    <option value="Resource Collector">Resource Collector</option>
+										     <option value="Admin">Admin</option>
+										  </select>
+										
+										  <label for="request">Request</label>
+										  <input type="text" id="request" name="request" value="Cance my user account" readonly>
+										
+										  <input type="submit" value="Submit">
+										</form>
+										
+
+									<!-- --------------------------- -->
+								
+                                	
                                </div>
 								
                                 
@@ -278,7 +189,8 @@ if(session.getAttribute("username")==null){
 
 
 </body>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--   Core JS Files   -->
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>

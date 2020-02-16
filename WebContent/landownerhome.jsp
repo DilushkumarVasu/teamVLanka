@@ -232,24 +232,27 @@
 		</tr>
 	</thead>
 	<tbody>
-				<%
+			<%
 			try{
 			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 			statement=connection.createStatement();
 			String sql ="select * from postadd";
 			resultSet = statement.executeQuery(sql);
+
 			while(resultSet.next()){
 			%>
+			
 			<tr>
-			<td><%=resultSet.getString("addid") %></td>
+			<td><%=resultSet.getString("addid")%> </td>
 			<td><%=resultSet.getString("username") %></td>
 			<td><%=resultSet.getString("price") %></td>
 			<td><%=resultSet.getString("details") %></td>
 			<td><%=resultSet.getString("tele_number") %></td>
+			
 			<td>
-				<form action="viewadd" method="get">
+				<form action="viewAdd" method="get">
                 <input type="hidden" name="addId" value="${resultset.addid}" />
-                <input type="submit" value="VIew Add"  class="btn btn-warning" name="viewadd">
+                <input type="submit" value="ViewAdd"  class="btn btn-warning" name="viewAdd">
             </form>
 			
 		

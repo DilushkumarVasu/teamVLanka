@@ -40,9 +40,9 @@
 	response.setHeader("pragma", "no-cache");
 	response.setHeader("Expires", "0");
 	if(session.getAttribute("username")==null)
-		response.sendRedirect("l_login.jsp");
+	response.sendRedirect("l_login.jsp");
 %>
-
+<%String id=request.getParameter("d"); %>
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
@@ -63,7 +63,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li >
+                <li>
                     <a href="user.jsp">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
@@ -173,7 +173,7 @@
                                 <li class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                               </ul>
-                        </li>	
+                        </li>
                         <li>
                             <a href="lLogout">
                                 <p>Log out</p>
@@ -192,10 +192,10 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Post New Add</h4>
+                                <h4 class="title">Edit Add</h4>
                             </div>
                             <div class="content">
-                                <form class = "box" action= "postadd" method="post" enctype="multipart/form-data">
+                                <form class = "box" action='updateAdd.jsp?i' method="post">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -217,29 +217,32 @@
                                         </div>
                                     </div>
 
+                                    
+                                    
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
                                                 <input type="text" name="address" class="form-control" placeholder="Home Address" value="${address}" readonly>
                                             </div>
-                                            
-                                    
-                                            </div>
                                         </div>
+                                    </div>
+            
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Telephone number</label>
                                                 <input type="text" name="tele" class="form-control" placeholder="Telephone number" value="${tele}" required="required">
                                             </div>
                                         </div>
-                                    </div>
 
+
+
+                                    
                                     <div class="row">
                                         <div class="col-md-12">
                                         <div class="form-group">
                                                 <label>Price</label>
+                                                
                                                 <input type="text" name="price" class="form-control" placeholder="Rs." value="" required="required">
                                             </div>
                                             
@@ -275,8 +278,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-				                  <div class="row">
+                                    <div class="row">
 									<label class="label col-md-0 control-label" for="file">Choose Image</label>
 				                            
 				                            <div class="value">
@@ -291,14 +293,12 @@
 				                                <div class="label--desc"><font color ="white">Upload your Image</font></div>
 				                            </div>
 				                  </div>
-									<a href="LviewAdd.jsp" class="btn btn -success">Previous Adds</a>	
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Post Add</button>
-                          	
+				                  
+
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Add</button>
                                     <div class="clearfix"></div>
                                 </form>
-                                
                             </div>
-                            
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -392,3 +392,5 @@
 	<script src="assets/js/demo.js"></script>
 
 </html>
+
+
