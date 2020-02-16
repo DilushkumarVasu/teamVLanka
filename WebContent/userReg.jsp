@@ -181,52 +181,74 @@ if(session.getAttribute("a_id")==null){
 										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 										statement=connection.createStatement();
 										String sql;
-										sql="select count(nic) from farmer"; 
+										sql="select * from cntfarmer"; 
 										resultSet = statement.executeQuery(sql);
+										while(resultSet.next()){
 										%>
+										
 										<tr class="text-center">
 											<td>Farmer</td>
-											<td></td>
+											<td><%=resultSet.getString("Farmer") %></td>
 											<td class="text-center">
 												<a href="f_signUp.jsp" class="btn btn-primary">Register</a>
 											</td>
 										</tr>
+										<%} %>
 										</tbody>
 										<tbody>
+										<%
+										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+										statement=connection.createStatement();
+										String data;
+										data="select * from cntland"; 
+										resultSet = statement.executeQuery(data);
+										while(resultSet.next()){
+										%>
 										<tr class="text-center">
 											<td>Landowner</td>
-											<td></td>
+											<td><%=resultSet.getString("Land") %></td>
 											<td class="text-center">
 												<a href="l_signUp.jsp" class="btn btn-primary">Register</a>
 											</td>
 										</tr>
+										<%} %>
 										</tbody>
+										
 										<tbody>
-										<tr class="text-center">
-											<td>Data Collecting Agent</td>
-											<td></td>
-											<td class="text-center">
-												<a href="#" class="btn btn-primary">Register</a>
-											</td>
-										</tr>
-										</tbody>
-										<tbody>
+										<%
+										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+										statement=connection.createStatement();
+										String data2;
+										data2="select * from cntagri"; 
+										resultSet = statement.executeQuery(data2);
+										while(resultSet.next()){
+										%>
 										<tr class="text-center">
 											<td>Agricultural Specialist</td>
-											<td></td>
+											<td><%=resultSet.getString("Agri") %></td>
 											<td class="text-center">
 												<a href="AgrSpecialistRegister.jsp" class="btn btn-primary">Register</a>
 											</td>
 										</tr>
+										<%} %>
 										</tbody>
 										<tbody>
+										<%
+										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+										statement=connection.createStatement();
+										String data3;
+										data3="select * from cntres"; 
+										resultSet = statement.executeQuery(data3);
+										while(resultSet.next()){
+										%>
 										<tr class="text-center">
 											<td>Resource Collector</td>
-											<td></td>
+											<td><%=resultSet.getString("Resource") %></td>
 											<td class="text-center">
 												<a href="RsrcCollectRegister.jsp" class="btn btn-primary">Register</a>
 											</td>
 										</tr>
+										<%} %>
 										</tbody>
 							</table>
                                </div>
