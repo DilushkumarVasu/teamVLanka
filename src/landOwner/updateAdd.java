@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 
 import landOwner.dao.lOwnersignup;
+import landOwner.dao.updateAdddao;
 
 
 @WebServlet("/updateAdd")
@@ -21,18 +22,17 @@ public class updateAdd extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		//String pass=request.getParameter("pass");
+		String addid =request.getParameter("id");
 		String email=request.getParameter("email");
 		String uname = request.getParameter("uname");
 		String status=request.getParameter("status");
 		String tele=request.getParameter("tele");
 		String address=request.getParameter("address");
-		String gender=request.getParameter("gender");
-		
-		lOwnersignup dao=new lOwnersignup();
+		System.out.println(addid);
+		updateAdddao dao=new updateAdddao();
 		
 
-		if(dao.update(uname, email,status,tele,address,gender)) { 
+		if(dao.update(uname, email,status,tele)) { 
 			
 
 			

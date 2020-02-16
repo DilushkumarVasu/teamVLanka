@@ -55,12 +55,12 @@
 		ResultSet resultSet = null;
 %>
 
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="#B7950B" data-image="assets/img/sidebar-5.jpg">
 
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="" class="simple-text">
+                <a href="index.html" class="simple-text">
                   	<img alt="" src="images/logo.png" style="width:250px;height:70px;"> 
                 </a>
             </div>
@@ -149,12 +149,7 @@
                                 <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
+
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -181,14 +176,7 @@
 								<div class="col-md-4">
 									<h3>Add Details</h3>
 								</div>
-								<div class="col-md-4">
-									<form action="" method="get">
-										<input type="text" class="form-control" name="q" placeholder="search here..."/>	
-									</form>
-								</div>
-								<div class="col-md-4 text-right">
-									<a href=Admin_signUp.jsp class="btn btn-primary"><i class="pe-7s-add-user"></i> Add new Admin</a>
-								</div>
+
 								</div>
                                 	<table class="table table-bordered table-striped table-hover">
 										<thead>

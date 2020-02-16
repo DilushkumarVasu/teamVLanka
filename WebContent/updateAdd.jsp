@@ -42,16 +42,16 @@
 	if(session.getAttribute("username")==null)
 	response.sendRedirect("l_login.jsp");
 %>
-<%String id=request.getParameter("d"); %>
+
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="#B7950B" data-image="assets/img/sidebar-5.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="index.html" class="simple-text">
                    <img alt="" src="images/logo.png" style="width:250px;height:70px;">
                 </a>
             </div>
@@ -195,12 +195,12 @@
                                 <h4 class="title">Edit Add</h4>
                             </div>
                             <div class="content">
-                                <form class = "box" action='updateAdd.jsp?i' method="post">
+                                <form class = "box" action='updateAdd' method="post">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
+                                                <input type="text" class="form-control" disabled placeholder="Company" value="${id}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -242,7 +242,7 @@
                                         <div class="col-md-12">
                                         <div class="form-group">
                                                 <label>Price</label>
-                                                
+                                               
                                                 <input type="text" name="price" class="form-control" placeholder="Rs." value="" required="required">
                                             </div>
                                             

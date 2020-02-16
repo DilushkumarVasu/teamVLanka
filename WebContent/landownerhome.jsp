@@ -65,7 +65,7 @@
 %>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="#B7950B" data-image="assets/img/sidebar-5.jpg">
 
     <!--
 
@@ -76,7 +76,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="" class="simple-text">
+                <a href="index.html" class="simple-text">
                   	<img alt="" src="images/logo.png" style="width:250px;height:70px;"> 
                 </a>
             </div>
