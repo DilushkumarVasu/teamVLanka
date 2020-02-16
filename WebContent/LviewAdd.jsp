@@ -36,10 +36,7 @@
 
 </head>
 <body>
-<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
-if(session.getAttribute("a_id")==null){
-	response.sendRedirect("Admin_login.jsp");
-}%>
+
 
 <%
 		//String id = request.getParameter("userid");
@@ -60,12 +57,6 @@ if(session.getAttribute("a_id")==null){
 
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
-    <!--
-
-        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-        Tip 2: you can also add an image using data-image tag
-
-    -->
 
     	<div class="sidebar-wrapper">
             <div class="logo">
@@ -75,7 +66,7 @@ if(session.getAttribute("a_id")==null){
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="landownerhome.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
@@ -131,7 +122,7 @@ if(session.getAttribute("a_id")==null){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="landownerhome	.jsp">Landowner</a>
+                    <a class="navbar-brand" href="landownerhome.jsp">Landowner</a>
                 </div>
                 <div class="collapse navbar-collapse">
                    <ul class="nav navbar-nav navbar-left">
@@ -188,7 +179,7 @@ if(session.getAttribute("a_id")==null){
 							<div class="content">
                                 <div class="row">
 								<div class="col-md-4">
-									<h3>Admin Details</h3>
+									<h3>Add Details</h3>
 								</div>
 								<div class="col-md-4">
 									<form action="" method="get">

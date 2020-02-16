@@ -42,7 +42,7 @@
 	if(session.getAttribute("username")==null)
 	response.sendRedirect("l_login.jsp");
 %>
-
+<%String id=request.getParameter("d"); %>
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
@@ -63,13 +63,13 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="user.jsp">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="postAdd.jsp">
                         <i class="pe-7s-note2"></i>
                         <p>Post Add</p>
@@ -192,10 +192,10 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Edit Profile</h4>
+                                <h4 class="title">Edit Add</h4>
                             </div>
                             <div class="content">
-                                <form class = "box" action= "update" method="post">
+                                <form class = "box" action='updateAdd.jsp?i' method="post">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -212,34 +212,40 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" name="email" class="form-control" placeholder="Email" value ="${email}" required>
+                                                <input type="email" name="email" class="form-control" placeholder="Email" value ="${email}" readonly>
                                             </div>
                                         </div>
                                     </div>
 
+                                    
+                                    
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Gender</label>
-                                                <input type="radio" name="gender" value="male" required><small>Male</small>
-												<input type="radio" name="gender" value="female" required><small>Female</small>
-												<input type="radio" name="gender" value="other" required><small>Other</small>
+                                                <label>Address</label>
+                                                <input type="text" name="address" class="form-control" placeholder="Home Address" value="${address}" readonly>
                                             </div>
                                         </div>
+                                    </div>
+            
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Telephone number</label>
                                                 <input type="text" name="tele" class="form-control" placeholder="Telephone number" value="${tele}" required="required">
                                             </div>
                                         </div>
-                                    </div>
 
+
+
+                                    
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" name="address" class="form-control" placeholder="Home Address" value="${address}" required="required">
+                                        <div class="form-group">
+                                                <label>Price</label>
+                                                
+                                                <input type="text" name="price" class="form-control" placeholder="Rs." value="" required="required">
                                             </div>
+                                            
                                         </div>
                                     </div>
 
@@ -272,8 +278,24 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+									<label class="label col-md-0 control-label" for="file">Choose Image</label>
+				                            
+				                            <div class="value">
+				                                <div class="input-group js-input-file">
+				                                	<div class="col-md-1 pt-5">
+				                                		<div class="form-control">
+				                                    		<input class="input-file" type="file" name="pdf"  class="file-upload" id="file" >
+				                            
+				                                    	</div>
+				                                    </div>
+				                                </div>
+				                                <div class="label--desc"><font color ="white">Upload your Image</font></div>
+				                            </div>
+				                  </div>
+				                  
 
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Add</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -370,3 +392,5 @@
 	<script src="assets/js/demo.js"></script>
 
 </html>
+
+

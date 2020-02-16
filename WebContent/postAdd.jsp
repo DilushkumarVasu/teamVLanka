@@ -291,7 +291,7 @@
 				                                <div class="label--desc"><font color ="white">Upload your Image</font></div>
 				                            </div>
 				                  </div>
-									<a href="LviewAdd.jsp" class="btn btn-secondary btn-fill">Previous Adds</a>	
+									<a href="LviewAdd.jsp" class="btn btn -success">Previous Adds</a>	
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Post Add</button>
                           	
                                     <div class="clearfix"></div>
