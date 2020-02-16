@@ -145,10 +145,9 @@ public class AgrSpecialist {
 //			notice.Notice[] notices;
 			List<notice.Notice> notices = new ArrayList<notice.Notice>();
 //			
-			int i = 0;
-			while(rs.next()) {
+			
+			while(rs.next())
 				notices.add(new notice.Notice(rs.getString("title"), rs.getString("body"), rs.getString("time")));
-			}
 //			
 			con.close();
 			return notices;
@@ -158,5 +157,28 @@ public class AgrSpecialist {
 		return null;
 	}
 	
+	public static List<question.Question> getUnansweredQuestions(){
+		try {
+			Connection con = dbConnection.getConnection();
+			
+			String sql = "SELECT * FROM Questions LEFT JOIN Answers ON Questions.id = Answers.question WHERE Answers.question IS NULL;";
+			PreparedStatement pst = con.prepareStatement(sql);
+			//pst.setString(1, nic);
+			
+			ResultSet rs = pst.executeQuery();
+			List<question.Question> questions = new ArrayList<question.Question>();
+
+			while(rs.next())
+				questions.add(new question.Question(rs.getInt("id"), rs.getString("nic"), rs.getString("title"), rs.getString("body"), rs.getString("date")));
+			
+			con.close();
+			return questions;
+
+		}
+		catch(Exception e) {
+		}
+		return null;
+
+	}
 }
  
