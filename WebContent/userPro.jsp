@@ -26,7 +26,7 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
@@ -85,7 +85,7 @@ if(session.getAttribute("username")==null){
 				</li>-->
 				<li>
                     <a href="f_ques.jsp">
-                        <i class="fa fa-question-circle" style="font-size:30px"></i>
+                        <i class="pe-7s-help1"></i>
                         <p>Question</p>
                     </a>
                 </li>
@@ -109,6 +109,18 @@ if(session.getAttribute("username")==null){
                         <p>Notifications</p>
                     </a>
                 </li>
+                <li>
+                    <a href="#">
+                        <i class="pe-7s-delete-user"></i>
+                        <p>Account Cancel</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="field.jsp">
+                        <i class="pe-7s-check"></i>
+                        <p>field Update</p>
+                    </a>
+                </li>
                 </ul>
     	</div>
     </div>
@@ -129,12 +141,10 @@ if(session.getAttribute("username")==null){
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="Logout">
-                                <p>Log out</p>
+                            <a href="Logout" class="btn btn-info btn-lg">
+                                <span class="glyphicon glyphicon-off"></span>Log out
                             </a>
-                            <!--<form action="Logout">
-                            	<input type="submit" value="Logout">
-                            </form>-->
+            
                         </li>
 						<li class="separator hidden-lg"></li>
                     </ul>

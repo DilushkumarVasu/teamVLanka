@@ -1,3 +1,7 @@
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.Connection"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -40,6 +44,23 @@ if(session.getAttribute("username")==null){
 }
 
 %>
+
+<%
+		//String id = request.getParameter("userid");
+		String driver = "com.mysql.jdbc.Driver";
+		String connectionUrl = "jdbc:mysql://localhost:3306/";
+		String database = "vlanka";
+		String userid = "root";
+		String password = "";
+		try {
+		Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+		}
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+%>
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
@@ -80,7 +101,7 @@ if(session.getAttribute("username")==null){
 				
 				<li>
                     <a href="f_ques.jsp">
-                        <i class="fa fa-question-circle" style="font-size:30px"></i>
+                        <i class="pe-7s-help1"></i>
                         <p>Question</p>
                     </a>
                 </li>
@@ -107,12 +128,18 @@ if(session.getAttribute("username")==null){
                         <p>Notifications</p>
                     </a>
                 </li>
-				<!--<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
+				<li>
+                    <a href="cancel.jsp">
+                        <i class="pe-7s-delete-user"></i>
+                        <p>Account Cancel</p>
                     </a>
-                </li>-->
+                </li>
+                <li>
+                    <a href="field.jsp">
+                        <i class="pe-7s-check"></i>
+                        <p>field Update</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>
@@ -127,18 +154,47 @@ if(session.getAttribute("username")==null){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="farmer.jsp">Home</a>
+                    <a class="navbar-brand" href="Farmer.jsp">Home</a>
                 </div>
                 <div class="collapse navbar-collapse">
+                   <!-- <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+									<p class="hidden-lg hidden-md">
+										5 Notifications
+										<b class="caret"></b>
+									</p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+								<p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
+                    </ul>-->
 
                     <ul class="nav navbar-nav navbar-right">
+                       
                         <li>
-                            <a href="Logout">
-                                <p>Log out</p>
+                            <a href="Logout" class="btn btn-info btn-lg">
+                                <span class="glyphicon glyphicon-off"></span>Log out
                             </a>
-                            <!--<form action="Logout">
-                            	<input type="submit" value="Logout">
-                            </form>-->
                         </li>
 						<li class="separator hidden-lg"></li>
                     </ul>
@@ -146,14 +202,69 @@ if(session.getAttribute("username")==null){
             </div>
         </nav>
 
- <div class="content">
+
+        <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
 							<div class="content">
-                                
-                                	advertisement from landowner
+                                <div class="row">
+								<div class="col-md-4">
+									<h3>Landowners' Advertisement Details</h3>
+								</div>
+								<div class="col-md-4">
+									<form action="" method="get">
+										<input type="text" class="form-control" name="q" placeholder="search here..."/>	
+									</form>
+								</div>
+								<!--<div class="col-md-4 text-right">
+									<a href=Admin_signUp.jsp class="btn btn-primary"><i class="pe-7s-add-user"></i> Add new Admin</a>
+								</div>-->
+								</div>
+                                	<table class="table table-bordered table-striped table-hover">
+										<thead>
+											<tr>
+											<th>Advertisement Id</th>
+											<th>Price</th>
+											<th>Details</th>
+											<th>User Name</th>
+											<th>Contact Number</th>
+											<!--<th class="text-center">Action</th>-->
+											</tr>
+										</thead>
+									<tbody>
+				<%
+			try{
+			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+			statement=connection.createStatement();
+			String query=request.getParameter("q");
+			String sql;
+			if(query!=null){
+				sql="select * from postadd where addid like '%"+query+"%' or price like '%"+query+"%' or details like '%"+query+"%' or username like '%"+query+"%' or tele_number like '%"+query+"%'";
+			}else{
+				sql="select * from postadd";
+			};
+			resultSet = statement.executeQuery(sql);
+			while(resultSet.next()){
+			%>
+			<tr>
+			<td><%=resultSet.getString("addid") %></td>
+			<td><%=resultSet.getString("price") %></td>
+			<td><%=resultSet.getString("details") %></td>
+			<td><%=resultSet.getString("username") %></td>
+			<td><%=resultSet.getString("tele_number") %></td>
+			</tr>
+			<%
+			}
+			connection.close();
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+			%>
+
+									</tbody>
+								</table>
                                </div>
 								
                                 
@@ -172,43 +283,9 @@ if(session.getAttribute("username")==null){
 
 
 
-        <!--<footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer>-->
-
-  
-
-
 </body>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--   Core JS Files   -->
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
