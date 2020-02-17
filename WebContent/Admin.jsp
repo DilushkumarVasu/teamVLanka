@@ -63,13 +63,9 @@ if(session.getAttribute("a_id")==null){
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-<<<<<<< HEAD
-                <a href="index.html" class="simple-text">
-                    <img alt="" src="images/logo.png" style="width:250px;height:70px;">
-=======
+
                 <a href="#" class="simple-text">
-                    <img alt="" src="images/logo.png" style="width:240px;height:100px;">
->>>>>>> 8959554dc6e405791a523628692a84f3889517f6
+                    <img alt="" src="images/logo.png" style="width:250px;height:70px;">
                 </a>
             </div>
 
@@ -101,24 +97,18 @@ if(session.getAttribute("a_id")==null){
                     </a>
                 </li>
                 
-               <!--<li class="dropdown menu__item">
-					<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown">
-					<i class="pe-7s-note2"></i>
-					<b class="caret"></b>
-					<p>Activities</p></a>
-					<ul class="dropdown-menu agile_short_dropdown">
-						<li><a href="#">User Registration</a></li>
-						<li><a href="#">User Details</a></li>
-						<li><a href="RsrcCollectRegister.jsp">Add a Resource Collector</a></li>
-					</ul>
-								
-				</li>-->
-				
-				
                 <li>
+                    <a href="viewCancel.jsp">
+                        <i class="pe-7s-delete-user"></i>
+                        <p>Account Cancel</p>
+                    </a>
+                </li>
+				
+				
+                 <li>
                     <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
+                        <i class="pe-7s-graph"></i>
+                        <p>Report</p>
                     </a>
                 </li>
                 <li>
