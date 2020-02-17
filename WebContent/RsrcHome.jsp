@@ -70,7 +70,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="index.html" class="simple-text">
                   	<img alt="" src="images/logo.png" style="width:240px;height:100px;"> 
                 </a>
             </div>
@@ -94,7 +94,7 @@
                         <i class="pe-7s-user"></i>
                         <p>My Profile</p>
                     </a>
-                </li>       
+                </li>        
             </ul>
     	</div>
     </div>
@@ -202,6 +202,7 @@
 			<td><%=resultSet.getString("user_type") %></td>
 			<td><%=resultSet.getString("telephone") %></td>
 	    	<td><%=resultSet.getBoolean("status") %></td>
+	    	<td><%=resultSet.getBlob("content") %></td>
 			<td class="text-center">
 				<a href class="btn btn-warning">View Add</a>
 				

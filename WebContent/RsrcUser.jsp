@@ -50,7 +50,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="index.html" class="simple-text">
                    <img alt="" src="images/logo.png" style="width:240px;height:100px;">
                 </a>
             </div>

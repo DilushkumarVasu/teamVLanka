@@ -70,7 +70,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="index.html" class="simple-text">
                   	<img alt="" src="images/logo.png" style="width:240px;height:100px;"> 
                 </a>
             </div>
@@ -183,7 +183,7 @@
 			<th class="text-center">User ID</th>
 			<th class="text-center">User Type</th>
 			<th class="text-center">Contact Number</th>
-			<th class="text-center">View Ad</th>
+			<th class="text-center">Ad Content</th>
 			<th class="text-center">Approve</th>
 		</tr>
 	</thead>
@@ -202,9 +202,12 @@
 			<td><%=resultSet.getString("user_id") %></td>
 			<td><%=resultSet.getString("user_type") %></td>
 			<td><%=resultSet.getString("telephone") %></td>
-	    	<td><%=resultSet.getBlob("content") %></td>
+	    	<td class="text-center">
+				<a href ='viewfulladd.jsp?d=<%=resultSet.getBlob("content")%>'class="btn btn-warning">View Ad</a>
+
 			<td class="text-center">
-				<a href class="btn btn-warning">View Add</a>
+				<a href ='Rapprove.jsp?d=<%=resultSet.getString("adver_id")%>'class="btn btn-warning">Approve</a>
+				<a href ='Delapprove.jsp?d=<%=resultSet.getString("adver_id")%>' class="btn btn-danger">Delete</a>
 				
 			</td>
 			</tr>

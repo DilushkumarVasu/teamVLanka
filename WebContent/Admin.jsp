@@ -64,7 +64,7 @@ if(session.getAttribute("a_id")==null){
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    <img alt="" src="images/logo.png" style="width:250px;height:70px;">
+                    <img alt="" src="images/logo.png" style="width:240px;height:100px;">
                 </a>
             </div>
 
