@@ -1,8 +1,9 @@
+
 <%@page import="com.mysql.cj.protocol.Resultset"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="userTypes.AgrSpecialist"%> 
 
-<%
+<%/*
 	Class.forName("com.mysql.jdbc.Driver");
 	AgrSpecialist specialist = new AgrSpecialist();
 	ResultSet rs = specialist.getNotifications();
@@ -10,7 +11,7 @@
 	
 	//String[] Notifications = specialist.getNotifications();
 	
-	
+	*/
 %>
 
 <!doctype html>
@@ -208,7 +209,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h5></h5>
-                                <%
+                                <%/*
                                 		final String htmlFirstHalf = "<div class=\"alert alert-info alert-with-icon\" data-notify=\"container\"><button type=\"button\" aria-hidden=\"true\" class=\"close\">X—</button><span data-notify=\"icon\" class=\"pe-7s-bell\"></span><span data-notify=\"message\">";
                                 		final String htmlSecondHalf = "</span></div>";
                                 		
@@ -218,6 +219,8 @@
                                 			out.print(rs.getString("message"));
                                 			out.print(htmlSecondHalf);
                                 		}
+                                		
+                                		*/
                                	%>
                                 <!-- <div class="alert alert-info alert-with-icon" data-notify="container">
                                     <button type="button" aria-hidden="true" class="close">X—</button>
