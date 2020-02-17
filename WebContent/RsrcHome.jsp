@@ -171,7 +171,7 @@
 
                             <div class="header">
                                 <h4 class="title">Advertisements</h4>
-                                <p class="category">Posted by Farmers and Landowners</p>
+                                <p class="category">Posted by Landowners</p>
                             </div>
                             <div class="content">
    <table class="table table-bordered table-striped table-hover">
@@ -180,7 +180,6 @@
 			<th class="text-center">Advertisement ID</th>
 			<th class="text-center">Date</th>
 			<th class="text-center">User Name</th>
-			<th class="text-center">User Type</th>
 			<th class="text-center">Contact Number</th>
 			<th class="text-center">Ad Content</th>
 			<th class="text-center">Delete Ad</th>
@@ -199,7 +198,6 @@
 			<td><%=resultSet.getString("adver_id") %></td>
 			<td><%=resultSet.getString("date") %></td>
 			<td><%=resultSet.getString("username") %></td>
-			<td><%=resultSet.getString("user_type") %></td>
 			<td><%=resultSet.getString("telephone") %></td>
 			<td class="text-center">
 				<a href ='RsrcViewAdd.jsp?d=<%=resultSet.getBlob("content")%>'class="btn btn-warning">View</a>
