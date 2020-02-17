@@ -46,6 +46,8 @@ public class ques extends HttpServlet{
 			pst.setString(4, timeStamp);
 			
 			pst.execute();
+			
+			response.sendRedirect("f_ques.jsp");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
