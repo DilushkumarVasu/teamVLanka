@@ -71,18 +71,6 @@ if(session.getAttribute("username")==null){
                 </li>
                 
               
-				
-                <!--<li class="dropdown menu__item">
-					<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown">
-					<i class="pe-7s-note2"></i>
-					<b class="caret"></b>
-					<p>Activities</p></a>
-					<ul class="dropdown-menu agile_short_dropdown">
-						<li><a href="f_ques.jsp">Question</a></li>
-						<li><a href="f_resource.jsp">Resource</a></li>
-					</ul>
-								
-				</li>-->
 				<li>
                     <a href="f_ques.jsp">
                         <i class="pe-7s-help1"></i>
@@ -99,8 +87,8 @@ if(session.getAttribute("username")==null){
 				
 				<li>
                     <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
+                        <i class="pe-7s-graph"></i>
+                        <p>Report</p>
                     </a>
                 </li>
                 <li>
