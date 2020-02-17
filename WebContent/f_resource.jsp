@@ -102,9 +102,8 @@ if(session.getAttribute("username")==null){
                     </a>
                 </li>
 				
-				
 				<li>
-                    <a href="maps.html">
+                    <a href="report.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>Report</p>
                     </a>

@@ -1,17 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
+
+
+
+
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.Connection"%>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link href="css/cancel.css" rel="stylesheet" type="text/css" media="all" />
+
 	<title>farmer user page</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    
+
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -42,6 +52,22 @@ if(session.getAttribute("username")==null){
 
 %>
 
+<%
+		//String id = request.getParameter("userid");
+		String driver = "com.mysql.jdbc.Driver";
+		String connectionUrl = "jdbc:mysql://localhost:3306/";
+		String database = "vlanka";
+		String userid = "root";
+		String password = "";
+		try {
+		Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+		}
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+%>
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
@@ -66,7 +92,7 @@ if(session.getAttribute("username")==null){
                     </a>
                 </li>
                 
-				
+              
 				<li>
                     <a href="f_ques.jsp">
                         <i class="pe-7s-help1"></i>
@@ -83,7 +109,8 @@ if(session.getAttribute("username")==null){
                     </a>
                 </li>
 				
-				<li>
+				
+				<li class="active">
                     <a href="report.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>Report</p>
@@ -95,13 +122,13 @@ if(session.getAttribute("username")==null){
                         <p>Notifications</p>
                     </a>
                 </li>
-				<li class="active">
+				<li>
                     <a href="cancel.jsp">
                         <i class="pe-7s-delete-user"></i>
                         <p>Account Cancel</p>
                     </a>
                 </li>
-                <li >
+                <li>
                     <a href="field.jsp">
                         <i class="pe-7s-check"></i>
                         <p>field Update</p>
@@ -121,7 +148,7 @@ if(session.getAttribute("username")==null){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="cancel.jsp">Account Cancel</a>
+                    <a class="navbar-brand" href="Farmer.jsp">Home</a>
                 </div>
                 <div class="collapse navbar-collapse">
                    
@@ -146,30 +173,16 @@ if(session.getAttribute("username")==null){
                     <div class="col-md-12">
                         <div class="card">
 							<div class="content">
-                               <!-- <div class="row">-->
-									<!----- form starting point ------>
-									<h3>Resignation Form</h3>
-
-
-										<form action="remove" method="post">
-										  <label for="user_id">User Id</label>
-										  <input type="text" id="user_id" name="user_id" value="${nic}" readonly>
-										
-										  <label for="date">Date</label>
-										  <input type="text" id="date" name="date" value="<%= (new java.util.Date()).toLocaleString()%>" readonly >
-										
-										  <label for="type">User Type</label>
-										  <input type="text" id="type" name="user_type" value="Farmer" readonly>
-										
-										  <label for="request">Reason</label>
-										  <input type="text" id="request" name="request" required>
-										
-										  <input type="submit" value="Submit">
-										</form>
-										
-
-									<!-- --------------------------- -->
+                                <div class="row">
+									
+								<h1>Report of the field</h1>
+									<%response.setIntHeader("refresh",5); %>
+									<form id="form1" action="/chart">
+										<img src="chart" width="600" height="400" border="0">
+										<input type="button" onclick="refreshPage()" value="Refresh"/>
+									</form>
 								
+								</div>
                                 	
                                </div>
 								
@@ -190,8 +203,7 @@ if(session.getAttribute("username")==null){
 
 
 </body>
-	
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--   Core JS Files   -->
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -211,28 +223,13 @@ if(session.getAttribute("username")==null){
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
-
-	<!-- <script type="text/javascript">
-    	$(document).ready(function(){
-
-        	demo.initChartist();
-
-        	$.notify({
-            	icon: 'pe-7s-gift',
-            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-
-            },{
-                type: 'info',
-                timer: 4000
-            });
-
-    	});
-	</script> -->
-	
-	<!--<script>
-		alert("You are succesfully logged in to VLanka! Press OK to continue");  // display string message
-    </script>-->
+<script>
+	function refreshpage(){
+		document.forms.form1.submit();
+}
+</script>
 
 </html>
+
 
 
