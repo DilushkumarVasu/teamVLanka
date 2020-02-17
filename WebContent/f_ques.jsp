@@ -33,13 +33,12 @@
 	<link href="css/f_question.css" rel="stylesheet"/>
 </head>
 <body>
-<% /*response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
 response.setHeader("pragma","no-cache");
 response.setHeader("Expires","0");
 if(session.getAttribute("username")==null){
 	response.sendRedirect("f_login.jsp");
 }
-*/
 %>
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
