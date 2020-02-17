@@ -36,12 +36,17 @@
 
 </head>
 <body>
+
 <% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+response.setHeader("pragma","no-cache");
+response.setHeader("Expires","0");
 if(session.getAttribute("a_id")==null){
 	response.sendRedirect("Admin_login.jsp");
-}%>
+}
+%>
 
 <%
+		//String id = request.getParameter("userid");
 		String driver = "com.mysql.jdbc.Driver";
 		String connectionUrl = "jdbc:mysql://localhost:3306/";
 		String database = "vlanka";
@@ -57,12 +62,12 @@ if(session.getAttribute("a_id")==null){
 		ResultSet resultSet = null;
 %>
 
-
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
     	<div class="sidebar-wrapper">
             <div class="logo">
+
                 <a href="#" class="simple-text">
                     <img alt="" src="images/logo.png" style="width:250px;height:70px;">
                 </a>
@@ -89,20 +94,22 @@ if(session.getAttribute("a_id")==null){
                     </a>
                 </li>
                 
-                 <li class="active">
+                 <li>
                     <a href="ViewUser.jsp">
                         <i class="pe-7s-search"></i>
                         <p>Users' Details</p>
                     </a>
                 </li>
                 
-               <li>
+                <li>
                     <a href="viewCancel.jsp">
                         <i class="pe-7s-delete-user"></i>
                         <p>Account Cancel</p>
                     </a>
                 </li>
-				 <li>
+				
+				
+                 <li class="active">
                     <a href="adminReport.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>Report</p>
@@ -132,7 +139,8 @@ if(session.getAttribute("a_id")==null){
                     <a class="navbar-brand" href="Admin.jsp">Admin</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                   
+                  
+
                     <ul class="nav navbar-nav navbar-right">
                        
                         <li>
@@ -154,95 +162,17 @@ if(session.getAttribute("a_id")==null){
                         <div class="card">
 							<div class="content">
                                 <div class="row">
-								<div class="col-md-4">
-									<h3>View Users' Details</h3>
-								</div>
+								
+								<h1>Report of the field</h1>
+									<%response.setIntHeader("refresh",5); %>
+									<form id="form1" action="/chart">
+										<img src="chart" width="600" height="400" border="0">
+										<input type="button" onclick="refreshPage()" value="Refresh"/>
+									</form>
+								
 								
 								</div>
-                                	<table style="font-size:20px" class="table table-bordered table-striped table-hover">
-										<thead>
-											<tr>
-											<th class="text-center" style="font-size:20px">User Type</th>
-											<th class="text-center" style="font-size:20px">Count Of Users</th>
-											<th class="text-center" style="font-size:20px">Action</th>
-											</tr>
-										</thead>
-										
-										<tbody>
-										<%
-										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-										statement=connection.createStatement();
-										String sql;
-										sql="select * from cntfarmer"; 
-										resultSet = statement.executeQuery(sql);
-										while(resultSet.next()){
-										%>
-										
-										<tr class="text-center">
-											<td>Farmer</td>
-											<td><%=resultSet.getString("Farmer") %></td>
-											<td class="text-center">
-												<a href="FarmerView.jsp" class="btn btn-primary">View</a>
-											</td>
-										</tr>
-										<%} %>
-										</tbody>
-										<tbody>
-										<%
-										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-										statement=connection.createStatement();
-										String data;
-										data="select * from cntland"; 
-										resultSet = statement.executeQuery(data);
-										while(resultSet.next()){
-										%>
-										<tr class="text-center">
-											<td>Landowner</td>
-											<td><%=resultSet.getString("Land") %></td>
-											<td class="text-center">
-												<a href="LandownerView.jsp" class="btn btn-primary">View</a>
-											</td>
-										</tr>
-										<%} %>
-										</tbody>
-										
-										<tbody>
-										<%
-										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-										statement=connection.createStatement();
-										String data2;
-										data2="select * from cntagri"; 
-										resultSet = statement.executeQuery(data2);
-										while(resultSet.next()){
-										%>
-										<tr class="text-center">
-											<td>Agricultural Specialist</td>
-											<td><%=resultSet.getString("Agri") %></td>
-											<td class="text-center">
-												<a href="AgriView.jsp" class="btn btn-primary">View</a>
-											</td>
-										</tr>
-										<%} %>
-										</tbody>
-										<tbody>
-										<%
-										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-										statement=connection.createStatement();
-										String data3;
-										data3="select * from cntres"; 
-										resultSet = statement.executeQuery(data3);
-										while(resultSet.next()){
-										%>
-										<tr class="text-center">
-											<td>Resource Collector</td>
-											<td><%=resultSet.getString("Resource") %></td>
-											<td class="text-center">
-												<a href="ResourceCollView.jsp" class="btn btn-primary">View</a>
-											</td>
-										</tr>
-										<%} %>
-										</tbody>
-							</table>
+                                	
                                </div>
 								
                                 
@@ -280,22 +210,12 @@ if(session.getAttribute("a_id")==null){
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
+<script>
+	function refreshpage(){
+		document.forms.form1.submit();
+}
+</script>
 
-	<!-- <script type="text/javascript">
-    	$(document).ready(function(){
-
-        	demo.initChartist();
-
-        	$.notify({
-            	icon: 'pe-7s-gift',
-            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-
-            },{
-                type: 'info',
-                timer: 4000
-            });
-
-    	});
-	</script> -->
+	
 
 </html>

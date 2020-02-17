@@ -45,7 +45,7 @@
 	</div>
 	<div class="input-group">
 		<label>Phone</label>
-		<input type="text" name="phone" Placeholder="Enter phone number" required>
+		<input type="tel" pattern='^\+?\d{10,10}' name="phone" Placeholder="Enter phone number" required>
 	</div>
 	<div class="input-group">
 		<label>Email</label>
