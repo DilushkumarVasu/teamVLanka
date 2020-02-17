@@ -1,11 +1,20 @@
 <!DOCTYPE html>
+<%@page import="question.Question"%>
+<%@page import="com.sun.glass.ui.Size"%>
+<%@page import="userTypes.AgrSpecialist"%>
+<%@page import="notice.*"%>
+<%@page import="htmlBlocks.AgriculturalSpecialistHTML"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+
+
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>Dashboard</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -45,14 +54,14 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="index.html" class="simple-text">
-                    Creative Tim
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Dash Board 
                 </a>
             </div>
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="AgrSpecialistDashboard.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
@@ -70,33 +79,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="reports.html">
-                        <i class="pe-7s-note2"></i>
-                        <p>Answers</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
+                    <a href="AllQuestions.jsp">
+                        <i class="pe-7s-user"></i>
+                        <p>All question</p>
                     </a>
                 </li>
             </ul>
@@ -117,27 +102,27 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-globe"></i>
                                     <b class="caret hidden-lg hidden-md"></b>
 									<p class="hidden-lg hidden-md">
-										5 Notifications
+									<%
+										List<question.Question> questions = AgrSpecialist.getUnansweredQuestions();
+										int nQuestions = questions.size();
+									%>
 										<b class="caret"></b>
 									</p>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
+                              <%
+                              		if(nQuestions == 0)
+                              			out.print("<li><a href=\"#\">No new notifications</a></li>");
+                              		else{
+                              			for(question.Question q : questions)
+                              				out.print("<li><a href=\"#\">New question: " + q.getTitle() +"</a></li>");
+                              		}
+                              %>
                               </ul>
                         </li>
                         <li>
@@ -153,24 +138,6 @@
                            <a href="">
                                <p>Account</p>
                             </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
                         </li>
                         <li>
                             <a href="#">
