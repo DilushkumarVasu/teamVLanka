@@ -42,6 +42,7 @@
 	if(session.getAttribute("username")==null)
 	response.sendRedirect("l_login.jsp");
 %>
+<% String id =request.getParameter("d"); %>
 
 <div class="wrapper">
     <div class="sidebar" data-color="#B7950B" data-image="assets/img/sidebar-5.jpg">

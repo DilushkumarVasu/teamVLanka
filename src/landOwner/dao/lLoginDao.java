@@ -128,6 +128,29 @@ public String getstatus(String uname,String pass) {
 		
 		return "no customer found";
 	}
+
+public String getnic(String uname,String pass) {
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection(url,username,password);
+		PreparedStatement st=con.prepareStatement(sql);
+		st.setString(1, uname);
+		st.setString(2, pass);
+		ResultSet rs=st.executeQuery();
+		if(rs.next()) {
+			
+			return rs.getString(1);
+		}
+		
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+	}
+	
+	
+	return "no customer found";
+}
 		
 	}
 

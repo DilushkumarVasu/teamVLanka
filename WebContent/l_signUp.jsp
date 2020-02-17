@@ -78,7 +78,7 @@
 				<div class="row">
 					<label class="label col-md-2 control-label">Phone</label>
 					<div class="col-md-10">
-						<input type="tel" class="form-control" name="telenum" placeholder="Phone Number" required>
+						<input type="tel" pattern='^\+?\d{10,10}' class="form-control" name="telenum" placeholder="Phone Number" required>
 					</div>
 				</div>
 				

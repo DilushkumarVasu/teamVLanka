@@ -31,6 +31,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
+			session.setAttribute("nic", dao.getnic(uname, encPass));
 			session.setAttribute("email",dao.getemail(uname, encPass));
 			session.setAttribute("tele",dao.gettele(uname, encPass));
 			session.setAttribute("address",dao.getadd(uname, encPass));
