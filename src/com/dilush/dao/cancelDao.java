@@ -12,7 +12,7 @@ public class cancelDao {
 	String username="root";
 	String password="";
 	
-	public boolean insert(String user_id, String date, String user_type,String request) { 
+	public boolean insert(String user_id, String date, String type,String request) { 
 		try {
 			
 			
@@ -24,7 +24,7 @@ public class cancelDao {
 				
 				stat.setString(1,user_id);
 				stat.setString(2,date);
-				stat.setString(3,user_type);
+				stat.setString(3,type);
 				stat.setString(4,request);
 				
 				

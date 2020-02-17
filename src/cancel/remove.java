@@ -20,7 +20,7 @@ public class remove extends HttpServlet{
 		
 		String user_id=request.getParameter("user_id");
 		String date=request.getParameter("date");
-		String user_type=request.getParameter("user_type");
+		String user_type=request.getParameter("type");
 		String message=request.getParameter("request");
 		cancelDao f = new cancelDao();
 		f.insert(user_id, date, user_type,message);
