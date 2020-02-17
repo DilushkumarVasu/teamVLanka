@@ -1,4 +1,7 @@
-
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.Connection"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -41,6 +44,23 @@ if(session.getAttribute("username")==null){
 }
 
 %>
+<%
+		//String id = request.getParameter("userid");
+		String driver = "com.mysql.jdbc.Driver";
+		String connectionUrl = "jdbc:mysql://localhost:3306/";
+		String database = "vlanka";
+		String userid = "root";
+		String password = "";
+		try {
+		Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+		}
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+%>
+
 <div class="wrapper">
     <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
 
@@ -150,7 +170,7 @@ if(session.getAttribute("username")==null){
                         <div class="card">
 							<div class="content">
                                 <!---->
-                       <div class="container">
+                      <!-- <div class="container">
 		<div class="card">
 			<div class="face face1">
 				<div class="content">
@@ -162,7 +182,7 @@ if(session.getAttribute("username")==null){
 				<div class="content">
 					<p>State which fields are you assigned to
 					</p>
-					 <a href="#">Use Me</a>  
+					 <a href="TrackField.jsp">Use Me</a>  
 				</div>
 			</div>
 		</div>
@@ -184,10 +204,72 @@ if(session.getAttribute("username")==null){
 			</div>
 		</div>
 		
-	</div>
+	</div>-->
+                      
+                      
+                      <!-- -----------starting point -->          	
+                                	
+                                	<div class="row">
+								<div class="col-md-4">
+									<h3>Field Details</h3>
+								</div>
+								<div class="col-md-4">
+									<form action="" method="get">
+										<input type="text" class="form-control" name="q" placeholder="search here..."/>	
+									</form>
+								</div>
+								
+								</div>
+                                	<table class="table table-bordered table-striped table-hover">
+										<thead>
+											<tr>
+											<th>Field Id</th>
+											<th>Address</th>
+											<th>Size</th>
+											<th>Owner Id</th>
+											<th>Status</th>
+											<th class="text-center">Action</th>
+											</tr>
+										</thead>
+									<tbody>
+				<%
+			try{
+			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+			statement=connection.createStatement();
+			String query=request.getParameter("q");
+			String sql;
+			if(query!=null){
+				sql="select * from field where field_id like '%"+query+"%' or address like '%"+query+"%' or size like '%"+query+"%' or owner_nic like '%"+query+"%' or status like '%"+query+"%'";
+			}else{
+				sql="select * from field";
+			};
+			resultSet = statement.executeQuery(sql);
+			while(resultSet.next()){
+			%>
+			<tr>
+			<td><%=resultSet.getString("field_id") %></td>
+			<td><%=resultSet.getString("address") %></td>
+			<td><%=resultSet.getString("size") %></td>
+			<td><%=resultSet.getString("owner_nic") %></td>
+			<td><%=resultSet.getString("status") %></td>
+			<td class="text-center">
+				<a href='TrackField.jsp?d=<%=resultSet.getString("field_id")%>' class="btn btn-success">Update</a>
+			</td>
+			</tr>
+			<%
+			}
+			connection.close();
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+			%>
+
+									</tbody>
+								</table>
                                 	
                                 	
                                 	
+                      <!-- -----------Ending point -->          	
                                </div>
 								
                                 
