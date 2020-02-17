@@ -182,8 +182,8 @@
 			<th class="text-center">User ID</th>
 			<th class="text-center">User Type</th>
 			<th class="text-center">Contact Number</th>
-			<th class="text-center">Status</th>
-			<th class="text-center">View Ad</th>
+			<th class="text-center">Ad Content</th>
+			<th class="text-center">Delete Ad</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -191,7 +191,7 @@
 			try{
 			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 			statement=connection.createStatement();
-			String sql ="select * from userad";
+			String sql ="select * from userad where status=1";
 			resultSet = statement.executeQuery(sql);
 			while(resultSet.next()){
 			%>
@@ -201,10 +201,10 @@
 			<td><%=resultSet.getString("user_id") %></td>
 			<td><%=resultSet.getString("user_type") %></td>
 			<td><%=resultSet.getString("telephone") %></td>
-	    	<td><%=resultSet.getBoolean("status") %></td>
-	    	<td><%=resultSet.getBlob("content") %></td>
 			<td class="text-center">
-				<a href class="btn btn-warning">View Add</a>
+				<a href ='RsrcViewAdd.jsp?d=<%=resultSet.getBlob("content")%>'class="btn btn-warning">View</a>
+			<td class="text-center">
+				<a href ='RsrcDelAdd.jsp?d=<%=resultSet.getString("adver_id")%>' class="btn btn-danger">Delete</a>
 				
 			</td>
 			</tr>

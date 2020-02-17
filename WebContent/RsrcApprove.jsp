@@ -192,7 +192,7 @@
 			try{
 			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 			statement=connection.createStatement();
-			String sql ="select * from userad";
+			String sql ="select * from userad where status=0";
 			resultSet = statement.executeQuery(sql);
 			while(resultSet.next()){
 			%>
@@ -203,7 +203,7 @@
 			<td><%=resultSet.getString("user_type") %></td>
 			<td><%=resultSet.getString("telephone") %></td>
 	    	<td class="text-center">
-				<a href ='viewfulladd.jsp?d=<%=resultSet.getBlob("content")%>'class="btn btn-warning">View Ad</a>
+				<a href ='viewfulladd.jsp?d=<%=resultSet.getBlob("content")%>'class="btn btn-warning">View</a>
 
 			<td class="text-center">
 				<a href ='Rapprove.jsp?d=<%=resultSet.getString("adver_id")%>'class="btn btn-warning">Approve</a>
