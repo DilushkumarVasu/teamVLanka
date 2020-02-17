@@ -180,10 +180,10 @@
 	<thead>
 		<tr>
 			<th class="text-center">Advertisement ID</th>
-			<th class="text-center">Date</th>
 			<th class="text-center">User Name</th>
 			<th class="text-center">Contact Number</th>
-			<th class="text-center">Ad Content</th>
+			<th class="text-center">Price</th>
+			<th class="text-center">View Image</th>
 			<th class="text-center">Approve</th>
 		</tr>
 	</thead>
@@ -192,21 +192,21 @@
 			try{
 			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 			statement=connection.createStatement();
-			String sql ="select * from userad where status=0";
+			String sql ="select * from postadd where approved=0";
 			resultSet = statement.executeQuery(sql);
 			while(resultSet.next()){
 			%>
 			<tr>
-			<td><%=resultSet.getString("adver_id") %></td>
-			<td><%=resultSet.getString("date") %></td>
+			<td><%=resultSet.getString("addId") %></td>
 			<td><%=resultSet.getString("username") %></td>
-			<td><%=resultSet.getString("telephone") %></td>
+			<td><%=resultSet.getString("tele_number") %></td>
+			<td><%=resultSet.getString("price") %></td>
 	    	<td class="text-center">
-				<a href ='RsrcViewAdd.jsp?d=<%=resultSet.getBlob("content")%>'class="btn btn-warning">View</a>
+				<a href ='RsrcViewAdd.jsp?d=<%=resultSet.getBlob("image")%>'class="btn btn-warning">View</a>
 
 			<td class="text-center">
-				<a href ='Rapprove.jsp?d=<%=resultSet.getString("adver_id")%>'class="btn btn-warning">Approve</a>
-				<a href ='Delapprove.jsp?d=<%=resultSet.getString("adver_id")%>' class="btn btn-danger">Delete</a>
+				<a href ='Rapprove.jsp?d=<%=resultSet.getString("addId")%>'class="btn btn-warning">Approve</a>
+				<a href ='Delapprove.jsp?d=<%=resultSet.getString("addId")%>' class="btn btn-danger">Delete</a>
 				
 			</td>
 			</tr>
