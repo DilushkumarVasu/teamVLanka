@@ -160,15 +160,10 @@ if(session.getAttribute("username")==null){
 										  <input type="text" id="date" name="date" value="<%= (new java.util.Date()).toLocaleString()%>" readonly >
 										
 										  <label for="type">User Type</label>
-										  <select id="type" name="user_type">
-										    <option value="Farmer">Farmer</option>
-										    <option value="Landowner">Landowner</option>
-										    <option value="Agricultural Specialist">Agricultural Specialist</option>
-										    <option value="Resource Collector">Resource Collector</option>
-										  </select>
+										  <input type="text" id="type" name="user_type" value="Farmer" readonly>
 										
-										  <label for="request">Request</label>
-										  <input type="text" id="request" name="request" value="Cancel my user account" readonly>
+										  <label for="request">Reason</label>
+										  <input type="text" id="request" name="request" required>
 										
 										  <input type="submit" value="Submit">
 										</form>
