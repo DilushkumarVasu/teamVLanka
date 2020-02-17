@@ -95,25 +95,17 @@ if(session.getAttribute("a_id")==null){
                         <p>Users' Details</p>
                     </a>
                 </li>
-                
-               <!--<li class="dropdown menu__item">
-					<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown">
-					<i class="pe-7s-note2"></i>
-					<b class="caret"></b>
-					<p>Activities</p></a>
-					<ul class="dropdown-menu agile_short_dropdown">
-						<li><a href="#">User Registration</a></li>
-						<li><a href="#">User Details</a></li>
-						<li><a href="RsrcCollectRegister.jsp">Add a Resource Collector</a></li>
-					</ul>
-								
-				</li>-->
+				<li>
+                    <a href="viewCancel.jsp">
+                        <i class="pe-7s-delete-user"></i>
+                        <p>Account Cancel</p>
+                    </a>
+                </li>
 				
-				
-                <li>
+                 <li>
                     <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
+                        <i class="pe-7s-graph"></i>
+                        <p>Report</p>
                     </a>
                 </li>
                 <li>
@@ -176,43 +168,6 @@ if(session.getAttribute("a_id")==null){
 											</tr>
 										</thead>
 										
-										<tbody>
-										<%
-										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-										statement=connection.createStatement();
-										String sql;
-										sql="select * from cntfarmer"; 
-										resultSet = statement.executeQuery(sql);
-										while(resultSet.next()){
-										%>
-										
-										<tr class="text-center">
-											<td>Farmer</td>
-											<td><%=resultSet.getString("Farmer") %></td>
-											<td class="text-center">
-												<a href="f_signUp.jsp" class="btn btn-primary">Register</a>
-											</td>
-										</tr>
-										<%} %>
-										</tbody>
-										<tbody>
-										<%
-										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-										statement=connection.createStatement();
-										String data;
-										data="select * from cntland"; 
-										resultSet = statement.executeQuery(data);
-										while(resultSet.next()){
-										%>
-										<tr class="text-center">
-											<td>Landowner</td>
-											<td><%=resultSet.getString("Land") %></td>
-											<td class="text-center">
-												<a href="l_signUp.jsp" class="btn btn-primary">Register</a>
-											</td>
-										</tr>
-										<%} %>
-										</tbody>
 										
 										<tbody>
 										<%

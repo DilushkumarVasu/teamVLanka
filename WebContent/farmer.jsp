@@ -118,8 +118,8 @@ if(session.getAttribute("username")==null){
 				
 				<li>
                     <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
+                        <i class="pe-7s-graph"></i>
+                        <p>Report</p>
                     </a>
                 </li>
                 <li>

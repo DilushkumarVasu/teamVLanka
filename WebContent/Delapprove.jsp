@@ -12,5 +12,5 @@ conn=DriverManager.getConnection(host,"root","");
 Statement stat=conn.createStatement();
 String sql="delete from userad where adver_id='"+id+"'";
 stat.executeUpdate(sql);
-response.sendRedirect("RsrcHome.jsp");
+response.sendRedirect("RsrcApprove.jsp");
 %>

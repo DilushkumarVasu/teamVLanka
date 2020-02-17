@@ -10,7 +10,7 @@ Connection conn=null;
 Class.forName("com.mysql.jdbc.Driver").newInstance();
 conn=DriverManager.getConnection(host,"root","");
 Statement stat=conn.createStatement();
-String sql="update userad set status=1 where adver_id='"+id+"'";
+String sql="delete from agricultural_specialist where nic='"+id+"'";
 stat.executeUpdate(sql);
-response.sendRedirect("RsrcApprove.jsp");
+response.sendRedirect("AgriView.jsp");
 %>

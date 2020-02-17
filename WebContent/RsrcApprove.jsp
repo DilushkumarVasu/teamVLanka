@@ -5,6 +5,7 @@
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.Connection"%>
 
+
 		<%
 		String id = request.getParameter("userid");
 		String driver = "com.mysql.jdbc.Driver";
@@ -180,7 +181,7 @@
 		<tr>
 			<th class="text-center">Advertisement ID</th>
 			<th class="text-center">Date</th>
-			<th class="text-center">User ID</th>
+			<th class="text-center">User Name</th>
 			<th class="text-center">User Type</th>
 			<th class="text-center">Contact Number</th>
 			<th class="text-center">Ad Content</th>
@@ -192,18 +193,18 @@
 			try{
 			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
 			statement=connection.createStatement();
-			String sql ="select * from userad";
+			String sql ="select * from userad where status=0";
 			resultSet = statement.executeQuery(sql);
 			while(resultSet.next()){
 			%>
 			<tr>
 			<td><%=resultSet.getString("adver_id") %></td>
 			<td><%=resultSet.getString("date") %></td>
-			<td><%=resultSet.getString("user_id") %></td>
+			<td><%=resultSet.getString("username") %></td>
 			<td><%=resultSet.getString("user_type") %></td>
 			<td><%=resultSet.getString("telephone") %></td>
 	    	<td class="text-center">
-				<a href ='viewfulladd.jsp?d=<%=resultSet.getBlob("content")%>'class="btn btn-warning">View Ad</a>
+				<a href ='RsrcViewAdd.jsp?d=<%=resultSet.getBlob("content")%>'class="btn btn-warning">View</a>
 
 			<td class="text-center">
 				<a href ='Rapprove.jsp?d=<%=resultSet.getString("adver_id")%>'class="btn btn-warning">Approve</a>
