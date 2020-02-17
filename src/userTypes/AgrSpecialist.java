@@ -181,5 +181,28 @@ public class AgrSpecialist {
 		return null;
 
 	}
+	
+	public static List<question.Question> getAllQuestions(){
+		try {
+			Connection con = dbConnection.getConnection();
+			
+			String sql = "SELECT * FROM Questions;";
+			PreparedStatement pst = con.prepareStatement(sql);
+			
+			ResultSet rs = pst.executeQuery();
+			List<question.Question> questions = new ArrayList<question.Question>();
+
+			while(rs.next())
+				questions.add(new question.Question(rs.getInt("id"), rs.getString("nic"), rs.getString("title"), rs.getString("body"), rs.getString("date")));
+			
+			con.close();
+			return questions;
+
+		}
+		catch(Exception e) {
+		}
+		return null;
+	}
 }
+
  

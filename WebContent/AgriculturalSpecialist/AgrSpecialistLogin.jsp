@@ -8,6 +8,16 @@
 		<link rel="stylesheet" type="text/css" href="css/f_style.css">
 	</head>
 	<body>
+		<%
+			String msg = "";
+			if(request.getAttribute("error") != null){
+				msg =request.getAttribute("error").toString();
+				out.print("<script> window.alert(\""+ msg +"\"); </script>");
+			}
+				
+			//if(errorMsg != null)
+				//out.print("<script> window.alert(\"Hello\"); </script>");
+		%>
 		<form class="box" action="../AgriculturalSpecialistLogin" method="post">
 			<h1>Agricultural Specialist Login</h1>
 			<input type="text" name="nic" placeholder="NIC">

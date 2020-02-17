@@ -72,14 +72,14 @@
                         <p>Notices</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="AgrSpecialistUnansweredQuestions.jsp">
                         <i class="pe-7s-user"></i>
                         <p>Unanswered Questions</p>
                     </a>
                 </li>
                 
-                <li>
+                <li class="active">
                     <a href="AllQuestions.jsp">
                         <i class="pe-7s-user"></i>
                         <p>All question</p>
@@ -173,8 +173,9 @@
         	//List<question.Question> questions = AgrSpecialist.getUnansweredQuestions();
         	//System.err.println(questions.size());
         	
-        	for(question.Question q : questions)
-        		out.print(AgriculturalSpecialistHTML.displayQuestions(q.getID(), q.getTitle(), q.getBody(), q.getDate()));
+        	List<question.Question> allQuestions = AgrSpecialist.getAllQuestions();
+        	for(question.Question q : allQuestions)
+        		out.print(AgriculturalSpecialistHTML.displayAllQuestions(q.getID(), q.getTitle(), q.getBody(), q.getDate()));
 			
         %>
         

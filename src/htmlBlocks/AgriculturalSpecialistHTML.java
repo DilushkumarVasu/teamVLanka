@@ -39,7 +39,12 @@ public class AgriculturalSpecialistHTML {
 		return text;
 	}
 	
-	public static String displayFullQuestion(String title, String body, String askedTime, String asker, String region) {
-		return null;
+	public static String displayAllQuestions(int id, String title, String body, String askedTime) {
+		String text = "<div class=\"panel panel-default\">\r\n" + 
+				"		  	<div class=\"panel-heading\">" + title + "</div>\r\n" + 
+				"	    	<div class=\"panel-body\">" + body + "</div>\r\n" + 
+				"		  	</div>\r\n";
+				;
+		return text;
 	}
 }

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 import userTypes.AgrSpecialist;
 
 import java.util.*;
@@ -52,11 +54,16 @@ public class AgriculturalSpecialistLogin extends HttpServlet {
 				c.setDomain(request.getServerName());
 				response.addCookie(c);
 				
+				
 				response.sendRedirect("AgriculturalSpecialist/AgrSpecialistDashboard.jsp");
 			}
 			else { //invalid
 				//request.getRequestDispatcher("/AgriculturalSpecialist/Notices.jsp").forward(null, null);
-				response.sendRedirect("AgriculturalSpecialist/AgrSpecialistLogin.jsp");
+				request.setAttribute("error", "Invalid NIC or password");
+				request.getRequestDispatcher("AgriculturalSpecialist/AgrSpecialistLogin.jsp").forward(request, response);
+
+				//response.getWriter().print("<script> window.alert(\"Error\"); </script>)");
+				//response.sendRedirect("AgriculturalSpecialist/AgrSpecialistLogin.jsp");
 			}
 			
 		} catch (Exception e) {
