@@ -163,8 +163,8 @@ if(session.getAttribute("username")==null){
                     <div class="form-group">
   <label for="comment">Question:</label>
   <form action="ques" method="post">
-  <%-- <% out.print("<input type=\"text\" name=\"uname\" value=\""+ session.getAttribute("username") +  "\" hidden></input>"); %> --%>
-  <% out.print("<input type=\"text\" name=\"uname\" value=\""+ 10 +  "\" hidden></input>"); %>
+  <% out.print("<input type=\"text\" name=\"uname\" value=\""+ session.getAttribute("username") +  "\" hidden></input>"); %>
+  
   <textarea class="form-control" rows="5" id="question" name="question"></textarea>
   <button type="submit" class="btn btn-outline-success btn-lg">Submit</button>
   </form>
