@@ -182,6 +182,7 @@
 			<th class="text-center">Advertisement ID</th>
 			<th class="text-center">User Name</th>
 			<th class="text-center">Contact Number</th>
+			<th class="text-center">Details</th>
 			<th class="text-center">Price</th>
 			<th class="text-center">View Image</th>
 			<th class="text-center">Approve</th>
@@ -200,6 +201,7 @@
 			<td><%=resultSet.getString("addId") %></td>
 			<td><%=resultSet.getString("username") %></td>
 			<td><%=resultSet.getString("tele_number") %></td>
+			<td><%=resultSet.getString("details") %></td>
 			<td><%=resultSet.getString("price") %></td>
 	    	<td class="text-center">
 				<a href ='RsrcViewAdd.jsp?d=<%=resultSet.getBlob("image")%>'class="btn btn-warning">View</a>

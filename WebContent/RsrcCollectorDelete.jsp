@@ -6,7 +6,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link href="css/cancel.css" rel="stylesheet" type="text/css" media="all" />
-	<title>farmer user page</title>
+	<title>Resource Collector User Page</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -37,81 +37,52 @@
 response.setHeader("pragma","no-cache");
 response.setHeader("Expires","0");
 if(session.getAttribute("username")==null){
-	response.sendRedirect("f_login.jsp");
+	response.sendRedirect("RsrcCollectLogin.jsp");
 }
 
 %>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+     <div class="sidebar" data-color="#B7950B" data-image="assets/img/sidebar-5.jpg">
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    <img alt="" src="images/logo.png" style="width:250px;height:70px;">
+                <a href="index.html" class="simple-text">
+                  	<img alt="" src="images/logo.png" style="width:240px;height:100px;"> 
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="farmer.jsp">
-                        <i class="pe-7s-home"></i>
-                        <p>Home</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="userPro.jsp">
-                        <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
-                
-				
-				<li>
-                    <a href="f_ques.jsp">
-                        <i class="pe-7s-help1"></i>
-                        <p>Question</p>
-                    </a>
-                </li>
-                
-                
-                
-				<li>
-                    <a href="f_resource.jsp">
-                        <i class="pe-7s-arc" style="font-size:30px"></i>
-                        <p>Resources</p>
-                    </a>
-                </li>
-				
-				<li>
-                    <a href="report.jsp">
+                    <a href="RsrcHome.jsp">
                         <i class="pe-7s-graph"></i>
-                        <p>Report</p>
+                        <p>DashBoard</p>
                     </a>
                 </li>
+                
                 <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
+                    <a href="RsrcApprove.jsp">
+                        <i class="pe-7s-note2"></i>
+                        <p>Approval List</p>
                     </a>
-                </li>
-				<li class="active">
-                    <a href="cancel.jsp">
+                </li>    
+                <li>
+                    <a href="RsrcUser.jsp">
+                        <i class="pe-7s-user"></i>
+                        <p>My Profile</p>
+                    </a>
+                </li>                        
+                <li class="active">	
+                    <a href="RsrcCollectorDelete.jsp">
                         <i class="pe-7s-delete-user"></i>
-                        <p>Account Cancel</p>
-                    </a>
-                </li>
-                <li >
-                    <a href="field.jsp">
-                        <i class="pe-7s-check"></i>
-                        <p>field Update</p>
+                        <p>Cancel Account</p>
                     </a>
                 </li>
             </ul>
     	</div>
     </div>
 
-    <div class="main-panel">
+     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -121,16 +92,68 @@ if(session.getAttribute("username")==null){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="cancel.jsp">Account Cancel</a>
+                    <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                   
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+									<p class="hidden-lg hidden-md">
+										5 Notifications
+										<b class="caret"></b>
+									</p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+								<p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
+                    </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                       
                         <li>
-                            <a href="Logout" class="btn btn-info btn-lg">
-                                <span class="glyphicon glyphicon-off"></span>Log out
+                           <a href="">
+                               <p>Account</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										Dropdown
+										<b class="caret"></b>
+									</p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                            <a href="Rlogout">
+                                <p>Log out</p>
                             </a>
                         </li>
 						<li class="separator hidden-lg"></li>
@@ -138,7 +161,6 @@ if(session.getAttribute("username")==null){
                 </div>
             </div>
         </nav>
-
 
         <div class="content">
             <div class="container-fluid">
@@ -152,17 +174,19 @@ if(session.getAttribute("username")==null){
 
 
 										<form action="remove" method="post">
-										  <label for="user_id">User Id</label>
-										  <input type="text" id="user_id" name="user_id" value="${nic}" readonly>
+										  <label for="user_id">User ID</label>
+										  <input type="text" id="user_id" name="user_id" value="${rsrc_id}" readonly>
 										
 										  <label for="date">Date</label>
 										  <input type="text" id="date" name="date" value="<%= (new java.util.Date()).toLocaleString()%>" readonly >
 										
 										  <label for="type">User Type</label>
-										  <input type="text" id="type" name="user_type" value="Farmer" readonly>
+										  <input type="text" id="type" name="type" value="Resource Collector" readonly >
 										
-										  <label for="request">Reason</label>
-										  <input type="text" id="request" name="request" value="Cancel my user account due to" required>
+										  <label for="request">Reason for Resignation</label>
+										  <input type="text" id="request" name="request" value="Cancel my user account due to " required>
+										  
+										  
 										
 										  <input type="submit" value="Submit">
 										</form>
