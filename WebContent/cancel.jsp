@@ -162,7 +162,7 @@ if(session.getAttribute("username")==null){
 										  <input type="text" id="type" name="user_type" value="Farmer" readonly>
 										
 										  <label for="request">Reason</label>
-										  <input type="text" id="request" name="request" required>
+										  <input type="text" id="request" name="request" value="Cancel my request due to" required>
 										
 										  <input type="submit" value="Submit">
 										</form>
