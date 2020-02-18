@@ -109,8 +109,8 @@ if(session.getAttribute("a_id")==null){
                 </li>
 				
 				
-                 <li>
-                    <a href="maps.html">
+                <li>
+                    <a href="adminReport.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>Report</p>
                     </a>

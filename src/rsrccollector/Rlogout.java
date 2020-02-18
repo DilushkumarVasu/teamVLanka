@@ -21,7 +21,7 @@ public class Rlogout extends HttpServlet {
 						response.setContentType("text/html");  
 						PrintWriter out=response.getWriter();  
 						
-						request.getRequestDispatcher("RsrcCollectLogin.jsp").include(request, response);  
+						request.getRequestDispatcher("index.html").include(request, response);  
 						
 						HttpSession session=request.getSession();  
 						session.invalidate();  

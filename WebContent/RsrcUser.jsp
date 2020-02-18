@@ -74,6 +74,12 @@
                         <p>My Profile</p>
                     </a>
                 </li>
+                <li>	
+                    <a href="RsrcCollectorDelete.jsp">
+                        <i class="pe-7s-delete-user"></i>
+                        <p>Cancel Account</p> 
+                    </a>  
+                </li>
                
 
             </ul>

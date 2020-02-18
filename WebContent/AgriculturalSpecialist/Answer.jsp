@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="question.Question"%>
 <%@page import="com.sun.glass.ui.Size"%>
 <%@page import="userTypes.AgrSpecialist"%>
 <%@page import="notice.*"%>
@@ -12,11 +13,12 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Notices</title>
+	<title>Unanswered Question</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
+	<link href="css/QuestionsSectionCss" rel="stylesheet" />
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -53,7 +55,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Notices
+                    Unanswered Question
                 </a>
             </div>
 
@@ -64,8 +66,8 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
-                    <a href="#">
+                <li>
+                    <a href="Notices.jsp">
                         <i class="pe-7s-note2"></i>
                         <p>Notices</p>
                     </a>
@@ -81,6 +83,13 @@
                     <a href="AllQuestions.jsp">
                         <i class="pe-7s-user"></i>
                         <p>All question</p>
+                    </a>
+                </li>
+                
+                <li class="active">
+                    <a href="Answer.jsp">
+                        <i class="pe-7s-user"></i>
+                        <p>Answer</p>
                     </a>
                 </li>
             </ul>
@@ -106,10 +115,10 @@
                                     <i class="fa fa-globe"></i>
                                     <b class="caret hidden-lg hidden-md"></b>
 									<p class="hidden-lg hidden-md">
-										<%
-											List<question.Question> questions = AgrSpecialist.getUnansweredQuestions();
-											int nQuestions = questions.size();
-										%>
+									<%
+										List<question.Question> questions = AgrSpecialist.getUnansweredQuestions();
+										int nQuestions = questions.size();
+									%>
 										<b class="caret"></b>
 									</p>
                               </a>
@@ -155,6 +164,7 @@
         
         <div class="content">
             <div class="container-fluid">
+            	<div class="panel-group">
             
         <% 	Cookie cookies[] = request.getCookies();
         	String nic = "";
@@ -162,16 +172,53 @@
         		if(c.getName().equals("login"))
         			nic = c.getValue();
         	}
+        	//Code to show questions goes here
+        	//out.print(AgriculturalSpecialistHTML.displayQuestions(1, "Hello", "545416546849684198", "2019 01 02"));
+        	//List<question.Question> questions = AgrSpecialist.getUnansweredQuestions();
+        	//System.err.println(questions.size());
         	
-        	
-        	System.err.println(nic);
-        	List<notice.Notice> notices = AgrSpecialist.getNotices(nic);
-        	
-        	
-        	for(notice.Notice n : notices)
-        		out.print(AgriculturalSpecialistHTML.displayNotices(n.getTitle(), n.getBody(), n.getDate()));
+        	/*
+        	for(question.Question q : questions)
+        		out.print(AgriculturalSpecialistHTML.displayQuestions(q.getID(), q.getTitle(), q.getBody(), q.getDate()));
+			*/
+			
+			question.Question theQuestion = null;
+			for(question.Question q : questions){
+				/* System.err.println(request.getAttribute("id"));
+				System.err.println(request.getAttribute("question")); */
+				
+				if(request.getAttribute("id").toString().equals(Integer.toString(q.getID()))){
+					theQuestion = q;
+					break;
+				}
+			}
         %>
         
+        <p> <%= theQuestion.getBody() %> </p>
+        
+        
+        <form action="AgrSpecialistSubmitAnswer" method="post">
+  		<% out.print("<input type=\"text\" name=\"question\" value=\""+ theQuestion.getID() +  "\" hidden></input>"); %>
+  		<textarea class="form-control" rows="5" id="question" name="answer"></textarea>
+  		<button type="submit" class="btn btn-outline-success btn-lg">Submit</button>
+  		</form>
+        
+		
+				</div>
+				
+				
+		  	
+		  	
+		  	
+		  	
+		</div>
+		       
+       
+       
+       </div>
+       
+       
+       
        
         
 		
