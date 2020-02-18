@@ -43,7 +43,7 @@ if(session.getAttribute("username")==null){
 %>
 
 <div class="wrapper">
-     <div class="sidebar" data-color="#B7950B" data-image="assets/img/sidebar-5.jpg">
+     <div class="sidebar" data-color="red" data-image="assets/img/sidebar-5.jpg">
 
     	<div class="sidebar-wrapper">
             <div class="logo">
@@ -133,24 +133,7 @@ if(session.getAttribute("username")==null){
                                <p>Account</p>
                             </a>
                         </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
+                    
                         <li>
                             <a href="Rlogout">
                                 <p>Log out</p>
@@ -184,7 +167,7 @@ if(session.getAttribute("username")==null){
 										  <input type="text" id="type" name="type" value="Resource Collector" readonly >
 										
 										  <label for="request">Reason for Resignation</label>
-										  <input type="text" id="request" name="request" value="Cancel my user account due to " required>
+										  <input type="text" id="request" name="request" value="Cancel My Account due to " required>
 										  
 										  
 										
