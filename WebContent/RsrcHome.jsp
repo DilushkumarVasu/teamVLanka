@@ -208,7 +208,7 @@
 			<td><%=resultSet.getString("details") %></td>
 			<td><%=resultSet.getString("price") %></td>
 			<td class="text-center">
-				<a href ='RsrcViewAdd.jsp?d=<%=resultSet.getBlob("image")%>'class="btn btn-warning">View</a>
+				<a href ='RsrcViewAdd.jsp' class="btn btn-warning">View</a>
 			<td class="text-center">
 				<a href ='RsrcDelAdd.jsp?d=<%=resultSet.getString("addId")%>' class="btn btn-danger">Delete</a>
 				
