@@ -99,7 +99,8 @@
                     <a href="RsrcCollectorDelete.jsp">
                         <i class="pe-7s-delete-user"></i>
                         <p>Cancel Account</p> 
-                    </a>       
+                    </a>  
+                </li>         
             </ul>
     	</div>
     </div>

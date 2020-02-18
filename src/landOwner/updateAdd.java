@@ -22,8 +22,8 @@ public class updateAdd extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		String addid =request.getParameter("id");
-		String email=request.getParameter("email");
+		String addid =request.getParameter("addId");
+		String price=request.getParameter("price");
 		String uname = request.getParameter("uname");
 		String status=request.getParameter("status");
 		String tele=request.getParameter("tele");
@@ -32,11 +32,11 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		updateAdddao dao=new updateAdddao();
 		
 
-		if(dao.update(uname, email,status,tele)) { 
+		if(dao.update(tele, price,status,addid)) { 
 			
 
 			
-			response.sendRedirect("l_login.jsp");
+			response.sendRedirect("LviewAdd.jsp");
 			
 			//response.sendRedirect("index.html");
 		}

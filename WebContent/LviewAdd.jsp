@@ -65,7 +65,7 @@
                 </a>
             </div>
 
-            <ul class="nav">
+             <ul class="nav">
                 <li>
                     <a href="landownerhome.jsp">
                         <i class="pe-7s-graph"></i>
@@ -84,30 +84,19 @@
                         <p>Post New Add</p>
                     </a>
                 </li>
-                <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Notification</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
+                 <li class="active">
+                    <a href="LviewAdd.jsp">
                         <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
+                        <p>Posted Adds</p>
                     </a>
                 </li>
+                <li>
+                    <a href="landownerDeletion.jsp">
+                        <i class="pe-7s-delete-user"></i>
+                        <p>Delete Account</p>
+                    </a>
+                </li>
+
             </ul>
     	</div>
     </div>

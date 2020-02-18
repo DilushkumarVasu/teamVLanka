@@ -55,7 +55,6 @@
                    <img alt="" src="images/logo.png" style="width:250px;height:70px;">
                 </a>
             </div>
-
             <ul class="nav">
                 <li>
                     <a href="landownerhome.jsp">
@@ -72,31 +71,19 @@
                 <li>
                     <a href="postAdd.jsp">
                         <i class="pe-7s-note2"></i>
-                        <p>Post Add</p>
+                        <p>Post New Add</p>
                     </a>
                 </li>
-                <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
+                 <li>
+                    <a href="LviewAdd.jsp">
                         <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
+                        <p>Posted Adds</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="landownerDeletion.jsp">
+                        <i class="pe-7s-delete-user"></i>
+                        <p>Delete Account</p>
                     </a>
                 </li>
 
@@ -108,71 +95,15 @@
 		<nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">User</a>
+                    <a class="navbar-brand" href="#">Landowner Profile</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="">
+                           <a href="landownerhome.jsp">
                                <p>Account</p>
                             </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
                         </li>
                         <li>
                             <a href="lLogout">
@@ -199,8 +130,8 @@
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
+                                                <label>NIC</label>
+                                                <input type="text" class="form-control" disabled placeholder="" value="${nic}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -279,71 +210,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-user">
-                            <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
-                            </div>
-                            <div class="content">
-                                <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
-
-                                      <h4 class="title">Mike Andrew<br />
-                                         <small>michael24</small>
-                                      </h4>
-                                    </a>
-                                </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                                    Your chick she so thirsty <br>
-                                                    I'm in that two seat Lambo"
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="text-center">
-                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
-
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-	
-            </div>
-        </footer>
-
     </div>
 </div>
 
