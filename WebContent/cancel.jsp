@@ -33,13 +33,15 @@
 
 </head>
 <body>
-<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
-response.setHeader("pragma","no-cache");
-response.setHeader("Expires","0");
+<% 
+//this is the best way to remove the cache 
+response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");//this works on HTTP 1.1 protocol
+response.setHeader("Pragma","no-cache");//this is used in older version HTTP protocol->HTTP 1.0
+response.setHeader("Expires","0");//used in proxies
+
 if(session.getAttribute("username")==null){
 	response.sendRedirect("f_login.jsp");
 }
-
 %>
 
 <div class="wrapper">
@@ -90,7 +92,7 @@ if(session.getAttribute("username")==null){
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.html">
+                    <a href="#">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>
                     </a>
@@ -162,7 +164,9 @@ if(session.getAttribute("username")==null){
 										  <input type="text" id="type" name="user_type" value="Farmer" readonly>
 										
 										  <label for="request">Reason</label>
-										  <input type="text" id="request" name="request" value="Cancel my request due to" required>
+
+										  <input type="text" id="request" name="request" value="Cancel my user account due to" required>
+
 										
 										  <input type="submit" value="Submit">
 										</form>

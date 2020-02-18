@@ -30,8 +30,9 @@ public class AgriculturalSpecialistHTML {
 		String text = "<div class=\"panel panel-default\">\r\n" + 
 				"		  	<div class=\"panel-heading\">" + title + "</div>\r\n" + 
 				"	    	<div class=\"panel-body\">" + body + "</div>\r\n" + 
-				"<form action=\"#\">\r\n" + 
-				"      <input type=\"hidden\" class=\"form-control\" placeholder=\"\"  name=\"id\" hidden>\r\n" + 
+				"<form action=\"../AgrSpecialistAnswer\" method=\"post\">\r\n" + 
+				"      <input type=\"text\"  name=\"id\" value=\""+ Integer.toString(id) +  "\" hidden>\r\n" +
+				"      <input type=\"text\"  name=\"question\" value=\""+ body +  "\" hidden>\r\n" + 
 				"    <button type=\"submit\" class=\"btn btn-default\" align=\"right\">Answer</button>\r\n" + 
 				"  </form>"+
 				"		  	</div>\r\n";

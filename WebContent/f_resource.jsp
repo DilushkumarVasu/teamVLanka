@@ -36,15 +36,16 @@
 
 </head>
 <body>
-<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
-response.setHeader("pragma","no-cache");
-response.setHeader("Expires","0");
+<% 
+//this is the best way to remove the cache 
+response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");//this works on HTTP 1.1 protocol
+response.setHeader("Pragma","no-cache");//this is used in older version HTTP protocol->HTTP 1.0
+response.setHeader("Expires","0");//used in proxies
+
 if(session.getAttribute("username")==null){
 	response.sendRedirect("f_login.jsp");
 }
-
 %>
-
 <%
 		//String id = request.getParameter("userid");
 		String driver = "com.mysql.jdbc.Driver";
@@ -109,7 +110,7 @@ if(session.getAttribute("username")==null){
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.html">
+                    <a href="#">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>
                     </a>
@@ -143,37 +144,6 @@ if(session.getAttribute("username")==null){
                     <a class="navbar-brand" href="f_resource.jsp">Resources</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                   <!-- <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>-->
 
                     <ul class="nav navbar-nav navbar-right">
                        
@@ -216,7 +186,7 @@ if(session.getAttribute("username")==null){
 											<th>Details</th>
 											<th>User Name</th>
 											<th>Contact Number</th>
-											<!--<th class="text-center">Action</th>-->
+											<th>Image</th>
 											</tr>
 										</thead>
 									<tbody>
@@ -227,9 +197,9 @@ if(session.getAttribute("username")==null){
 			String query=request.getParameter("q");
 			String sql;
 			if(query!=null){
-				sql="select * from postadd where addid like '%"+query+"%' or price like '%"+query+"%' or details like '%"+query+"%' or username like '%"+query+"%' or tele_number like '%"+query+"%'";
+				sql="select * from postadd where approved=1 and addid like '%"+query+"%' or price like '%"+query+"%' or details like '%"+query+"%' or username like '%"+query+"%' or tele_number like '%"+query+"%'";
 			}else{
-				sql="select * from postadd";
+				sql="select * from postadd where approved=1";
 			};
 			resultSet = statement.executeQuery(sql);
 			while(resultSet.next()){
@@ -240,6 +210,7 @@ if(session.getAttribute("username")==null){
 			<td><%=resultSet.getString("details") %></td>
 			<td><%=resultSet.getString("username") %></td>
 			<td><%=resultSet.getString("tele_number") %></td>
+			<td><a href="#" class="btn btn-success">View</a></td>
 			</tr>
 			<%
 			}

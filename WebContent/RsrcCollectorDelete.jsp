@@ -1,39 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.Statement"%>
-<%@ page import="java.sql.Connection"%>
 
-		<%
-		String id = request.getParameter("userid");
-		String driver = "com.mysql.jdbc.Driver";
-		String connectionUrl = "jdbc:mysql://localhost:3306/";
-		String database = "vlanka";
-		String userid = "root";
-		String password = "";
-		try {
-		Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-		}
-		Connection connection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		%>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-	<title>Resource Collector DashBoard</title>
+	<link href="css/cancel.css" rel="stylesheet" type="text/css" media="all" />
+	<title>Resource Collector User Page</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-
+    
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -55,18 +33,17 @@
 
 </head>
 <body>
-
-<%
-	
-	response.setHeader("Cache-control","no-cache, no-store,must-revalidate");
-	response.setHeader("pragma", "no-cache");
-	response.setHeader("Expires", "0");
-	if(session.getAttribute("username")==null)
+<% response.setHeader("Cache-Control","no-cache, no-store,must-revalidate");
+response.setHeader("pragma","no-cache");
+response.setHeader("Expires","0");
+if(session.getAttribute("username")==null){
 	response.sendRedirect("RsrcCollectLogin.jsp");
+}
+
 %>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="red" data-image="assets/img/sidebar-5.jpg">
+     <div class="sidebar" data-color="#B7950B" data-image="assets/img/sidebar-5.jpg">
 
     	<div class="sidebar-wrapper">
             <div class="logo">
@@ -76,7 +53,7 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="RsrcHome.jsp">
                         <i class="pe-7s-graph"></i>
                         <p>DashBoard</p>
@@ -94,17 +71,18 @@
                         <i class="pe-7s-user"></i>
                         <p>My Profile</p>
                     </a>
-                </li>
-                <li>	
+                </li>                        
+                <li class="active">	
                     <a href="RsrcCollectorDelete.jsp">
                         <i class="pe-7s-delete-user"></i>
-                        <p>Cancel Account</p> 
-                    </a>       
+                        <p>Cancel Account</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>
 
-    <div class="main-panel">
+     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -121,7 +99,7 @@
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">DashBoard</p>
+								<p class="hidden-lg hidden-md">Dashboard</p>
                             </a>
                         </li>
                         <li class="dropdown">
@@ -138,7 +116,7 @@
                                 <li><a href="#">Notification 2</a></li>
                                 <li><a href="#">Notification 3</a></li>
                                 <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Notification 5</a></li>
+                                <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>
                         <li>
@@ -151,11 +129,28 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="RsrcUser.jsp">
+                           <a href="">
                                <p>Account</p>
                             </a>
                         </li>
-             
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										Dropdown
+										<b class="caret"></b>
+									</p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                              </ul>
+                        </li>
                         <li>
                             <a href="Rlogout">
                                 <p>Log out</p>
@@ -167,69 +162,61 @@
             </div>
         </nav>
 
-
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
+							<div class="content">
+                               <!-- <div class="row">-->
+									<!----- form starting point ------>
+									<h3>Resignation Form</h3>
 
-                            <div class="header">
-                                <h4 class="title">Advertisements</h4>
-                                <p class="category">Posted by Landowners</p>
+
+										<form action="remove" method="post">
+										  <label for="user_id">User ID</label>
+										  <input type="text" id="user_id" name="user_id" value="${rsrc_id}" readonly>
+										
+										  <label for="date">Date</label>
+										  <input type="text" id="date" name="date" value="<%= (new java.util.Date()).toLocaleString()%>" readonly >
+										
+										  <label for="type">User Type</label>
+										  <input type="text" id="type" name="type" value="Resource Collector" readonly >
+										
+										  <label for="request">Reason for Resignation</label>
+										  <input type="text" id="request" name="request" value="Cancel my user account due to " required>
+										  
+										  
+										
+										  <input type="submit" value="Submit">
+										</form>
+										
+
+									<!-- --------------------------- -->
+								
+                                	
+                               </div>
+								
+                                
                             </div>
-                            <div class="content">
-   <table class="table table-bordered table-striped table-hover">
-	<thead>
-		<tr>
-			<th class="text-center">Advertisement ID</th>
-			<th class="text-center">User Name</th>
-			<th class="text-center">Contact Number</th>
-			<th class="text-center">Details</th>
-			<th class="text-center">Price</th>
-			<th class="text-center">View Image</th>
-			<th class="text-center">Delete Ad</th>
-		</tr>
-	</thead>
-	<tbody>
-				<%
-			try{
-			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-			statement=connection.createStatement();
-			String sql ="select * from postadd where approved=1";
-			resultSet = statement.executeQuery(sql);
-			while(resultSet.next()){
-			%>
-			<tr>
-			<td><%=resultSet.getString("addId") %></td>
-			<td><%=resultSet.getString("username") %></td>
-			<td><%=resultSet.getString("tele_number") %></td>
-			<td><%=resultSet.getString("details") %></td>
-			<td><%=resultSet.getString("price") %></td>
-			<td class="text-center">
-				<a href ='RsrcViewAdd.jsp?d=<%=resultSet.getBlob("image")%>'class="btn btn-warning">View</a>
-			<td class="text-center">
-				<a href ='RsrcDelAdd.jsp?d=<%=resultSet.getString("addId")%>' class="btn btn-danger">Delete</a>
-				
-			</td>
-			</tr>
-			<%
-			}
-			connection.close();
-			} catch (Exception e) {
-			e.printStackTrace();
-			}
-			%>
-
-	</tbody>
-</table>
                         </div>
                     </div>
+
+                    
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
 
 
 
 </body>
-
+	
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--   Core JS Files   -->
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -249,6 +236,27 @@
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
+	<!-- <script type="text/javascript">
+    	$(document).ready(function(){
 
+        	demo.initChartist();
+
+        	$.notify({
+            	icon: 'pe-7s-gift',
+            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+    	});
+	</script> -->
+	
+	<!--<script>
+		alert("You are succesfully logged in to VLanka! Press OK to continue");  // display string message
+    </script>-->
 
 </html>
+
+
