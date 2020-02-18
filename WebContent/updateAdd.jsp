@@ -1,3 +1,8 @@
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Statement"%>
+<%@ page import="java.sql.Connection"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!doctype html>
@@ -35,14 +40,28 @@
 <body>
 
 <%
-	
-	response.setHeader("Cache-control","no-cache, no-store,must-revalidate");
-	response.setHeader("pragma", "no-cache");
-	response.setHeader("Expires", "0");
-	if(session.getAttribute("username")==null)
-	response.sendRedirect("l_login.jsp");
+		String id=request.getParameter("d");
+		String driver = "com.mysql.jdbc.Driver";
+		String connectionUrl = "jdbc:mysql://localhost:3306/";
+		String database = "vlanka";
+		String userid = "root";
+		String password = "";
+		try {
+		Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+		}
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
 %>
-<% String id =request.getParameter("d"); %>
+<%
+try{
+	connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+	statement=connection.createStatement();
+	String sql="select * from postadd where addId='"+id+"'";
+	resultSet = statement.executeQuery(sql);
+	while(resultSet.next()){%>
 
 <div class="wrapper">
     <div class="sidebar" data-color="#B7950B" data-image="assets/img/sidebar-5.jpg">
@@ -108,72 +127,16 @@
     <div class="main-panel">
 		<nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">User</a>
-                </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
+
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="">
+                           <a href="landownerhome.jsp">
                                <p>Account</p>
                             </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
                         </li>
                         <li>
                             <a href="lLogout">
@@ -200,14 +163,14 @@
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="${id}">
+                                                <label>Add Id</label>
+                                                <input type="text" name="addId"  class="form-control" placeholder="addId" value="<%=resultSet.getString("addId") %>">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" name="uname" class="form-control" placeholder="Username" value="${username}" readonly>
+                                                <label>NIC</label>
+                                                <input type="text" name="uname" class="form-control" placeholder="Username" value="${nic}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -232,7 +195,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Telephone number</label>
-                                                <input type="text" name="tele" class="form-control" placeholder="Telephone number" value="${tele}" required="required">
+                                                <input type="text" name="tele" class="form-control" placeholder="Telephone number" value="<%=resultSet.getString("tele_number") %>" required="required">
                                             </div>
                                         </div>
 
@@ -244,7 +207,7 @@
                                         <div class="form-group">
                                                 <label>Price</label>
                                                
-                                                <input type="text" name="price" class="form-control" placeholder="Rs." value="" required="required">
+                                                <input type="text" name="price" class="form-control" placeholder="Rs." value="<%=resultSet.getString("price") %>" required="required">
                                             </div>
                                             
                                         </div>
@@ -393,5 +356,12 @@
 	<script src="assets/js/demo.js"></script>
 
 </html>
+<%
+			}
+			connection.close();
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+			%>
 
 

@@ -10,11 +10,11 @@ import java.sql.ResultSet;
 
 	public class updateAdddao {
 
-		String sql="insert into postadd (price,details,username,tele_number,image) values(?,?,?,?,?)";
+		String sql="update postadd set price=?,details=?,tele_number=? where addId =?";
 		String url="jdbc:mysql://localhost/vlanka";
 		String username="root";
 		String password="";
-		public boolean update(String telenum,String price,String details,String uname) {
+		public boolean update(String telenum,String price,String details,String addid) {
 			
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -22,12 +22,9 @@ import java.sql.ResultSet;
 				PreparedStatement st=con.prepareStatement(sql);
 				st.setString(1, price);
 				st.setString(2, details);
-				st.setString(3, uname);
-				st.setString(4,telenum);
-
-
-				
-				
+				st.setString(3, telenum);
+				st.setString(4, addid);
+			
 				int i = st.executeUpdate();
 				
 				if(i>0) {
