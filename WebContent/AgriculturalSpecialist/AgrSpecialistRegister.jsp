@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="signup-form">
-                    <form action="AgriculturalSpecialistRegistration" method="POST" class="register-form" id="register-form">
+                    <form action="../AgriculturalSpecialistRegistration" method="POST" class="register-form" id="register-form">
                         <div class="form-group">
                             <div class="form-input">
                                 <label for="name" class="required">Full name</label>
@@ -35,6 +35,14 @@
                             <div class="form-input">
                                 <label for="nic" class="required">NIC</label>
                                 <input type="text" name="nic" id="nic" />
+                            </div>
+                            <div class="form-input">
+                                <label for="nic" class="required">Password</label>
+                                <input type="password" name="password" id="nic" />
+                            </div>
+                            <div class="form-input">
+                                <label for="nic" class="required">Conform password</label>
+                                <input type="password" name="passwordRepeat" id="nic" />
                             </div>
                             <div class="form-input">
                                 <label for="speciality" class="required">Speciality</label>

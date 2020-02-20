@@ -168,10 +168,18 @@
             
         <% 	Cookie cookies[] = request.getCookies();
         	String nic = "";
+        	Boolean bLogged = false;
         	for(Cookie c : cookies){
-        		if(c.getName().equals("login"))
+        		if(c.getName().equals("login")){
         			nic = c.getValue();
+        			bLogged = true;
+        		}
         	}
+        	
+        	if(!bLogged) //not logged in
+        		response.sendRedirect("AgrSpecialistLogin.jsp");
+        	else
+        	{
         	//Code to show questions goes here
         	//out.print(AgriculturalSpecialistHTML.displayQuestions(1, "Hello", "545416546849684198", "2019 01 02"));
         	//List<question.Question> questions = AgrSpecialist.getUnansweredQuestions();
@@ -198,7 +206,10 @@
         
         
         <form action="AgrSpecialistSubmitAnswer" method="post">
-  		<% out.print("<input type=\"text\" name=\"question\" value=\""+ theQuestion.getID() +  "\" hidden></input>"); %>
+  		<% 
+  		out.print("<input type=\"text\" name=\"question\" value=\""+ theQuestion.getID() +  "\" hidden></input>");
+  		out.print("<input type=\"text\" name=\"nic\" value=\""+ nic +  "\" hidden></input>");
+  		%>
   		<textarea class="form-control" rows="5" id="question" name="answer"></textarea>
   		<button type="submit" class="btn btn-outline-success btn-lg">Submit</button>
   		</form>
@@ -305,3 +316,4 @@
 
 </html>
 </html>
+<%}%>

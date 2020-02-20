@@ -30,6 +30,11 @@
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
+    
+    <!-- <link href="css/addNotice.css" rel="stylesheet" /> -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
     <!--     Fonts and icons     -->
@@ -150,18 +155,29 @@
         </nav>
         
         
+       
         
         <!-- This thing scrolls seperately -->
         
         <div class="content">
             <div class="container-fluid">
-            
+            <nav class="pull-right">
+        <button type="button" class="btn btn-warning btn-circle btn-xl" onclick="window.location.href = 'AddNotice.jsp';"><i class="glyphicon glyphicon-plus"></i></button>
+        </nav>
         <% 	Cookie cookies[] = request.getCookies();
         	String nic = "";
+        	Boolean bLogged = false;
         	for(Cookie c : cookies){
-        		if(c.getName().equals("login"))
+        		if(c.getName().equals("login")){
         			nic = c.getValue();
+        			bLogged = true;
+        		}
         	}
+        	
+        	if(!bLogged) //not logged in
+        		response.sendRedirect("AgrSpecialistLogin.jsp");
+        	else
+        	{
         	
         	
         	System.err.println(nic);
@@ -258,3 +274,5 @@
 
 </html>
 </html>
+
+<%}%>

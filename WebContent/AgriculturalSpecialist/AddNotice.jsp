@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="question.Question"%>
 <%@page import="com.sun.glass.ui.Size"%>
 <%@page import="userTypes.AgrSpecialist"%>
 <%@page import="notice.*"%>
@@ -13,12 +12,11 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Unanswered Question</title>
+	<title>Notices</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-	<link href="css/QuestionsSectionCss" rel="stylesheet" />
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -32,6 +30,11 @@
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
+    
+    <!-- <link href="css/addNotice.css" rel="stylesheet" /> -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
     <!--     Fonts and icons     -->
@@ -55,7 +58,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Unanswered Question
+                    Notices
                 </a>
             </div>
 
@@ -66,7 +69,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="Notices.jsp">
                         <i class="pe-7s-note2"></i>
                         <p>Notices</p>
@@ -79,7 +82,7 @@
                     </a>
                 </li>
                 
-                <li class="active">
+                <li>
                     <a href="AllQuestions.jsp">
                         <i class="pe-7s-user"></i>
                         <p>All question</p>
@@ -108,10 +111,10 @@
                                     <i class="fa fa-globe"></i>
                                     <b class="caret hidden-lg hidden-md"></b>
 									<p class="hidden-lg hidden-md">
-									<%
-										List<question.Question> questions = AgrSpecialist.getUnansweredQuestions();
-										int nQuestions = questions.size();
-									%>
+										<%
+											List<question.Question> questions = AgrSpecialist.getUnansweredQuestions();
+											int nQuestions = questions.size();
+										%>
 										<b class="caret"></b>
 									</p>
                               </a>
@@ -152,62 +155,46 @@
         </nav>
         
         
+       
         
         <!-- This thing scrolls seperately -->
         
         <div class="content">
             <div class="container-fluid">
-            	<div class="panel-group">
-            
         <% 	Cookie cookies[] = request.getCookies();
         	String nic = "";
-        	Boolean bLogged = false;
         	for(Cookie c : cookies){
-        		if(c.getName().equals("login")){
+        		if(c.getName().equals("login"))
         			nic = c.getValue();
-        			bLogged = true;
-        		}
         	}
         	
-        	if(!bLogged) //not logged in
-        		response.sendRedirect("AgrSpecialistLogin.jsp");
-        	else {
+        	
         	System.err.println(nic);
-        	
-        	//Code to show questions goes here
-        	//out.print(AgriculturalSpecialistHTML.displayQuestions(1, "Hello", "545416546849684198", "2019 01 02"));
-        	//List<question.Question> questions = AgrSpecialist.getUnansweredQuestions();
-        	//System.err.println(questions.size());
-        	
-        	List<question.Question> allQuestions = AgrSpecialist.getAllQuestions();
-        	System.out.println(allQuestions.size());
-        	for(question.Question q : allQuestions)
-        		out.print(AgriculturalSpecialistHTML.displayAllQuestions(q.getID(), q.getTitle(), q.getBody(), q.getDate()));
-			
         %>
-        
-        
-        
-		
-				</div>
-				
-				
-		  	
-		  	
-		  	
-		  	
-		</div>
-		       
-       
-       
-       </div>
-       
-       
-       
-       
-        
-		
+
+<div class="row">
+                    <div class="col-md-12">
+                        <!-- <div class="card"> -->
+        <form action="../AgriculturalSpecialistSubmitNotice" method="post">
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Title</label>
+			    <input type="text" name="title" class="form-control form-control-lg" id="exampleInputEmail1">
+			  </div>
+			  
+			  <div class="form-group">
+			    <input type="hidden" name="nic" class="form-control form-control-lg" id="exampleInputEmail1" value=<%=nic %>>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Notice</label>
+			    <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3"></textarea>
+			  </div>
+		<button type="submit" class="btn btn-warning btn-lg">Submit</button>
+</form>
 			</div>
+		</div>
+		<!-- </div> -->
+		</div>
 		</div>
 		
 		
@@ -290,5 +277,3 @@
 
 </html>
 </html>
-
-<%}%>

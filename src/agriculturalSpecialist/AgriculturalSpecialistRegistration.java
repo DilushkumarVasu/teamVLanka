@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import userTypes.AgrSpecialist;
-import userTypes.Farmer;
+import userTypes.*;
+//import userTypes.Farmer;
 
 /**
  * Servlet implementation class AgriculturalSpecialistRegistration
@@ -30,16 +30,10 @@ public class AgriculturalSpecialistRegistration extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//add riderect code here
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-		/*
+		
+		System.out.println("11111111111");
+		
+		
 		String name = request.getParameter("name");
 		String nic = request.getParameter("nic");
 		String speciality = request.getParameter("speciality");
@@ -47,10 +41,25 @@ public class AgriculturalSpecialistRegistration extends HttpServlet {
 		String email = request.getParameter("email");
 		String tp = request.getParameter("phone_number");
 		String region = request.getParameter("region");
+		String password = request.getParameter("password");
 		
-		AgrSpecialist a = new AgrSpecialist();
-		a.Register(name, nic, speciality, address, email, tp, region);
-		*/
+		System.out.println("222222222222222222222");
+		
+		Boolean bSuccess = AgrSpecialist.Register(name, nic, speciality, address, email, tp, region, password);
+		
+		System.out.println("333333333333333333333333");
+		
+		if(bSuccess)
+			response.sendRedirect("AgriculturalSpecialist/AgrSpecialistLogin.jsp");
+		else
+			response.sendRedirect("AgriculturalSpecialist/AgrSpecialistRegister.jsp");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

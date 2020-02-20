@@ -161,11 +161,18 @@
             
         <% 	Cookie cookies[] = request.getCookies();
         	String nic = "";
+        	Boolean bLogged = false;
         	for(Cookie c : cookies){
-        		if(c.getName().equals("login"))
+        		if(c.getName().equals("login")){
         			nic = c.getValue();
+        			bLogged = true;
+        		}
         	}
         	
+        	if(!bLogged) //not logged in
+        		response.sendRedirect("AgrSpecialistLogin.jsp");
+        	else
+        	{
         	System.err.println(nic);
         	
         	//Code to show questions goes here
@@ -174,7 +181,7 @@
         	//System.err.println(questions.size());
         	
         	for(question.Question q : questions)
-        		out.print(AgriculturalSpecialistHTML.displayQuestions(q.getID(), q.getTitle(), q.getBody(), q.getDate()));
+        		out.print(AgriculturalSpecialistHTML.displayQuestions(q.getID(), q.getTitle(), q.getBody(), q.getDate(), nic));
 			
         %>
         
@@ -282,3 +289,4 @@
 
 </html>
 </html>
+<%}%>

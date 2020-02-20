@@ -150,6 +150,20 @@
             </div>
         </nav>
 
+<% 	Cookie cookies[] = request.getCookies();
+        	String nic = "";
+        	Boolean bLogged = false;
+        	for(Cookie c : cookies){
+        		if(c.getName().equals("login")){
+        			nic = c.getValue();
+        			bLogged = true;
+        		}
+        	}
+        	
+        	if(!bLogged) //not logged in
+        		response.sendRedirect("AgrSpecialistLogin.jsp");
+%>
+
 
         <div class="content">
             <div class="container-fluid">

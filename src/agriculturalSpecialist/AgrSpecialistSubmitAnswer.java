@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import databaseConnectivity.dbConnection;
+import userTypes.AgrSpecialist;
 
 /**
  * Servlet implementation class AgrSpecialistSubmitAnswer
@@ -35,12 +36,15 @@ public class AgrSpecialistSubmitAnswer extends HttpServlet {
 		//System.err.println(request.getParameter("question"));
 		String question = request.getParameter("question");
 		String answer = request.getParameter("answer");
-		String title = answer.substring(0, 10);
+		String nic = request.getParameter("nic");
+		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		LocalDateTime now = LocalDateTime.now(); 
 		String timeStamp = now.toString();
 		
+		AgrSpecialist.answer(Integer.parseInt(question), answer, nic, timeStamp);
 		
+		response.sendRedirect("AgriculturalSpecialist/AgrSpecialistUnansweredQuestions.jsp");
 	}	
 
 	/**

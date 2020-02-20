@@ -38,11 +38,12 @@ public class AgriculturalSpecialistLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//request.getRequestDispatcher("/AgriculturalSpecialist/Notices.jsp").forward(null, null);
-		
 		String nic = request.getParameter("nic");
 		String pwd = request.getParameter("pass");
 		
+		System.out.println("--------------");
+		System.out.println(nic);
+		System.out.println(pwd);
 		
 		try {
 						
@@ -61,7 +62,9 @@ public class AgriculturalSpecialistLogin extends HttpServlet {
 				//request.getRequestDispatcher("/AgriculturalSpecialist/Notices.jsp").forward(null, null);
 				request.setAttribute("error", "Invalid NIC or password");
 				request.getRequestDispatcher("AgriculturalSpecialist/AgrSpecialistLogin.jsp").forward(request, response);
-
+				//response.sendRedirect("AgriculturalSpecialist/AgrSpecialistLogin.jsp");
+				//response.sendError(1, "Invalid NIC or pwd");
+				//request.getRequestDispatcher("/AgrSpecialistLogin.jsp").include(request, response);
 				//response.getWriter().print("<script> window.alert(\"Error\"); </script>)");
 				//response.sendRedirect("AgriculturalSpecialist/AgrSpecialistLogin.jsp");
 			}
