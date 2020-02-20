@@ -134,13 +134,13 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
+                        <!-- <li>
                            <a href="">
                                <p>Account</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
-                            <a href="#">
+                            <a href="../AgriculturalSpecialistLogout">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -164,7 +164,7 @@
         		response.sendRedirect("AgrSpecialistLogin.jsp");
 %>
 
-
+<!--
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -373,7 +373,8 @@
             </div>
         </div>
 
-
+-->
+<!--
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
@@ -405,7 +406,7 @@
                 </p>
             </div>
         </footer>
-
+-->
     </div>
 </div>
 

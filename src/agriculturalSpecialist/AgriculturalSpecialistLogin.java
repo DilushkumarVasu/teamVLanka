@@ -41,9 +41,11 @@ public class AgriculturalSpecialistLogin extends HttpServlet {
 		String nic = request.getParameter("nic");
 		String pwd = request.getParameter("pass");
 		
-		System.out.println("--------------");
-		System.out.println(nic);
-		System.out.println(pwd);
+		Cookie[] cookies = request.getCookies();
+		for(Cookie c : cookies) {
+			c.setMaxAge(0);
+			response.addCookie(c);
+		}
 		
 		try {
 						

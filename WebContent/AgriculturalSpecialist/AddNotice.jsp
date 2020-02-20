@@ -200,7 +200,7 @@
 		
 		
 		
-		
+<!-- 	
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
@@ -232,6 +232,7 @@
                 </p>
             </div>
         </footer>
+-->
 
     </div>
 </div>

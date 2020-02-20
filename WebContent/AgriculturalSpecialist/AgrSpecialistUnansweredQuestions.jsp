@@ -141,7 +141,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="../AgriculturalSpecialistLogout">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -212,7 +212,7 @@
 		
 		
 		
-		
+<!-- 		
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
@@ -244,6 +244,7 @@
                 </p>
             </div>
         </footer>
+ -->
 
     </div>
 </div>

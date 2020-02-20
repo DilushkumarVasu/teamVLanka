@@ -3,6 +3,7 @@ package agriculturalSpecialist;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,10 +30,16 @@ public class AgriculturalSpecialistLogout extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		HttpSession session = request.getSession();
-		session.invalidate();
+		//HttpSession session = request.getSession();
+		//session.invalidate();
 		
-		response.sendRedirect("/AgriculturalSpecialist/AgrSpecialistLogin.jsp");
+		Cookie[] cookies = request.getCookies();
+		for(Cookie c : cookies) {
+			c.setMaxAge(0);
+			response.addCookie(c);
+		}
+			
+		response.sendRedirect("AgriculturalSpecialist/AgrSpecialistLogin.jsp");
 	}
 
 	/**
