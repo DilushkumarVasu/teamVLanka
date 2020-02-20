@@ -24,6 +24,7 @@ import java.sql.SQLException;
 
 import notice.Notice;
 import question.*;
+import questionAndAnswer.QuestionAndAnswer;
 
 public class AgrSpecialist {
 
@@ -264,6 +265,74 @@ public class AgrSpecialist {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 		}
+	}
+	
+	public static questionAndAnswer.QuestionAndAnswer lastAnsweredQuestionAnswer(String nicOfAgrSpecialist){
+		try {
+			//List<questionAndAnswer.QuestionAndAnswer> L = new ArrayList<questionAndAnswer.QuestionAndAnswer>();
+			
+			Connection con = LocalDBConnection.getConnection();
+			String sql = "SELECT answers.question, answers.body as answerText, answers.nic as agrSpecialistNic, answers.time as answeredTime, questions.nic as askerNic, questions.title as qTitle, questions.body as questionText, questions.time as askedTime FROM answers INNER JOIN questions ON answers.question = questions.id WHERE answers.nic = ?  ORDER BY answers.time DESC LIMIT 1;";
+			
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setString(1, nicOfAgrSpecialist);
+			
+			System.out.println("AAAAAAAAAAAAAAAAAAAAA");
+			
+			ResultSet rs = pst.executeQuery();
+			
+			rs.first();
+			
+			System.out.println(rs.getString("answeredTime"));
+			
+			
+			
+			
+			int questionID = Integer.parseInt(rs.getString("question"));
+			String askerNic = rs.getString("askerNic");
+			String qTitle = rs.getString("qTitle");
+			String qBody = rs.getString("questionText");
+			String qDate = rs.getString("askedTime");
+			
+			String answerBody = rs.getString("answerText");
+			String agrNic = rs.getString("agrSpecialistNic");
+			String answeredTime = rs.getString("answeredTime");
+			question.Question Q = new question.Question(questionID, askerNic, qTitle, qBody, qDate);
+			answer.Answer A = new answer.Answer(questionID, answerBody, agrNic, answeredTime);
+			
+			questionAndAnswer.QuestionAndAnswer qAnda = new questionAndAnswer.QuestionAndAnswer(Q, A);
+			return qAnda;
+
+			
+			
+			
+			/*
+			while(rs.next()) {
+				int questionID = Integer.parseInt(rs.getString("question"));
+				String askerNic = rs.getString("askerNic");
+				String qTitle = rs.getString("qTitle");
+				String qBody = rs.getString("questionText");
+				String qDate = rs.getString("askedTime");
+				
+				String answerBody = rs.getString("answerText");
+				String agrNic = rs.getString("agrSpecialistNic");
+				String answeredTime = rs.getString("answeredTime");
+				question.Question Q = new question.Question(questionID, askerNic, qTitle, qBody, qDate);
+				answer.Answer A = new answer.Answer(questionID, answerBody, agrNic, answeredTime);
+				
+				questionAndAnswer.QuestionAndAnswer qAnda = new questionAndAnswer.QuestionAndAnswer(Q, A);
+				L.add(qAnda);
+			}
+			*/
+			
+			
+			//return L.get(0);
+			//return null;
+		}
+		catch(Exception e){
+			return null;
+		}
+
 	}
 }
 
